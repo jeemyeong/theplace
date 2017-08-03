@@ -3,26 +3,17 @@ import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import { Route } from 'react-router';
-import { PostStore } from './stores/postStore';
 import Post from './Post';
 
 interface AppProps {
   routing?: RouterStore;
-  postStore?: PostStore;
 }
 
 @inject('routing')
-@inject('postStore')
 @observer
 class App extends React.Component<AppProps, {}> {
-  state = { activeItem: 'home' };
-
-  public handleItemClick = (e: React.MouseEvent<EventTarget>, { name }: { name: string }
-    ) => this.setState({ activeItem: name })
- 
   render() {
     const { location, push, goBack } = this.props.routing as RouterStore;
-    const { activeItem } = this.state;
     const pathname = !!location ? location.pathname : null;
     return (
       <div className="App">

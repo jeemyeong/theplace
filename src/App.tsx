@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
+import { Route } from 'react-router';
+import { PostStore } from './stores/postStore';
+import Post from './Post';
 
 interface AppProps {
   routing?: RouterStore;
+  postStore?: PostStore;
 }
 
 @inject('routing')
+@inject('postStore')
 @observer
 class App extends React.Component<AppProps, {}> {
   state = { activeItem: 'home' };
@@ -21,12 +26,13 @@ class App extends React.Component<AppProps, {}> {
     const pathname = !!location ? location.pathname : null;
     return (
       <div className="App">
-        <button
+        <Button
           onClick={() => goBack()}
         >
           GoBack
-        </button>
-        
+        </Button>
+        {pathname}
+        <Route exact={true} path="/home" component={Post}/>
         <Menu secondary={true} widths={4} fixed="bottom">
           <Menu.Item name="home" active={pathname === '/home'} onClick={() => push('/home')}>
             <Icon size="large" name="home"/>

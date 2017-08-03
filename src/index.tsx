@@ -14,7 +14,7 @@ const routingStore = new RouterStore();
 const stores = {
   // Key can be whatever you want
   routing: routingStore,
-  posting: postStore
+  postStore: postStore
   // ...other stores
 };
 

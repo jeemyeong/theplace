@@ -11,12 +11,12 @@ import { Router } from 'react-router';
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
 
-const stores = [
+const stores = {
   // Key can be whatever you want
-  { routing: routingStore },
-  { posting: postStore }
+  routing: routingStore,
+  posting: postStore
   // ...other stores
-];
+};
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
@@ -27,7 +27,7 @@ import 'semantic-ui-css/semantic.min.css';
 useStrict(true);
 
 ReactDOM.render(
-  <Provider postStore={...stores} >
+  <Provider {...stores} >
     <Router history={history}>
       <App />
     </Router>

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
+import { inject, observer } from 'mobx-react';
 
+@inject('routing')
+@observer
 class App extends React.Component<{}, {}> {
   state = { activeItem: 'home' };
 
@@ -8,6 +11,7 @@ class App extends React.Component<{}, {}> {
     ) => this.setState({ activeItem: name })
 
   render() {
+    const { location, push, goBack } = this.props.routing;
     const { activeItem } = this.state;
     return (
       <div className="App">

@@ -3,7 +3,7 @@ import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import { Route } from 'react-router';
-import Post from './Post';
+import FeedContainer from './feed/FeedContainer';
 
 interface AppProps {
   routing?: RouterStore;
@@ -23,7 +23,7 @@ class App extends React.Component<AppProps, {}> {
           GoBack
         </Button>
         {pathname}
-        <Route exact={true} path="/home" component={Post}/>
+        <Route exact={true} path="/home" component={FeedContainer}/>
         <Menu secondary={true} widths={4} fixed="bottom">
           <Menu.Item name="home" active={pathname === '/home'} onClick={() => push('/home')}>
             <Icon size="large" name="home"/>

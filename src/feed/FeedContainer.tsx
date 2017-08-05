@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
-import { PostStore } from './stores/postStore';
+import { FeedStore } from 'stores/feedStore';
 
-export interface PostProps {
-  postStore?: PostStore;
+export interface FeedContainerProps {
+  feedStore?: FeedStore;
 }
 
-@inject('postStore')
+@inject('feedStore')
 @observer
-class Post extends React.Component<PostProps, {}> {
+class FeedContainer extends React.Component<FeedContainerProps, {}> {
   render() {
-    const { state } = this.props.postStore as PostStore;
+    const { state } = this.props.feedStore as FeedStore;
     const src = !!state ? state.src : '';
     return (
       <div style={containerStyle}>
@@ -50,4 +50,4 @@ const spanStyle = {
    padding: '10px'
 };
 
-export default Post;
+export default FeedContainer;

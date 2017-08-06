@@ -19,6 +19,7 @@ export class FeedStore {
           nickname: 'jeemyeong',
           profileImgUrl: 'https://instagram.ficn1-1.fna.fbcdn.net/t51.2885-19/s150x150/19050682_812811472214414_8464831635005636608_a.jpg',
         },
+        restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
         evaluate: 4.5
       },
@@ -31,6 +32,7 @@ export class FeedStore {
           nickname: 'jeemyeong',
           profileImgUrl: 'https://instagram.ficn1-1.fna.fbcdn.net/t51.2885-19/s150x150/19050682_812811472214414_8464831635005636608_a.jpg',
         },
+        restaurant: '잇쇼우',
         review: '그냥그랬어',
         evaluate: 3.5
       },
@@ -44,6 +46,7 @@ export class FeedStore {
           nickname: 'jeemyeong',
           profileImgUrl: 'https://instagram.ficn1-1.fna.fbcdn.net/t51.2885-19/s150x150/19050682_812811472214414_8464831635005636608_a.jpg',
         },
+        restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
         evaluate: 4.5
       }

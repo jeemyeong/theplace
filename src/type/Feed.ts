@@ -5,6 +5,7 @@ export type FeedType = {
     nickname: string,
     profileImgUrl: string,
   },
+  restaurant: string,
   review: string,
   evaluate: number
 };

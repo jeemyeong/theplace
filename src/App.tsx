@@ -26,6 +26,7 @@ const headerStyle = style({
 const mainStyle = style({
   position: 'absolute',
   top: '6%',
+  width: '100%',
   bottom: '6%'
 });
 

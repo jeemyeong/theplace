@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
-import { style } from 'typestyle';
+import { style, media } from 'typestyle';
 import { FeedType } from 'type/Feed';
 
 const FeedStyle = style({
@@ -9,18 +9,24 @@ const FeedStyle = style({
   backgroundColor: 'yellow',
 });
 
-const cardImageStyle = (imgUrl: string) => style({
-  backgroundImage: `url(${imgUrl})`,
-  backgroundSize: '100%',
-  backgroundRepeat: 'no-repeat',
-  backgroundColor: 'skyblue',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '100%'
-});
+const cardImageStyle = (imgUrl: string) => style(
+  {
+    backgroundImage: `url(${imgUrl})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: 'skyblue',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%'
+  },
+  /** Default */
+  media({minWidth: 0, maxWidth: 499}, {backgroundSize: '100%'}),
+  /** Change for bigger screens */
+  media({minWidth: 500}, {backgroundSize: '50%'})
+);
 
 const authorStyle = style({
   display: 'flex',

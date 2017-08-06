@@ -3,18 +3,24 @@ import { Divider, Image } from 'semantic-ui-react';
 import { style } from 'typestyle';
 import { Feed } from 'type/Feed';
 
-const FeedsStyle = style({
-
+const FeedsStyle = (height: number) => style({
+  height,
+  backgroundColor: 'orange',
+  overflowY: 'auto'
 });
 
 interface FeedsProps {
   feeds: Feed[];
+  height: number;
 }
 
 const Feeds = ({
-  feeds
+  feeds,
+  height
 }: FeedsProps) => (
-  <div className={FeedsStyle}>
+  <div
+    className={FeedsStyle(height)}
+  >
     {feeds.map( (feed, index) => <Feed feed={feed} key={index}/>)}
   </div>
 );
@@ -38,9 +44,14 @@ const spanStyle = style({
   padding: '10px'
 });
 
-const cardImageStyle = style({
+const cardImageStyle = (imgUrl: string) => style({
+  backgroundImage: `url(${imgUrl})`,
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundColor: 'skyblue',
   width: '100%',
-  position: 'relative'
+  height: 0,
+  paddingTop: '66.64%'
 });
 
 interface FeedProps {
@@ -49,25 +60,22 @@ interface FeedProps {
 
 const Feed = ({feed}: FeedProps) => (
   <div className={FeedStyle}>
-    <h2 className={h2Style}>
-      <span className={spanStyle}>
-        {feed.review}
-      </span>
-      <div>
-        <Image 
-          src={feed.author.profileImgUrl}
-          size="mini"
-        />
-        {feed.author.nickname}
-        <div/>
-        {feed.evaluate}
-      </div>
-    </h2>
-    <Image 
-      src={feed.imgUrlArray[0]}
-      className={cardImageStyle}
-      size="large"
-    />
+    <div className={cardImageStyle(feed.imgUrlArray[0])}>
+      {/* <h2 className={h2Style}>
+        <span className={spanStyle}>
+          {feed.review}
+        </span>
+        <div>
+          <Image 
+            src={feed.author.profileImgUrl}
+            size="mini"
+          />
+          {feed.author.nickname}
+          <div/>
+          {feed.evaluate}
+        </div>
+      </h2> */}
+    </div>
   </div>
 
 );

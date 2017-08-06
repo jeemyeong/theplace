@@ -17,6 +17,7 @@ class FeedContainer extends React.Component<FeedContainerProps, {}> {
     return (
       <Feeds
         feeds={feeds}
+        height={window.innerHeight * 0.88}
       />
     );
   }

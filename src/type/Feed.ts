@@ -1,4 +1,4 @@
-export type Feed = {
+export type FeedType = {
   imgUrlArray: string[],
   author: {
     id: number,

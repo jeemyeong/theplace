@@ -31,9 +31,28 @@ const cardImageStyle = (imgUrl: string) => style(
 );
 
 const authorStyle = style({
+});
+
+const nicknameStyle = style({
+  fontWeight: 'bold',
+  fontSize: '1.2em'
+});
+
+const restaurantAndEvaluateBoxStyle = style({
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  width: '100%'
+});
+
+const restaurantStyle = style({
+  fontWeight: 'bold',
+  fontSize: '2em',
+  padding: '10px'
+});
+
+const evaluateStyle = style({
+  fontWeight: 'bold',
+  fontSize: '1.8em',
+  padding: '10px'
 });
 
 const reviewBoxStyle = style({
@@ -54,7 +73,7 @@ const reviewBoxStyle = style({
 
 const reviewStyle = style({
   color: 'white',
-  font: 'bold 24px/45px Helvetica, Sans-Serif',
+  font: 'bold 1.2em Helvetica, Sans-Serif',
   letterSpacing: '-1px',
   padding: '10px'
 });
@@ -67,20 +86,18 @@ const Feed = ({feed}: FeedProps) => (
   <div className={FeedStyle}>
     <div className={cardImageStyle(feed.imgUrlArray[0])}>
       <div className={reviewBoxStyle}>
-        <div className={authorStyle}>
-          <div>
-            <Image 
-              src={feed.author.profileImgUrl}
-              size="mini"
-              shape="circular"
-            />
+        <div className={restaurantAndEvaluateBoxStyle}>
+          <div className={restaurantStyle}>
+            {feed.restaurant}
           </div>
-          <div>
-            {feed.author.nickname}
+          <div className={evaluateStyle}>
+            {feed.evaluate}
           </div>
-          {feed.evaluate}
         </div>
         <span className={reviewStyle}>
+          <span className={nicknameStyle}>
+            {feed.author.nickname}:
+          </span>
           {feed.review}
         </span>
       </div> 

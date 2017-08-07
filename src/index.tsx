@@ -7,6 +7,10 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Router } from 'react-router';
+import { normalize, setupPage } from 'csstips';
+
+normalize();
+setupPage('#root');
 
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();

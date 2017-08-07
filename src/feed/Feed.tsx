@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { FeedType } from 'type/Feed';
+import * as csstips from 'csstips';
 
 const FeedStyle = style({
   paddingBottom: '100%',
@@ -30,36 +31,8 @@ const cardImageStyle = (imgUrl: string) => style(
   media({minWidth: 500}, {backgroundSize: '50%'})
 );
 
-const authorStyle = style({
-});
-
-const nicknameStyle = style({
-  fontWeight: 'bold',
-  fontSize: '1.2em'
-});
-
-const restaurantAndEvaluateBoxStyle = style({
-  display: 'flex',
-  width: '100%'
-});
-
-const restaurantStyle = style({
-  fontWeight: 'bold',
-  fontSize: '2em',
-  padding: '10px'
-});
-
-const evaluateStyle = style({
-  fontWeight: 'bold',
-  fontSize: '1.8em',
-  padding: '10px'
-});
-
-const reviewBoxStyle = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
+const reviewBoxStyle = style(
+  csstips.vertical, {
   margin: 'auto',
   marginBottom: '0%',
   width: '100%',
@@ -71,11 +44,35 @@ const reviewBoxStyle = style({
   left: 0,
 });
 
-const reviewStyle = style({
+const restaurantAndEvaluateBoxStyle = style(
+  csstips.horizontal,
+  csstips.padding(10),
+  csstips.content
+);
+
+const restaurantStyle = style(
+  csstips.content, {
+  fontWeight: 'bold',
+  fontSize: '2em',
+});
+
+const evaluateStyle = style(
+  csstips.flex, {
+  fontWeight: 'bold',
+  fontSize: '1.8em',
+});
+
+const reviewStyle = style(
+  csstips.flex, {
   color: 'white',
   font: 'bold 1.2em Helvetica, Sans-Serif',
   letterSpacing: '-1px',
   padding: '10px'
+});
+
+const nicknameStyle = style({
+  fontWeight: 'bold',
+  fontSize: '1.2em'
 });
 
 interface FeedProps {

@@ -31,12 +31,17 @@ const cardImageStyle = (imgUrl: string) => style(
   position: 'absolute'
 });
 
+const backgroundImageWithoutReviewBoxStyle = style(
+  csstips.flex, {
+    width: '100%'
+  }
+);
+
 const reviewBoxStyle = style(
   csstips.vertical, {
   margin: 'auto',
   marginBottom: '0%',
   width: '100%',
-  height: '40%',
   bottom: 0,
   position: 'relative',
   color: 'white',
@@ -65,41 +70,73 @@ const evaluateStyle = style(
 const reviewStyle = style(
   csstips.flex, {
   color: 'white',
-  font: '0.8em',
-  letterSpacing: '-1px',
+  fontSize: '0.8em',
   paddingLeft: '3%',
   paddingTop: '3%',
 });
 
 const nicknameStyle = style({
-  fontSize: '0.9em'
 });
 
 interface FeedProps {
   feed: FeedType;
 }
+interface FeedState {
+  hover: boolean;
+}
 
-const Feed = ({feed}: FeedProps) => (
-  <div className={FeedStyle}>
-    <div className={cardImageStyle(feed.imgUrlArray[0])}>
-      <div className={reviewBoxStyle}>
-        <div className={restaurantAndEvaluateBoxStyle}>
-          <div className={restaurantStyle}>
-            {feed.restaurant}
+class Feed extends React.Component<FeedProps, FeedState> {
+  constructor (props: FeedProps) {
+    super(props);
+    this.state = {
+      hover: false
+    };
+  }
+  public hover = (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+    return this.setState({hover: true});
+  }
+  public unhover = (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+    return this.setState({hover: false});
+  }
+  
+  public render(): JSX.Element {
+    const { feed } = this.props;
+    return (
+      <div className={FeedStyle}>
+        <div className={cardImageStyle(feed.imgUrlArray[0])}>
+          <div
+            className={backgroundImageWithoutReviewBoxStyle}
+            onClick={this.unhover}  
+          >
+            {null}
           </div>
-          <div className={evaluateStyle}>
-            {feed.evaluate}
-          </div>
+          <div
+            className={reviewBoxStyle}
+            onClick={this.hover}
+          >
+            <div className={restaurantAndEvaluateBoxStyle}>
+              <div className={restaurantStyle}>
+                {feed.restaurant}
+              </div>
+              <div className={evaluateStyle}>
+                {feed.evaluate}
+              </div>
+            </div>
+            { !this.state.hover ? null :
+              <span className={reviewStyle}>
+                <span className={nicknameStyle}>
+                  {feed.author.nickname}:
+                </span>
+                {feed.review.length > 27 ? feed.review.slice(0, 27) + '...' : feed.review}
+              </span>
+            }
+          </div> 
         </div>
-        <span className={reviewStyle}>
-          <span className={nicknameStyle}>
-            {feed.author.nickname}:
-          </span>
-          {feed.review.length > 20 ? feed.review.slice(0, 20) + '...' : feed.review}
-        </span>
-      </div> 
-    </div>
-  </div>
+      </div>      
+    );
+  }
+}
 
-);
 export default Feed;

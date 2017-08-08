@@ -4,7 +4,11 @@ import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import { Route } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
-import { style } from 'typestyle';
+import { style, cssRaw } from 'typestyle';
+
+cssRaw(`
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+`);
 
 interface AppProps {
   routing?: RouterStore;
@@ -12,6 +16,7 @@ interface AppProps {
 
 const AppStyle = style({
   minHeight: '100vh',
+  fontFamily: 'Noto Sans KR'
 });
 
 const headerStyle = style({

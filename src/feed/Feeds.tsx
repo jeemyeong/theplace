@@ -3,11 +3,12 @@ import { Divider, Image } from 'semantic-ui-react';
 import { style } from 'typestyle';
 import { FeedType } from 'type/Feed';
 import Feed from './Feed';
+import * as csstips from 'csstips';
 
-const FeedsStyle = style({
+const FeedsStyle = style(csstips.fillParent, csstips.horizontal, {
   backgroundColor: 'orange',
   overflowY: 'auto',
-  height: '100%'
+  flexWrap: 'wrap'
 });
 
 interface FeedsProps {

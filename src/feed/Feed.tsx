@@ -69,7 +69,7 @@ const evaluateStyle = style(
 
 const reviewLineStyle = style({
   color: 'white',
-  fontSize: '0.8em',
+  fontSize: '0.8rem',
   paddingLeft: '3%',
   paddingTop: '3%',
   paddingRight: '3%',
@@ -143,7 +143,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
               <span className={nicknameStyle}>
                 {feed.author.nickname + ' '}
               </span>
-              {!this.state.hover && feed.review.length > 20 ? feed.review.slice(0, 20) + '...' : feed.review}
+              {!this.state.hover && feed.review.length > 22 ? feed.review.slice(0, 22) + '...' : feed.review}
             </div>
           </div> 
         </div>

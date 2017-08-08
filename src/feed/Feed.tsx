@@ -6,9 +6,9 @@ import * as csstips from 'csstips';
 
 const FeedStyle = style({
   flexGrow: 1,
-  paddingBottom: '50%',
+  paddingBottom: '100%',
   height: 0,
-  width: '50%',
+  width: '100%',
   backgroundColor: 'yellow',
   position: 'relative'
 });
@@ -67,15 +67,24 @@ const evaluateStyle = style(
   fontSize: '1.2em',
 });
 
-const reviewStyle = style(
-  csstips.flex, {
+const reviewLineStyle = style({
   color: 'white',
   fontSize: '0.8em',
   paddingLeft: '3%',
   paddingTop: '3%',
+  paddingRight: '3%',
+  paddingBottom: '1%',
+});
+
+const profileImageWrapper = style({
+  float: 'left',
+  display: 'inline-block',
+  width: '5%',
+  marginRight: '1%'
 });
 
 const nicknameStyle = style({
+  fontWeight: 'bold'
 });
 
 interface FeedProps {
@@ -124,14 +133,18 @@ class Feed extends React.Component<FeedProps, FeedState> {
                 {feed.evaluate}
               </div>
             </div>
-            { !this.state.hover ? null :
-              <span className={reviewStyle}>
-                <span className={nicknameStyle}>
-                  {feed.author.nickname}:
-                </span>
-                {feed.review.length > 27 ? feed.review.slice(0, 27) + '...' : feed.review}
+            <div className={reviewLineStyle}>
+              <div className={profileImageWrapper}>
+                <Image
+                  src={feed.author.profileImgUrl}
+                  shape={'circular'}
+                />
+              </div>
+              <span className={nicknameStyle}>
+                {feed.author.nickname + ' '}
               </span>
-            }
+              {!this.state.hover && feed.review.length > 20 ? feed.review.slice(0, 20) + '...' : feed.review}
+            </div>
           </div> 
         </div>
       </div>      

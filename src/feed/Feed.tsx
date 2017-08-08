@@ -15,9 +15,9 @@ const FeedStyle = style({
 
 const cardImageStyle = (imgUrl: string) => style(
   /** Default */
-  media({minWidth: 0, maxWidth: 499}, {backgroundSize: 'cover'}),
+  media({minWidth: 0, maxWidth: 999}, {backgroundSize: 'cover'}),
   /** Change for bigger screens */
-  media({minWidth: 500}, {backgroundSize: '50%'}), {
+  media({minWidth: 1000}, {backgroundSize: '50%'}), {
   backgroundImage: `url(${imgUrl})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
@@ -59,17 +59,18 @@ const restaurantAndEvaluateBoxStyle = style(
 
 const restaurantStyle = style(
   csstips.content, {
-  fontSize: '1.3em',
+  fontSize: '7vw',
+  paddingRight: '3%',
 });
 
 const evaluateStyle = style(
   csstips.flex, {
-  fontSize: '1.2em',
+  fontSize: '6vw',
 });
 
 const reviewLineStyle = style({
   color: 'white',
-  fontSize: '0.8rem',
+  fontSize: '3vw',
   paddingLeft: '3%',
   paddingTop: '3%',
   paddingRight: '3%',
@@ -79,7 +80,7 @@ const reviewLineStyle = style({
 const profileImageWrapper = style({
   float: 'left',
   display: 'inline-block',
-  width: '5%',
+  width: '5vw',
   marginRight: '1%'
 });
 

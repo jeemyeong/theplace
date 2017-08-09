@@ -8,7 +8,7 @@ import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 
 cssRaw(`
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url('https://fonts.googleapis.com/css?family=Saira+Condensed');
 `);
 

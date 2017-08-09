@@ -25,7 +25,7 @@ const headerStyle = style({
   height: '6%',
   top: 0,
   width: '100%',
-  backgroundColor: 'green',
+  backgroundColor: 'white',
 });
 
 const mainStyle = style({
@@ -41,7 +41,7 @@ const footerStyle = style({
   height: '6%',
   bottom: 0,
   width: '100%',
-  backgroundColor: 'yellow',
+  backgroundColor: 'white',
 });
 
 @inject('routing')

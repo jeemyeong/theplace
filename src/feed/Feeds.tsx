@@ -6,7 +6,7 @@ import Feed from './Feed';
 import * as csstips from 'csstips';
 
 const FeedsStyle = style(csstips.fillParent, csstips.horizontal, {
-  backgroundColor: 'orange',
+  backgroundColor: 'Feeds',
   overflowY: 'auto',
   flexWrap: 'wrap'
 });

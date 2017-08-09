@@ -5,9 +5,11 @@ import { RouterStore } from 'mobx-react-router';
 import { Route } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
 import { style, cssRaw } from 'typestyle';
+import * as csstips from 'csstips';
 
 cssRaw(`
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Saira+Condensed');
 `);
 
 interface AppProps {
@@ -19,13 +21,18 @@ const AppStyle = style({
   fontFamily: 'Noto Sans KR'
 });
 
-const headerStyle = style({
+const headerStyle = style(csstips.centerCenter, {
   zIndex: 10,
   position: 'absolute',
   height: '6%',
   top: 0,
   width: '100%',
   backgroundColor: 'white',
+});
+
+const titleStyle = style(csstips.centerCenter, {
+  fontFamily: 'Saira Condensed',
+  fontSize: '4vh'
 });
 
 const mainStyle = style({
@@ -53,12 +60,10 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div className={AppStyle}>
         <header className={headerStyle}>
-          <Button
-            onClick={() => goBack()}
-          >
-            GoBack
-          </Button>
-          {pathname}
+          <Icon size="big" name="target"/>
+          <span className={titleStyle}>
+            The Place
+          </span>
         </header>
         <main className={mainStyle}>
           <Route exact={true} path="/feeds" component={FeedContainer}/>

@@ -59,18 +59,19 @@ const restaurantAndEvaluateBoxStyle = style(
 
 const restaurantStyle = style(
   csstips.content, {
+  fontWeight: 'bold',
   fontSize: '7vw',
   paddingRight: '3%',
 });
 
 const evaluateStyle = style(
   csstips.flex, {
-  fontSize: '6vw',
+  fontSize: '7vw',
 });
 
 const reviewLineStyle = style({
   color: 'white',
-  fontSize: '3vw',
+  fontSize: '3.5vw',
   paddingLeft: '3%',
   paddingTop: '3%',
   paddingRight: '3%',
@@ -144,7 +145,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
               <span className={nicknameStyle}>
                 {feed.author.nickname + ' '}
               </span>
-              {!this.state.hover && feed.review.length > 22 ? feed.review.slice(0, 22) + '...' : feed.review}
+              {!this.state.hover && feed.review.length + feed.author.nickname.length > 26 ? feed.review.slice(0, 26 - feed.author.nickname.length ) + '...' : feed.review}
             </div>
           </div> 
         </div>

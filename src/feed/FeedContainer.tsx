@@ -3,6 +3,9 @@ import { inject, observer } from 'mobx-react';
 import { FeedStore } from 'stores/feedStore';
 import Feeds from './Feeds';
 import { FeedType } from 'type/Feed';
+import * as Scrollbar from 'react-smooth-scrollbar';
+import * as csstips from 'csstips';
+import { style } from 'typestyle';
 
 export interface FeedContainerProps {
   feedStore?: FeedStore;

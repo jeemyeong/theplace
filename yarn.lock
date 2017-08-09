@@ -52,6 +52,10 @@
   version "8.0.19"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.19.tgz#e46e2b0243de7d03f15b26b45c59ebb84f657a4e"
 
+"@types/prop-types@^15.5.1":
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.1.tgz#1ecf52621299e65b855374337fb11fd2d1066fc1"
+
 "@types/react-dom@^15.5.1":
   version "15.5.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
@@ -65,9 +69,20 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-smooth-scrollbar@^7.2.3":
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/@types/react-smooth-scrollbar/-/react-smooth-scrollbar-7.2.3.tgz#06c4b652a6b372b6a1238be04a0b80239f9290e9"
+  dependencies:
+    "@types/react" "*"
+    "@types/smooth-scrollbar" "*"
+
 "@types/react@*", "@types/react@^16.0.0":
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.0.tgz#fec7e6302e11c1cd307129d8ce1e6d5dca4a0283"
+
+"@types/smooth-scrollbar@*":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@types/smooth-scrollbar/-/smooth-scrollbar-7.2.1.tgz#d76004e4650234517b1d794f4e9c196ad5d59c2c"
 
 abab@^1.0.3:
   version "1.0.3"
@@ -489,6 +504,13 @@ babel-register@^6.24.1:
 babel-runtime@6.23.0, babel-runtime@^6.22.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
+babel-runtime@^6.9.2:
+  version "6.25.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.25.0.tgz#33b98eaa5d482bb01a8d1aa6b437ad2b01aec41c"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
@@ -4264,6 +4286,12 @@ react-scripts-ts@2.5.0:
   optionalDependencies:
     fsevents "1.0.17"
 
+react-smooth-scrollbar@^7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/react-smooth-scrollbar/-/react-smooth-scrollbar-7.2.2.tgz#bb49cb0b705c96c08368437b2eac797f1287f7a3"
+  dependencies:
+    smooth-scrollbar "^7.2.0"
+
 react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
@@ -4708,6 +4736,12 @@ slash@^1.0.0:
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
+
+smooth-scrollbar@^7.2.0:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/smooth-scrollbar/-/smooth-scrollbar-7.3.1.tgz#1527320fd10939dc7b3ed5a605d78600df5d7b71"
+  dependencies:
+    babel-runtime "^6.9.2"
 
 sntp@1.x.x:
   version "1.0.9"

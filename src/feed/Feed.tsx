@@ -21,7 +21,7 @@ const cardImageStyle = (imgUrl: string) => style(
   backgroundImage: `url(${imgUrl})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundColor: 'skyblue',
+  backgroundColor: 'white',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

@@ -61,7 +61,7 @@ const restaurantStyle = style(
   csstips.content, {
   fontWeight: 'bold',
   fontSize: '7vw',
-  paddingRight: '3%',
+  marginRight: '3%',
 });
 
 const evaluateStyle = style(

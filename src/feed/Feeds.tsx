@@ -97,7 +97,7 @@ class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScroll
       return;
     }
     this.setState({ loading: true });
-    setTimeout(() => { this.setState(({ count: this.state.count + increase, loading: false })); }, 100);
+    setTimeout(() => { this.setState(({ count: this.state.count + increase, loading: false })); }, 300);
   }
 }
 

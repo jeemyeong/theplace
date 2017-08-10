@@ -20,6 +20,9 @@ const Feeds = ({
   feeds,
 }: FeedsProps) => (
   <Scrollbar
+    speed={3}
+    thumbMinSize={3}
+    renderByPixels={true}
     className={scrollBarStyle}
   >
     <InfiniteScroll
@@ -88,7 +91,8 @@ class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScroll
   }
 
   public loadData = ()  => {
-    const increase = (this.state.feeds.length - this.state.count) < 4 ? this.state.feeds.length - this.state.count : 4; 
+    const increaseOnce = 5;
+    const increase = (this.state.feeds.length - this.state.count) < increaseOnce ? this.state.feeds.length - this.state.count : increaseOnce; 
     if ( increase === 0 ) {
       return;
     }

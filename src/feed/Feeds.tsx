@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, Image } from 'semantic-ui-react';
+import { Loader, Image } from 'semantic-ui-react';
 import { style } from 'typestyle';
 import { FeedType } from 'type/Feed';
 import Feed from './Feed';
@@ -37,6 +37,7 @@ interface InfiniteScrollState {
 interface InfiniteScrollProps {
   feeds: FeedType[];
 }
+
 class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScrollState> {
   static contextTypes = {
     getScrollbar: PropTypes.func
@@ -46,7 +47,7 @@ class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScroll
     super(props);
     this.state = {
       feeds: this.props.feeds,
-      count: 2,
+      count: 4,
       loading: false
     };
   }
@@ -75,18 +76,24 @@ class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScroll
             key={index}
           />
         )}
-        <footer style={{ opacity: loading ? 1 : 0, position: 'absolute' }}> loading data </footer>
+        <Loader
+          inverted={false}
+          inline="centered"
+          active={loading}
+        >
+          Loading
+        </Loader>  
       </div>
     );
   }
 
   public loadData = ()  => {
-    const increase = (this.state.feeds.length - this.state.count) < 2 ? this.state.feeds.length - this.state.count : 2; 
+    const increase = (this.state.feeds.length - this.state.count) < 4 ? this.state.feeds.length - this.state.count : 4; 
     if ( increase === 0 ) {
       return;
     }
     this.setState({ loading: true });
-    setTimeout(() => { this.setState(({ count: this.state.count + increase, loading: false })); }, 300);
+    setTimeout(() => { this.setState(({ count: this.state.count + increase, loading: false })); }, 100);
   }
 }
 

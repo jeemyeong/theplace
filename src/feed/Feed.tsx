@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { FeedType } from 'type/Feed';
+import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
 
 const FeedStyle = style({
@@ -131,9 +132,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
               <div className={restaurantStyle}>
                 {feed.restaurant}
               </div>
-              <div className={evaluateStyle}>
-                {feed.evaluate}
-              </div>
+              <Rating rating={feed.evaluate} className={evaluateStyle}/>
             </div>
             <div className={reviewLineStyle}>
               <div className={profileImageWrapper}>
@@ -145,7 +144,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
               <span className={nicknameStyle}>
                 {feed.author.nickname + ' '}
               </span>
-              {!this.state.hover && feed.review.length + feed.author.nickname.length > 26 ? feed.review.slice(0, 26 - feed.author.nickname.length ) + '...' : feed.review}
+              {!this.state.hover && feed.review.length + feed.author.nickname.length > 52 ? feed.review.slice(0, 52 - feed.author.nickname.length ) + '...' : feed.review}
             </div>
           </div> 
         </div>

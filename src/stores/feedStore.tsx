@@ -21,7 +21,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -34,7 +35,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -47,7 +49,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -60,7 +63,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -73,7 +77,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -86,7 +91,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -99,7 +105,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -112,7 +119,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -125,7 +133,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -138,7 +147,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -151,7 +161,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -164,7 +175,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -178,7 +190,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -191,7 +204,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -204,7 +218,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -217,7 +232,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -230,7 +246,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -243,7 +260,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -256,7 +274,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -269,7 +288,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -282,7 +302,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -295,7 +316,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -308,7 +330,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -321,7 +344,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -335,7 +359,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -348,7 +373,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -361,7 +387,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -374,7 +401,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -387,7 +415,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -400,7 +429,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -413,7 +443,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -426,7 +457,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -439,7 +471,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -452,7 +485,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -465,7 +499,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -478,7 +513,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -492,7 +528,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -505,7 +542,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -518,7 +556,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -531,7 +570,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -544,7 +584,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -557,7 +598,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -570,7 +612,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -583,7 +626,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -596,7 +640,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -609,7 +654,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -622,7 +668,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -635,7 +682,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -649,7 +697,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -662,7 +711,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -675,7 +725,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -688,7 +739,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -701,7 +753,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -714,7 +767,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -727,7 +781,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -740,7 +795,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -753,7 +809,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -766,7 +823,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -779,7 +837,8 @@ export class FeedStore {
         },
         restaurant: '잇쇼우',
         review: '그냥그랬어',
-        evaluate: 3.5
+        evaluate: 3.5,
+        reviewId: 1234
       },
       {
         imgUrlArray: [
@@ -792,7 +851,8 @@ export class FeedStore {
         },
         restaurant: '일마지오',
         review: '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
-        evaluate: 4.5
+        evaluate: 4.5,
+        reviewId: 1234
       },
     ]
   };

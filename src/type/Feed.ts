@@ -7,5 +7,6 @@ export type FeedType = {
   },
   restaurant: string,
   review: string,
-  evaluate: number
+  evaluate: number,
+  reviewId: number;
 };

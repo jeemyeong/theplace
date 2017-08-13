@@ -4,6 +4,8 @@ import { style, media } from 'typestyle';
 import { FeedType } from 'type/Feed';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
+import { RouterStore } from 'mobx-react-router';
+import { inject, observer } from 'mobx-react';
 
 const FeedStyle = style({
   flexGrow: 1,
@@ -67,7 +69,7 @@ const restaurantStyle = style(
 
 const evaluateStyle = style(
   csstips.flex, {
-  fontSize: '7vw',
+  fontSize: '4.5vw',
 });
 
 const reviewLineStyle = style({
@@ -92,44 +94,31 @@ const nicknameStyle = style({
 
 interface FeedProps {
   feed: FeedType;
-}
-interface FeedState {
-  hover: boolean;
+  routing?: RouterStore;
 }
 
-class Feed extends React.Component<FeedProps, FeedState> {
-  constructor (props: FeedProps) {
-    super(props);
-    this.state = {
-      hover: false
-    };
-  }
-  public hover = (e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault();
-    return this.setState({hover: true});
-  }
-  public unhover = (e: React.SyntheticEvent<EventTarget>) => {
-    e.preventDefault();
-    return this.setState({hover: false});
-  }
-  
+@inject('routing')
+@observer
+class Feed extends React.Component<FeedProps, {}> {
   public render(): JSX.Element {
-    const { feed } = this.props;
+    const { feed, routing } = this.props;
+    const { push } = this.props.routing as RouterStore;
     return (
       <div className={FeedStyle}>
         <div className={cardImageStyle(feed.imgUrlArray[0])}>
           <div
             className={backgroundImageWithoutReviewBoxStyle}
-            onClick={this.unhover}  
           >
             {null}
           </div>
           <div
             className={reviewBoxStyle}
-            onClick={this.hover}
           >
             <div className={restaurantAndEvaluateBoxStyle}>
-              <div className={restaurantStyle}>
+              <div
+                className={restaurantStyle}
+                onClick={() => push(`/reviews/${feed.reviewId}`)}
+              >
                 {feed.restaurant}
               </div>
               <Rating rating={feed.evaluate} className={evaluateStyle}/>
@@ -144,7 +133,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
               <span className={nicknameStyle}>
                 {feed.author.nickname + ' '}
               </span>
-              {!this.state.hover && feed.review.length + feed.author.nickname.length > 52 ? feed.review.slice(0, 52 - feed.author.nickname.length ) + '...' : feed.review}
+              {feed.review.length + feed.author.nickname.length > 52 ? feed.review.slice(0, 52 - feed.author.nickname.length ) + '...' : feed.review}
             </div>
           </div> 
         </div>

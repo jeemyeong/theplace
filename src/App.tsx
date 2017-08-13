@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
-import { Route } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
+import ReviewContainer from './review/ReviewContainer';
 import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 
@@ -52,7 +53,6 @@ const footerStyle = style({
 });
 
 @inject('routing')
-@observer
 class App extends React.Component<AppProps, {}> {
   render() {
     const { location, push, goBack } = this.props.routing as RouterStore;
@@ -66,11 +66,15 @@ class App extends React.Component<AppProps, {}> {
           </span>
         </header>
         <main className={mainStyle}>
-          <Route exact={true} path="/feeds" component={FeedContainer}/>
+          <Switch>
+            <Route exact={true} path="/" component={FeedContainer}/>
+            <Route path="/reviews/:reviewId" component={ReviewContainer}/>
+            <Redirect to="/404"/>
+          </Switch>
         </main>
         <footer className={footerStyle}>
           <Menu secondary={true} widths={4}>
-            <Menu.Item name="feeds" active={pathname === '/feeds'} onClick={() => push('/feeds')}>
+            <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
               <Icon size="large" name="home"/>
             </Menu.Item>
             <Menu.Item name="options" active={pathname === '/options'} onClick={() => push('/options')}>

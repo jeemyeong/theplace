@@ -7,4 +7,25 @@
 
 ### 개발 build 및 개발 서버 실행
 1. 터미널에서 프로젝트 디렉토리 이동.
-2. `npm start` 혹은 `yarn start` 실행 
+2. `npm start` 혹은 `yarn start` 실행
+
+make `src/database/databse.ts`
+
+```
+import * as firebase from 'firebase';
+
+const config = {
+  apiKey: 'your api key',
+  projectId: 'ss2s2-75a50',
+  authDomain: 'ss2s2-75a50.firebaseapp.com',
+  databaseURL: 'https://ss2s2-75a50.firebaseio.com/',
+  storageBucket: 'gs://ss2s2-75a50.appspot.com',
+  messagingSenderId: 'your messaging sender Id'
+};
+
+firebase.initializeApp(config);
+
+export const database = firebase.database();
+export const auth = firebase.auth;
+export const storage = firebase.storage();
+```

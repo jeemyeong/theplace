@@ -14,7 +14,7 @@ cssRaw(`
 `);
 
 interface AppProps {
-  routing?: RouterStore;
+  routingStore?: RouterStore;
 }
 
 const AppStyle = style({
@@ -52,10 +52,10 @@ const footerStyle = style({
   backgroundColor: 'white',
 });
 
-@inject('routing')
+@inject('routingStore')
 class App extends React.Component<AppProps, {}> {
   render() {
-    const { location, push, goBack } = this.props.routing as RouterStore;
+    const { location, push, goBack } = this.props.routingStore as RouterStore;
     const pathname = !!location ? location.pathname : null;
     return (
       <div className={AppStyle}>

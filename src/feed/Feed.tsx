@@ -94,15 +94,15 @@ const nicknameStyle = style({
 
 interface FeedProps {
   feed: FeedType;
-  routing?: RouterStore;
+  routingStore?: RouterStore;
 }
 
-@inject('routing')
+@inject('routingStore')
 @observer
 class Feed extends React.Component<FeedProps, {}> {
   public render(): JSX.Element {
-    const { feed, routing } = this.props;
-    const { push } = this.props.routing as RouterStore;
+    const { feed, routingStore } = this.props;
+    const { push } = this.props.routingStore as RouterStore;
     return (
       <div className={FeedStyle}>
         <div className={cardImageStyle(feed.imgUrlArray[0])}>

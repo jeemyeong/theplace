@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
 import feedStore from './stores/feedStore';
+import reviewStore from './stores/reviewStore';
 import { useStrict } from 'mobx';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
@@ -17,8 +18,9 @@ const routingStore = new RouterStore();
 
 const stores = {
   // Key can be whatever you want
-  routing: routingStore,
-  feedStore: feedStore
+  routingStore,
+  feedStore,
+  reviewStore
   // ...other stores
 };
 

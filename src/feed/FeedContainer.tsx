@@ -8,15 +8,14 @@ import * as csstips from 'csstips';
 import { style } from 'typestyle';
 
 export interface FeedContainerProps {
-  feedStore?: FeedStore;
+  feedStore: FeedStore;
 }
 
 @inject('feedStore')
 @observer
 class FeedContainer extends React.Component<FeedContainerProps, {}> {
   render() {
-    const { state } = this.props.feedStore as FeedStore;
-    const feeds = !!state ? state.feeds : [];
+    const { feeds } = this.props.feedStore.state;
     return (
       <Feeds
         feeds={feeds}

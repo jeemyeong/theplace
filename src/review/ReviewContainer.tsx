@@ -19,12 +19,14 @@ class ReviewContainer extends React.Component<ReviewProps, {}> {
     render() {
     const { location, push, goBack } = this.props.routingStore;
     const pathname = { location };
-    const { review } = this.props.reviewStore.state;
+    const { review, loaded } = this.props.reviewStore.state;
     return (
       <div>
-        <Review
-          review={review}
-        />
+        {loaded === false ? null : 
+          <Review
+            review={review}
+          />
+        }
       </div>
     );
   }

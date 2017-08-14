@@ -12,15 +12,10 @@ interface ReviewProps {
 
 const Review = ({
   review
-}: ReviewProps) => {
-  if (review.empty) {
-    return null;
-  }
-  return (
-    <div className={ReviewStyle}>
-      {review.evaluate}
-    </div>
-  );
-};
+}: ReviewProps) => (
+  <div className={ReviewStyle}>
+    {review.evaluate}
+  </div>
+);
 
 export default Review;

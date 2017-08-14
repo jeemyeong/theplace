@@ -3,6 +3,7 @@ import { ReviewType } from 'type/Review';
 
 type ReviewState = {
   review: ReviewType
+  loaded: boolean
 };
 
 export class ReviewStore {
@@ -19,15 +20,15 @@ export class ReviewStore {
       review: '',
       evaluate: -1,
       reviewId: -1,
-      empty: true    
-    }
+    },
+    loaded: false
   };
 
   @action
   public setReview = (review: ReviewType): void => {
     this.state.review = review;
+    this.state.loaded = true;
   }
-
 }
 
 export default new ReviewStore();

@@ -9,5 +9,4 @@ export type ReviewType = {
   review: string,
   evaluate: number,
   reviewId: number,
-  empty: boolean
 };

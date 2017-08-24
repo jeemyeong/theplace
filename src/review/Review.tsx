@@ -7,7 +7,7 @@ const ReviewStyle = style({
 });
 
 interface ReviewProps {
-  review: ReviewType;
+  review: ReviewType.Review;
 }
 
 const Review = ({

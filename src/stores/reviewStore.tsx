@@ -47,7 +47,7 @@ export class ReviewStore {
   
   @action
   public getReview = (id: ReviewType.reviewId): void => {
-    const ref = this.databaseRef.child('reviews').child(id);    
+    const ref = this.databaseRef.child('reviews').child(id);
     ref.once('value', action((snapshot: firebase.database.DataSnapshot) => {
       if (snapshot) {
         const review = snapshot.val();

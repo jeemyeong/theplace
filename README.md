@@ -16,10 +16,10 @@ import * as firebase from 'firebase';
 
 const config = {
   apiKey: 'your api key',
-  projectId: 'ss2s2-75a50',
-  authDomain: 'ss2s2-75a50.firebaseapp.com',
-  databaseURL: 'https://ss2s2-75a50.firebaseio.com/',
-  storageBucket: 'gs://ss2s2-75a50.appspot.com',
+  projectId: 'theplace-5dfe6',
+  authDomain: 'theplace-5dfe6.firebaseapp.com',
+  databaseURL: 'https://theplace-5dfe6.firebaseio.com/',
+  storageBucket: 'gs://theplace-5dfe6.appspot.com/',
   messagingSenderId: 'your messaging sender Id'
 };
 

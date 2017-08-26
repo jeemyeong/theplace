@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Loader, Image } from 'semantic-ui-react';
 import { style } from 'typestyle';
-import { FeedType } from 'type/Feed';
+import { ReviewType } from 'type/Review';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as Scrollbar from 'react-smooth-scrollbar';
@@ -9,7 +9,7 @@ import SmoothScrollbar from 'smooth-scrollbar';
 import * as PropTypes from 'prop-types';
 
 interface FeedsProps {
-  feeds: FeedType[];
+  feeds: ReviewType.Review[];
 }
 
 const scrollBarStyle = style(csstips.fillParent, {
@@ -34,11 +34,11 @@ const Feeds = ({
 interface InfiniteScrollState {
   count: number;
   loading: boolean;
-  feeds: FeedType[];
+  feeds: ReviewType.Review[];
 }
 
 interface InfiniteScrollProps {
-  feeds: FeedType[];
+  feeds: ReviewType.Review[];
 }
 
 class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScrollState> {
@@ -66,11 +66,13 @@ class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScroll
       scrollbar.update();
     });
   }
+  componentWillReceiveProps(nextProps: InfiniteScrollProps) {
+    this.setState({feeds: nextProps.feeds})
+  }
 
   render() {
     const list = [];
     const { feeds, count, loading } = this.state;
-
     return (
       <div>
         {feeds.slice(0, count).map( (feed, index) =>

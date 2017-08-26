@@ -2,7 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { FeedStore } from 'stores/feedStore';
 import Feeds from './Feeds';
-import { FeedType } from 'type/Feed';
+import { ReviewType } from 'type/Review';
 import * as Scrollbar from 'react-smooth-scrollbar';
 import * as csstips from 'csstips';
 import { style } from 'typestyle';

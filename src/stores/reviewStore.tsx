@@ -25,35 +25,18 @@ export class ReviewStore {
     loaded: false
   };
   databaseRef = database.ref();
-  storageRef = storage.ref();
+  storageRef = storage().ref();
 
-  constructor() {
-    this.databaseRef.child('reviews').on('value', action((snapshot: firebase.database.DataSnapshot) => {
-      if (snapshot) {
-        const list = snapshot.val();
-        const todos = [];
-        if (list !== null) {
-          for (const key of Object.keys(list)) {
-            todos.push({
-              id: key,
-              text: list[key]
-            });
-          }
-        }
-        console.log(todos);
-      }
-    }));
-  }
-  
   @action
   public getReview = (id: ReviewType.reviewId): void => {
     const ref = this.databaseRef.child('reviews').child(id);
     ref.once('value', action((snapshot: firebase.database.DataSnapshot) => {
-      if (snapshot) {
-        const review = snapshot.val();
-        // this.state.review = review;
-        console.log(review);
+      const review = snapshot.val();
+      if (review) {
+        this.state.review = review;
         this.state.loaded = true;
+      } else {
+        this.state.loaded = false;
       }
     }));
   }

@@ -16,12 +16,14 @@ interface ReviewProps {
 @inject('routingStore')
 @observer    
 class ReviewContainer extends React.Component<ReviewProps, {}> {
-  
-  render() {
+  constructor(props: ReviewProps) {
+    super(props);
     const { location, push, goBack } = this.props.routingStore;
     const pathname = !!location ? location.pathname : '';
-    // this.props.reviewStore.addReview(pathname.split('/')[2]);
-    this.props.reviewStore.getReview('-KrWk3TeJ6oFrOkEtd9i');
+    this.props.reviewStore.getReview(pathname.split('/')[2]);
+  }
+  
+  render() {
     const { review, loaded } = this.props.reviewStore.state;
     return (
       <div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
-import { FeedType } from 'type/Feed';
+import { ReviewType } from 'type/Review';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
@@ -93,7 +93,7 @@ const nicknameStyle = style({
 });
 
 interface FeedProps {
-  feed: FeedType;
+  feed: ReviewType.Review;
   routingStore?: RouterStore;
 }
 
@@ -133,7 +133,7 @@ class Feed extends React.Component<FeedProps, {}> {
               <span className={nicknameStyle}>
                 {feed.author.nickname + ' '}
               </span>
-              {feed.review.length + feed.author.nickname.length > 52 ? feed.review.slice(0, 52 - feed.author.nickname.length ) + '...' : feed.review}
+              {feed.reviewText.length + feed.author.nickname.length > 52 ? feed.reviewText.slice(0, 52 - feed.author.nickname.length ) + '...' : feed.reviewText}
             </div>
           </div> 
         </div>

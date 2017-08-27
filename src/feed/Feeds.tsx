@@ -4,103 +4,42 @@ import { style } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Feed from './Feed';
 import * as csstips from 'csstips';
-import * as Scrollbar from 'react-smooth-scrollbar';
-import SmoothScrollbar from 'smooth-scrollbar';
 import * as PropTypes from 'prop-types';
+import Cards, { Card } from '../modules/react-swipe-card';
+import './Feeds.css';
+
+const FeedsStyle = style({
+});
 
 interface FeedsProps {
   feeds: ReviewType.Review[];
 }
-
-const scrollBarStyle = style(csstips.fillParent, {
-  overflowY: 'auto'
-});
+// tslint:disable-next-line:no-console
+const action = (msg: string) => () => console.log(msg)
 
 const Feeds = ({
   feeds,
 }: FeedsProps) => (
-  <Scrollbar
-    speed={3}
-    thumbMinSize={3}
-    renderByPixels={true}
-    className={scrollBarStyle}
-  >
-    <InfiniteScroll
-      feeds={feeds}
-    />
-  </Scrollbar>
-);
-
-interface InfiniteScrollState {
-  count: number;
-  loading: boolean;
-  feeds: ReviewType.Review[];
-}
-
-interface InfiniteScrollProps {
-  feeds: ReviewType.Review[];
-}
-
-class InfiniteScroll extends React.Component<InfiniteScrollProps, InfiniteScrollState> {
-  static contextTypes = {
-    getScrollbar: PropTypes.func
-  };
-
-  constructor(props: InfiniteScrollProps) {
-    super(props);
-    this.state = {
-      feeds: this.props.feeds,
-      count: 4,
-      loading: false
-    };
-  }
-
-  componentDidMount() {
-    this.context.getScrollbar((scrollbar: SmoothScrollbar) => {
-      scrollbar.infiniteScroll(this.loadData);
-    });
-  }
-
-  componentDidUpdate() {
-    this.context.getScrollbar((scrollbar: SmoothScrollbar) => {
-      scrollbar.update();
-    });
-  }
-  componentWillReceiveProps(nextProps: InfiniteScrollProps) {
-    this.setState({feeds: nextProps.feeds})
-  }
-
-  render() {
-    const list = [];
-    const { feeds, count, loading } = this.state;
-    return (
-      <div>
-        {feeds.slice(0, count).map( (feed, index) =>
+  <div className={FeedsStyle}>
+    <Cards
+      onEnd={action('end')}
+      className={'master-root'}
+    >
+      {feeds.map((feed, key) => 
+        <Card
+          key={key}
+          onSwipeLeft={action('swipe left')} 
+          onSwipeRight={action('swipe right')}
+          onSwipeTop={action('swipe top')}
+          onSwipeBottom={action('swipe bottom')}
+        >
           <Feed
             feed={feed}
-            key={index}
           />
-        )}
-        <Loader
-          inverted={false}
-          inline="centered"
-          active={loading}
-        >
-          Loading
-        </Loader>  
-      </div>
-    );
-  }
-
-  public loadData = ()  => {
-    const increaseOnce = 5;
-    const increase = (this.state.feeds.length - this.state.count) < increaseOnce ? this.state.feeds.length - this.state.count : increaseOnce; 
-    if ( increase === 0 ) {
-      return;
-    }
-    this.setState({ loading: true });
-    setTimeout(() => { this.setState(({ count: this.state.count + increase, loading: false })); }, 300);
-  }
-}
+        </Card>
+      )}
+    </Cards>
+  </div>
+);
 
 export default Feeds;

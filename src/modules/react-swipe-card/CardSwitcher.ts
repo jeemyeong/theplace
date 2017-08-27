@@ -17,8 +17,12 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
-  const component = props.active ? DraggableCard : SimpleCard
-  return React.createElement(component, props)
+  // const component = props.active ? DraggableCard : SimpleCard
+  if (props.active) {
+    return React.createElement(DraggableCard, props)
+  } else {
+    return null;
+  }
 }
 
 export default Card

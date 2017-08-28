@@ -1,6 +1,8 @@
-export type User = {
+export type UserType = {
   uid: string,
-  displayName: string,
-  photoURL: string,
-  email: string,
+  displayName: string | null,
+  photoURL: string | null,
+  email: string | null,
+  like: string[],
+  pass: string[],
 };

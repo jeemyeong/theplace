@@ -5,6 +5,7 @@ export namespace ReviewType {
   export type reviewText = string;
   export type evaluate = number;
   export type reviewId = string;
+  export type uid = string;
   export type user = {
     uid: string,
     displayName: string,
@@ -17,5 +18,7 @@ export namespace ReviewType {
     reviewText: reviewText,
     evaluate: evaluate,
     reviewId: reviewId,
+    likeUsers: uid[],
+    passUsers: uid[]
   };
 }

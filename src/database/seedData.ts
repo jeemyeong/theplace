@@ -13,7 +13,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -27,7 +29,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -41,7 +45,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -55,7 +61,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -69,7 +77,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -83,7 +93,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -97,7 +109,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -111,7 +125,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -125,7 +141,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -139,7 +157,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -153,7 +173,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -167,7 +189,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -182,7 +206,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -196,7 +222,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -210,7 +238,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -224,7 +254,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -238,7 +270,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -252,7 +286,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -266,7 +302,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -280,7 +318,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -294,7 +334,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -308,7 +350,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -322,7 +366,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -336,7 +382,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -351,7 +399,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -365,7 +415,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -379,7 +431,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -393,7 +447,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -407,7 +463,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -421,7 +479,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -435,7 +495,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -449,7 +511,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -463,7 +527,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -477,7 +543,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -491,7 +559,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -505,7 +575,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -520,7 +592,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -534,7 +608,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -548,7 +624,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -562,7 +640,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -576,7 +656,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -590,7 +672,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -604,7 +688,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -618,7 +704,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -632,7 +720,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -646,7 +736,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -660,7 +752,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -674,7 +768,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -689,7 +785,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -703,7 +801,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -717,7 +817,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -731,7 +833,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -745,7 +849,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -759,7 +865,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -773,7 +881,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -787,7 +897,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -801,7 +913,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -815,7 +929,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -829,7 +945,9 @@ export default {
       'restaurant': '잇쇼우',
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     },
     {
       'imgUrlArray': [
@@ -843,7 +961,9 @@ export default {
       'restaurant': '일마지오',
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
-      'reviewId': 'null'
+      'reviewId': 'null',
+      'likeUsers': [],
+      'passUsers': []
     }
   ]
 }

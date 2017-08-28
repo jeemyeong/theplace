@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import { ReviewType } from 'type/Review';
+import { UserType } from 'type/User';
 import { databaseRef, storage } from '../database/database';
 
 type FeedsState = {
@@ -22,16 +23,26 @@ export class FeedStore {
           feeds: [],
           loaded: false
         };      
-        const reviews = snapshot.val()
-        if (reviews !== null) {
-          for (const id of Object.keys(reviews)) {
-            state.feeds.push(reviews[id])
+        const reviewsFromDB = snapshot.val()
+        if (reviewsFromDB !== null) {
+          for (const id of Object.keys(reviewsFromDB)) {
+            state.feeds.push(reviewsFromDB[id])
           }
         }
         state.loaded = true
         this.state = state
       }
     }));
+  }
+
+  likeCard(review: ReviewType.Review, userInfo: UserType) {
+    databaseRef.child('reviews').child(review.reviewId).child('likeUsers').child(userInfo.uid).set(userInfo.uid)
+    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(review)
+  }
+  
+  passCard(review: ReviewType.Review, userInfo: UserType) {
+    databaseRef.child('reviews').child(review.reviewId).child('passUsers').child(userInfo.uid).set(userInfo.uid)
+    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(review)
   }
 }
 

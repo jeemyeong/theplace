@@ -64,7 +64,7 @@ class App extends React.Component<AppProps, {}> {
   componentDidMount() {
     this.removeListener = auth.onAuthStateChanged((user: firebase.User) => {
       if (user && !!this.props.authStore) {
-        this.props.authStore.setAuthState(user);
+        const setAuthState = this.props.authStore.setAuthState
         const userInfo = {
           displayName: user.displayName,
           email: user.email,
@@ -72,7 +72,10 @@ class App extends React.Component<AppProps, {}> {
           uid: user.uid
         }
         const userRef = databaseRef.child('users').child(user.uid)
-        userRef.set(userInfo);
+        userRef.child('displayName').set(user.displayName)
+        userRef.child('email').set(user.email)
+        userRef.child('photoURL').set(user.photoURL)
+        userRef.child('uid').set(user.uid).then(() => setAuthState(user))
       }
     })
   }
@@ -80,8 +83,8 @@ class App extends React.Component<AppProps, {}> {
     this.removeListener()
   }
   render() {
-    const {loginWithFacebook, authState} = this.props.authStore as AuthStore;
-    if (!authState.authed) {
+    const {loginWithFacebook, state} = this.props.authStore as AuthStore;
+    if (!state.authed) {
       return (<Auth loginWithFacebook={loginWithFacebook}/>)
     }
 

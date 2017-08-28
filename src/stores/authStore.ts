@@ -1,10 +1,16 @@
 import { observable, action } from 'mobx';
-import firebase, { auth } from '../database/database';
+import firebase, { auth, databaseRef } from '../database/database';
+import { UserType } from '../type/User'
+
+type AuthState = {
+  authed: boolean,
+  userInfo?: UserType
+};
 
 export class AuthStore {
   @observable
-  authState = {
-    authed: false,
+  state: AuthState = {
+    authed: false
   };
 
   @action
@@ -14,17 +20,24 @@ export class AuthStore {
   }
   @action
   public setAuthState = (user: firebase.User) => {
-    const userInfo = {
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-      uid: user.uid
-    }
-    const state = {
-      authed: true,
-      userInfo
-    }
-    this.authState = state;
+    databaseRef.child('users').child(user.uid).on('value', action((snapshot: firebase.database.DataSnapshot) => {
+      if (snapshot) {
+        const userFromDB = snapshot.val()
+        const userInfo: UserType = {
+          displayName: userFromDB.displayName,
+          email: userFromDB.email,
+          photoURL: userFromDB.photoURL,
+          uid: userFromDB.uid,
+          like: userFromDB.like,
+          pass: userFromDB.pass
+        }
+        const state: AuthState = {
+          authed: true,
+          userInfo
+        }
+        this.state = state
+      }      
+    }))
   }
 }
 

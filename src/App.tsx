@@ -77,14 +77,14 @@ class App extends React.Component<AppProps, {}> {
             <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
               <Icon size="large" name="home"/>
             </Menu.Item>
-            <Menu.Item name="options" active={pathname === '/options'} onClick={() => push('/options')}>
-              <Icon size="large" name="options"/>
-            </Menu.Item>
-            <Menu.Item name="calendar outline" active={pathname === '/calendar'} onClick={() => push('/calendar')}>
-              <Icon size="large" name="calendar outline"/>
-            </Menu.Item>
             <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
               <Icon size="large" name="users"/>
+            </Menu.Item>
+            <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
+              <Icon size="large" name="map pin"/>
+            </Menu.Item>
+            <Menu.Item name="list layout" active={pathname === '/list'} onClick={() => push('/list')}>
+              <Icon size="large" name="list layout"/>
             </Menu.Item>
           </Menu>
         </footer>

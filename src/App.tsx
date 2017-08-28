@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
+import { AuthStore } from 'stores/authStore';
 import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
+import Auth from './auth/Auth';
 import ReviewContainer from './review/ReviewContainer';
 import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
+import { auth } from './database/database';
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -15,6 +18,7 @@ cssRaw(`
 
 interface AppProps {
   routingStore?: RouterStore;
+  authStore?: AuthStore;
 }
 
 const AppStyle = style({
@@ -53,8 +57,26 @@ const footerStyle = style({
 });
 
 @inject('routingStore')
+@inject('authStore')
+@observer
 class App extends React.Component<AppProps, {}> {
+  public removeListener: () => void;
+  componentDidMount() {
+    this.removeListener = auth().onAuthStateChanged((user: firebase.User) => {
+      if (user && !!this.props.authStore) {
+        this.props.authStore.setAuthState(user);
+      }
+    })
+  }
+  componentWillUnmount() {
+    this.removeListener()
+  }
   render() {
+    const {loginWithFacebook, authState} = this.props.authStore as AuthStore;
+    if (!authState.authed) {
+      return (<Auth loginWithFacebook={loginWithFacebook}/>)
+    }
+
     const { location, push, goBack } = this.props.routingStore as RouterStore;
     const pathname = !!location ? location.pathname : null;
     return (

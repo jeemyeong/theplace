@@ -2,7 +2,7 @@
 
 import Cards from './Cards'
 
-import Card from './CardSwitcher';
+import DraggableCard from './DraggableCard';
 
-export { Card }
+export { DraggableCard }
 export default Cards

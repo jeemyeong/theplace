@@ -5,7 +5,7 @@ import { ReviewType } from 'type/Review';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as PropTypes from 'prop-types';
-import Cards, { Card } from '../card';
+import Cards, { DraggableCard } from '../card';
 import './Feeds.css';
 
 const FeedsStyle = style({
@@ -26,17 +26,15 @@ const Feeds = ({
       className={'master-root'}
     >
       {feeds.map((feed, key) => 
-        <Card
+        <DraggableCard
           key={key}
           onSwipeLeft={action('swipe left')} 
           onSwipeRight={action('swipe right')}
-          onSwipeTop={action('swipe top')}
-          onSwipeBottom={action('swipe bottom')}
         >
           <Feed
             feed={feed}
           />
-        </Card>
+        </DraggableCard>
       )}
     </Cards>
   </div>

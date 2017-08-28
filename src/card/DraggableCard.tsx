@@ -5,8 +5,13 @@ import SimpleCard from './SimpleCard'
 import { translate3d } from './utils'
 
 interface DraggableCardProps {
+  active?: boolean
   containerSize?: { x: number, y: number }
-  index?: number
+  className?: string
+  onSwipeTop?(): void
+  onSwipeBottom?(): void
+  onSwipeLeft?(): void
+  onSwipeRight?(): void
 }
 interface DraggableCardState {
   x: number;
@@ -73,7 +78,7 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
 
     if (this.props[`onSwipe${direction}`]) {
       this.props[`onSwipe${direction}`]()
-      this.props[`onOutScreen${direction}`](this.props.index)
+      this.props[`onOutScreen${direction}`]()
     } else {
       this.resetPosition()
       this.setState({ animation: true })

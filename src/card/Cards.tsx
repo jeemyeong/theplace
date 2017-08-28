@@ -73,21 +73,13 @@ class SwipeCards extends React.Component<SwipeCardsProps, SwipeCardsState> {
       return  <div className={className} />
     }
 
-    const _cards = (children as React.ReactNode[]).reduce((memo, c, i) => {
-      if (index > i) {
-        return memo
-      }
-      const props = {
-        key: i,
-        containerSize,
-        index: (children as React.ReactNode[]).length - index,
-        ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => this.removeCard(d) }), {}),
-        active: index === i
-      }
-      // tslint:disable-next-line:no-any
-      return [React.cloneElement(c as React.ReactElement<any>, props), ...memo as React.ReactNode[]]
-    // tslint:disable-next-line:align
-    }, [])
+    const props = {
+      containerSize,
+      ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => this.removeCard(d) }), {}),
+    }
+    const c = (children as React.ReactNode[])[index]
+    // tslint:disable-next-line:no-any
+    const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : null;
 
     return (
       <div>
@@ -98,7 +90,7 @@ class SwipeCards extends React.Component<SwipeCardsProps, SwipeCardsState> {
             </div>
           )}
           <div id="cards">
-            {_cards}
+            {_card}
           </div>
         </div>
         <button onClick={this.goBackCard}>

@@ -5,7 +5,7 @@ import { ReviewType } from 'type/Review';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as PropTypes from 'prop-types';
-import Cards, { Card } from '../modules/react-swipe-card';
+import Cards, { Card } from '../card';
 import './Feeds.css';
 
 const FeedsStyle = style({

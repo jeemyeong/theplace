@@ -5,14 +5,14 @@ export namespace ReviewType {
   export type reviewText = string;
   export type evaluate = number;
   export type reviewId = string;
-  export type author = {
-    id: number,
-    nickname: string,
-    profileImgUrl: string,
+  export type user = {
+    uid: string,
+    displayName: string,
+    photoUrl: string,
   };
   export type Review = {
     imgUrlArray: imgUrl[],
-    author: author,
+    user: user,
     restaurant: restaurant,
     reviewText: reviewText,
     evaluate: evaluate,

@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 import { ReviewType } from 'type/Review';
-import { database, storage } from '../database/database';
+import { databaseRef, storage } from '../database/database';
 
 type FeedsState = {
   feeds: ReviewType.Review[]
@@ -13,11 +13,10 @@ export class FeedStore {
     feeds: [],
     loaded: false
   };
-  databaseRef = database.ref();
   storageRef = storage().ref();
 
   constructor() {
-    this.databaseRef.child('reviews').on('value', action((snapshot: firebase.database.DataSnapshot) => {
+    databaseRef.child('reviews').on('value', action((snapshot: firebase.database.DataSnapshot) => {
       if (snapshot) {
         const state: FeedsState = {
           feeds: [],

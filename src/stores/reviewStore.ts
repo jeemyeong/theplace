@@ -1,48 +1,36 @@
 import { observable, action } from 'mobx';
 import { ReviewType } from 'type/Review';
-import { database, storage } from '../database/database';
+import { databaseRef, storage } from '../database/database';
 
 type ReviewState = {
-  review: ReviewType.Review
+  review?: ReviewType.Review
   loaded: boolean
 };
 
 export class ReviewStore {
   @observable
   state: ReviewState = {
-    review: {
-      imgUrlArray: [],
-      author: {
-        id: -1,
-        nickname: '',
-        profileImgUrl: '',
-      },
-      restaurant: '',
-      reviewText: '',
-      evaluate: -1,
-      reviewId: '',
-    },
     loaded: false
   };
-  databaseRef = database.ref();
   storageRef = storage().ref();
 
   @action
   public getReview = (id: ReviewType.reviewId): void => {
-    const ref = this.databaseRef.child('reviews').child(id);
+    const ref = databaseRef.child('reviews').child(id);
     ref.once('value', action((snapshot: firebase.database.DataSnapshot) => {
       const review = snapshot.val();
       if (review) {
-        this.state.review = review;
-        this.state.loaded = true;
+        const state = {review, loaded: true}
+        this.state = state;
       } else {
-        this.state.loaded = false;
+        const state = {loaded: false}
+        this.state = state
       }
     }));
   }
   
-  public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.author, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {
-    const ref = this.databaseRef.child('reviews').push();
+  public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.user, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {
+    const ref = databaseRef.child('reviews').push();
     const review = {
       author,
       restaurant,

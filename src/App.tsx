@@ -9,7 +9,7 @@ import Auth from './auth/Auth';
 import ReviewContainer from './review/ReviewContainer';
 import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
-import { auth } from './database/database';
+import { auth, databaseRef } from './database/database';
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -60,11 +60,19 @@ const footerStyle = style({
 @inject('authStore')
 @observer
 class App extends React.Component<AppProps, {}> {
-  public removeListener: () => void;
+  private removeListener: () => void;
   componentDidMount() {
-    this.removeListener = auth().onAuthStateChanged((user: firebase.User) => {
+    this.removeListener = auth.onAuthStateChanged((user: firebase.User) => {
       if (user && !!this.props.authStore) {
         this.props.authStore.setAuthState(user);
+        const userInfo = {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid
+        }
+        const userRef = databaseRef.child('users').child(user.uid)
+        userRef.set(userInfo);
       }
     })
   }

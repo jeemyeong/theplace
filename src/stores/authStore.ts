@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { auth } from '../database/database';
+import firebase, { auth } from '../database/database';
 
 export class AuthStore {
   @observable
@@ -9,8 +9,8 @@ export class AuthStore {
 
   @action
   public loginWithFacebook = () => {
-    const provider = new auth.FacebookAuthProvider()
-    auth().signInWithPopup(provider)
+    const provider = new firebase.auth.FacebookAuthProvider()
+    auth.signInWithPopup(provider)
   }
   @action
   public setAuthState = (user: firebase.User) => {

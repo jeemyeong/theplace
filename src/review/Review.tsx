@@ -126,14 +126,14 @@ class Review extends React.Component<ReviewProps, {}> {
             <div className={reviewLineStyle}>
               <div className={profileImageWrapper}>
                 <Image
-                  src={review.author.profileImgUrl}
+                  src={review.user.photoUrl}
                   shape={'circular'}
                 />
               </div>
               <span className={nicknameStyle}>
-                {review.author.nickname + ' '}
+                {review.user.displayName + ' '}
               </span>
-              {review.reviewText.length + review.author.nickname.length > 52 ? review.reviewText.slice(0, 52 - review.author.nickname.length ) + '...' : review.reviewText}
+              {review.reviewText.length + review.user.displayName.length > 52 ? review.reviewText.slice(0, 52 - review.user.displayName.length ) + '...' : review.reviewText}
             </div>
           </div> 
         </div>

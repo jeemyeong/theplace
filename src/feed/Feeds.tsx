@@ -17,14 +17,14 @@ interface FeedsProps {
 
 const onSwipeLeft = (reviewId: ReviewType.reviewId) => () => console.log(reviewId)
 const onSwipeRight = (reviewId: ReviewType.reviewId) => () => console.log(reviewId)
-const CustomAlertLeft = <span>Nop</span>
-const CustomAlertRight = <span>Ok</span>
+const CustomAlertLeft = <span>Pass</span>
+const CustomAlertRight = <span>Save</span>
 const CustomGoBackJSXElement = (goBack: () => void) => (
-  <span
+  <button
     onClick={goBack}
   >
-    GoBack
-  </span>
+    이전카드보기
+  </button>
 )
 
 const Feeds = ({

@@ -4,6 +4,9 @@ import { DIRECTIONS } from './utils'
 
 interface SwipeCardsProps {
   className?: string
+  alertLeft?: JSX.Element;
+  alertRight?: JSX.Element;
+  goBackJSXElement?(f: () => void): JSX.Element;
   onSwipeTop?(): void
   onSwipeBottom?(): void
   onEnd?(): void
@@ -45,7 +48,7 @@ class SwipeCards extends React.Component<SwipeCardsProps, SwipeCardsState> {
     this.setState(stateWhileAlerting)
   }
 
-  public goBackCard = () => {
+  public goBack = () => {
     this.setState({index: this.state.index - 1})
   }
   
@@ -68,7 +71,7 @@ class SwipeCards extends React.Component<SwipeCardsProps, SwipeCardsState> {
 
   render () {
     const { index, containerSize } = this.state
-    const { children, className, onSwipeTop, onSwipeBottom } = this.props
+    const { children, className, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props
     if (!containerSize.x || !containerSize.y) {
       return  <div className={className} />
     }
@@ -93,9 +96,7 @@ class SwipeCards extends React.Component<SwipeCardsProps, SwipeCardsState> {
             {_card}
           </div>
         </div>
-        <button onClick={this.goBackCard}>
-          goBack
-        </button>
+          {!!goBackJSXElement ? goBackJSXElement(this.goBack) : null}
       </div>
     )
   }

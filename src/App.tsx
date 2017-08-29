@@ -103,22 +103,25 @@ class App extends React.Component<AppProps, {}> {
           <Switch>
             <Route exact={true} path="/" component={FeedContainer}/>
             <Route path="/reviews/:reviewId" component={ReviewContainer}/>
-            <Route path="/list" component={LikeContainer}/>
-            <Redirect to="/404"/>
+            <Route path="/like" component={LikeContainer}/>
+            <Redirect to="/"/>
           </Switch>
         </main>
         <footer className={footerStyle}>
-          <Menu secondary={true} widths={4}>
+          <Menu secondary={true} widths={5}>
             <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
               <Icon size="large" name="home"/>
             </Menu.Item>
             <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
               <Icon size="large" name="users"/>
             </Menu.Item>
+            <Menu.Item name="write" active={pathname === '/write'} onClick={() => push('/write')}>
+              <Icon size="large" name="write"/>
+            </Menu.Item>
             <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
               <Icon size="large" name="map pin"/>
             </Menu.Item>
-            <Menu.Item name="list layout" active={pathname === '/list'} onClick={() => push('/list')}>
+            <Menu.Item name="list layout" active={pathname === '/like'} onClick={() => push('/like')}>
               <Icon size="large" name="list layout"/>
             </Menu.Item>
           </Menu>

@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import feedStore from './stores/feedStore';
 import reviewStore from './stores/reviewStore';
+import authStore from './stores/authStore';
 import { useStrict } from 'mobx';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
@@ -20,8 +21,8 @@ const stores = {
   // Key can be whatever you want
   routingStore,
   feedStore,
-  reviewStore
-  // ...other stores
+  reviewStore,
+  authStore
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

@@ -1,10 +1,31 @@
-# React 프로젝트 환경 설정
+# Set up ENV for React project
 
-### 설치
-1. `Node.js`설치 https://nodejs.org/en/
-2. 터미널에서 프로젝트 디렉토리 이동
-3. `npm install` 혹은 yarn 사용시 `yarn` 실행 (이후 package.json에 의존 모듈 추가시마다 실행)
+### How to install
+1. Install `Node.js` from https://nodejs.org/en/
+2. `npm install` Or `yarn`
 
-### 개발 build 및 개발 서버 실행
-1. 터미널에서 프로젝트 디렉토리 이동.
-2. `npm start` 혹은 `yarn start` 실행 
+### How to run
+1. `npm start` Or `yarn start`
+
+make `src/database/databse.ts`
+
+```
+import * as firebase from 'firebase';
+
+const config = {
+  apiKey: 'your api key',
+  projectId: 'theplace-5dfe6',
+  authDomain: 'theplace-5dfe6.firebaseapp.com',
+  databaseURL: 'https://theplace-5dfe6.firebaseio.com/',
+  storageBucket: 'gs://theplace-5dfe6.appspot.com/',
+  messagingSenderId: 'your messaging sender Id'
+};
+
+firebase.initializeApp(config);
+
+export default firebase;
+export const database = firebase.database();
+export const databaseRef = database.ref();
+export const auth = firebase.auth();
+export const storage = firebase.storage;
+```

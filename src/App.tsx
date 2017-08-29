@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
+import { AuthStore } from 'stores/authStore';
 import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
+import Auth from './auth/Auth';
 import ReviewContainer from './review/ReviewContainer';
 import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
+import { auth, databaseRef } from './database/database';
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -15,6 +18,7 @@ cssRaw(`
 
 interface AppProps {
   routingStore?: RouterStore;
+  authStore?: AuthStore;
 }
 
 const AppStyle = style({
@@ -53,8 +57,37 @@ const footerStyle = style({
 });
 
 @inject('routingStore')
+@inject('authStore')
+@observer
 class App extends React.Component<AppProps, {}> {
+  private removeListener: () => void;
+  componentDidMount() {
+    this.removeListener = auth.onAuthStateChanged((user: firebase.User) => {
+      if (user && !!this.props.authStore) {
+        const setAuthState = this.props.authStore.setAuthState
+        const userInfo = {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid
+        }
+        const userRef = databaseRef.child('users').child(user.uid)
+        userRef.child('displayName').set(user.displayName)
+        userRef.child('email').set(user.email)
+        userRef.child('photoURL').set(user.photoURL)
+        userRef.child('uid').set(user.uid).then(() => setAuthState(user))
+      }
+    })
+  }
+  componentWillUnmount() {
+    this.removeListener()
+  }
   render() {
+    const {loginWithFacebook, state} = this.props.authStore as AuthStore;
+    if (!state.authed) {
+      return (<Auth loginWithFacebook={loginWithFacebook}/>)
+    }
+
     const { location, push, goBack } = this.props.routingStore as RouterStore;
     const pathname = !!location ? location.pathname : null;
     return (
@@ -77,14 +110,14 @@ class App extends React.Component<AppProps, {}> {
             <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
               <Icon size="large" name="home"/>
             </Menu.Item>
-            <Menu.Item name="options" active={pathname === '/options'} onClick={() => push('/options')}>
-              <Icon size="large" name="options"/>
-            </Menu.Item>
-            <Menu.Item name="calendar outline" active={pathname === '/calendar'} onClick={() => push('/calendar')}>
-              <Icon size="large" name="calendar outline"/>
-            </Menu.Item>
             <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
               <Icon size="large" name="users"/>
+            </Menu.Item>
+            <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
+              <Icon size="large" name="map pin"/>
+            </Menu.Item>
+            <Menu.Item name="list layout" active={pathname === '/list'} onClick={() => push('/list')}>
+              <Icon size="large" name="list layout"/>
             </Menu.Item>
           </Menu>
         </footer>

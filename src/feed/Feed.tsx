@@ -126,14 +126,14 @@ class Feed extends React.Component<FeedProps, {}> {
             <div className={reviewLineStyle}>
               <div className={profileImageWrapper}>
                 <Image
-                  src={feed.user.photoUrl}
+                  src={feed.writter.photoUrl}
                   shape={'circular'}
                 />
               </div>
               <span className={nicknameStyle}>
-                {feed.user.displayName + ' '}
+                {feed.writter.displayName + ' '}
               </span>
-              {feed.reviewText.length + feed.user.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.user.displayName.length ) + '...' : feed.reviewText}
+              {feed.reviewText.length + feed.writter.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.writter.displayName.length ) + '...' : feed.reviewText}
             </div>
           </div> 
         </div>

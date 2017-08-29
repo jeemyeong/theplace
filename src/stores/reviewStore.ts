@@ -34,19 +34,6 @@ export class ReviewStore {
   public loading = (): void => {
     this.state.loading = true;
   }
-  
-  public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.user, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {
-    const ref = databaseRef.child('reviews').push();
-    const review = {
-      author,
-      restaurant,
-      reviewText,
-      evaluate,
-      reviewId,
-      id: ref.key
-    };
-    ref.set({review});
-  }
 }
 
 export default new ReviewStore();

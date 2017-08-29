@@ -6,4 +6,5 @@ export type UserType = {
   email: string | null,
   like: ReviewType.Review[],
   pass: ReviewType.Review[],
+  write: ReviewType.Review[],
 };

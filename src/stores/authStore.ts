@@ -29,7 +29,8 @@ export class AuthStore {
           photoURL: userFromDB.photoURL,
           uid: userFromDB.uid,
           like: userFromDB.like,
-          pass: userFromDB.pass
+          pass: userFromDB.pass,
+          write: userFromDB.write
         }
         const state: AuthState = {
           authed: true,

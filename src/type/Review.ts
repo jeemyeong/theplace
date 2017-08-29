@@ -12,7 +12,7 @@ export namespace ReviewType {
   };
   export type Review = {
     imgUrlArray: imgUrl[],
-    user: user,
+    writter: user,
     restaurant: restaurant,
     reviewText: reviewText,
     evaluate: evaluate,

@@ -25,7 +25,7 @@ class LikeContainer extends React.Component<LikeContainerProps, {}> {
         divided="vertically"
       >
         <Grid.Row columns={3}>
-            {!!userInfo && Object.keys(likes).map((reviewId, index) => (
+            {!!userInfo && !!likes && Object.keys(likes).map((reviewId, index) => (
               <Grid.Column
                 key={index}
               >

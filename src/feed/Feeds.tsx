@@ -46,7 +46,6 @@ const Feeds = ({
       goBackJSXElement={CustomGoBackJSXElement} 
     >
       {feeds
-        .filter((feed) => !((feed.likeUsers && feed.likeUsers[userInfo.uid]) || (feed.passUsers && feed.passUsers[userInfo.uid])))
         .map((feed, key) => 
           <DraggableCard
             key={key}

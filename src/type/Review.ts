@@ -1,4 +1,3 @@
-
 export namespace ReviewType {
   export type imgUrl = string;
   export type restaurant = string;
@@ -18,7 +17,7 @@ export namespace ReviewType {
     reviewText: reviewText,
     evaluate: evaluate,
     reviewId: reviewId,
-    likeUsers: uid[],
-    passUsers: uid[]
+    likeCount: number,
+    passCount: number
   };
 }

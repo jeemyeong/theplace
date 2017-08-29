@@ -36,12 +36,12 @@ export class FeedStore {
   }
 
   likeCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('likeUsers').child(userInfo.uid).set(userInfo.uid)
+    databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((searches) => { if (searches) { searches++ ; return searches } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(review)
   }
   
   passCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('passUsers').child(userInfo.uid).set(userInfo.uid)
+    databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((searches) => { if (searches) { searches++ ; return searches } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(review)
   }
 }

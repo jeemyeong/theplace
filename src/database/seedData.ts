@@ -14,8 +14,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -30,8 +30,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -46,8 +46,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -62,8 +62,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -78,8 +78,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -94,8 +94,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -110,8 +110,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -126,8 +126,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -142,8 +142,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -158,8 +158,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -174,8 +174,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -190,8 +190,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -207,8 +207,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -223,8 +223,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -239,8 +239,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -255,8 +255,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -271,8 +271,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -287,8 +287,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -303,8 +303,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -319,8 +319,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -335,8 +335,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -351,8 +351,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -367,8 +367,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -383,8 +383,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -400,8 +400,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -416,8 +416,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -432,8 +432,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -448,8 +448,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -464,8 +464,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -480,8 +480,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -496,8 +496,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -512,8 +512,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -528,8 +528,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -544,8 +544,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -560,8 +560,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -576,8 +576,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -593,8 +593,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -609,8 +609,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -625,8 +625,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -641,8 +641,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -657,8 +657,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -673,8 +673,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -689,8 +689,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -705,8 +705,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -721,8 +721,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -737,8 +737,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -753,8 +753,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -769,8 +769,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -786,8 +786,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -802,8 +802,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -818,8 +818,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -834,8 +834,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -850,8 +850,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -866,8 +866,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -882,8 +882,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -898,8 +898,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -914,8 +914,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -930,8 +930,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -946,8 +946,8 @@ export default {
       'reviewText': '그냥그랬어',
       'evaluate': 3.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     },
     {
       'imgUrlArray': [
@@ -962,8 +962,8 @@ export default {
       'reviewText': '맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어맛있어',
       'evaluate': 4.5,
       'reviewId': 'null',
-      'likeUsers': [],
-      'passUsers': []
+      'likeCount': 0,
+      'passCount': 0
     }
   ]
 }

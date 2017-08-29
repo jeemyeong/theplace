@@ -1,8 +1,9 @@
+import { ReviewType } from './Review'
 export type UserType = {
   uid: string,
   displayName: string | null,
   photoURL: string | null,
   email: string | null,
-  like: string[],
-  pass: string[],
+  like: ReviewType.Review[],
+  pass: ReviewType.Review[],
 };

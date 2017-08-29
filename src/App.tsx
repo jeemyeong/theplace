@@ -7,6 +7,7 @@ import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
 import Auth from './auth/Auth';
 import ReviewContainer from './review/ReviewContainer';
+import LikeContainer from './like/LikeContainer';
 import { style, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { auth, databaseRef } from './database/database';
@@ -102,6 +103,7 @@ class App extends React.Component<AppProps, {}> {
           <Switch>
             <Route exact={true} path="/" component={FeedContainer}/>
             <Route path="/reviews/:reviewId" component={ReviewContainer}/>
+            <Route path="/list" component={LikeContainer}/>
             <Redirect to="/404"/>
           </Switch>
         </main>

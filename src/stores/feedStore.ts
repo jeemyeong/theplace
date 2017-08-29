@@ -2,6 +2,7 @@ import { observable, action } from 'mobx';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import { databaseRef, storage } from '../database/database';
+import { toJS } from 'mobx';
 
 type FeedsState = {
   feeds: ReviewType.Review[]
@@ -48,14 +49,14 @@ export class FeedStore {
   @action
   likeCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
-    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(review)
+    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(toJS(review))
     this.state.history.push(['like', review.reviewId])
   }
   
   @action
   passCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
-    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(review)
+    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(toJS(review))
     this.state.history.push(['pass', review.reviewId])
   }
 

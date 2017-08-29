@@ -1,8 +1,8 @@
 // Adapted from https://github.com/alexandre-garrec/react-swipe-card
 
-import Cards from './Cards'
+import CardContainer from './CardContainer'
 
 import DraggableCard from './DraggableCard';
 
 export { DraggableCard }
-export default Cards
+export default CardContainer

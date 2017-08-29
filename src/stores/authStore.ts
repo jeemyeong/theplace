@@ -20,7 +20,7 @@ export class AuthStore {
   }
   @action
   public setAuthState = (user: firebase.User) => {
-    databaseRef.child('users').child(user.uid).on('value', action((snapshot: firebase.database.DataSnapshot) => {
+    databaseRef.child('users').child(user.uid).once('value', action((snapshot: firebase.database.DataSnapshot) => {
       if (snapshot) {
         const userFromDB = snapshot.val()
         const userInfo: UserType = {

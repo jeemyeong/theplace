@@ -6,7 +6,7 @@ import { UserType } from 'type/User';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as PropTypes from 'prop-types';
-import Cards, { DraggableCard } from '../swipe-card';
+import CardContainer, { DraggableCard } from '../swipe-card';
 import './Feeds.css';
 
 const FeedsStyle = style({
@@ -38,7 +38,7 @@ const Feeds = ({
   onSwipeRight
 }: FeedsProps) => (
   <div className={FeedsStyle}>
-    <Cards
+    <CardContainer
       onEnd={() => alert('끝났습니다!!!')}
       className={'master-root'}
       alertRight={CustomAlertRight} 
@@ -46,6 +46,7 @@ const Feeds = ({
       goBackJSXElement={CustomGoBackJSXElement} 
     >
       {feeds
+        .filter((feed: ReviewType.Review) => (!userInfo.like[feed.reviewId] && !userInfo.pass[feed.reviewId] ))
         .map((feed, key) => 
           <DraggableCard
             key={key}
@@ -57,7 +58,7 @@ const Feeds = ({
             />
           </DraggableCard>
         )}
-    </Cards>
+    </CardContainer>
   </div>
 );
 

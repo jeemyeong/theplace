@@ -4,6 +4,7 @@ import App from './App';
 import feedStore from './stores/feedStore';
 import reviewStore from './stores/reviewStore';
 import authStore from './stores/authStore';
+import cardStore from './stores/cardStore';
 import { useStrict } from 'mobx';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
@@ -22,7 +23,8 @@ const stores = {
   routingStore,
   feedStore,
   reviewStore,
-  authStore
+  authStore,
+  cardStore
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

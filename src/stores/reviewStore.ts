@@ -4,29 +4,35 @@ import { databaseRef, storage } from '../database/database';
 
 type ReviewState = {
   review?: ReviewType.Review
-  loaded: boolean
+  loading: boolean
 };
 
 export class ReviewStore {
   @observable
   state: ReviewState = {
-    loaded: false
+    loading: true
   };
   storageRef = storage().ref();
 
   @action
   public getReview = (id: ReviewType.reviewId): void => {
+    this.loading()
     const ref = databaseRef.child('reviews').child(id);
     ref.once('value', action((snapshot: firebase.database.DataSnapshot) => {
       const review = snapshot.val();
       if (review) {
-        const state = {review, loaded: true}
+        const state = {review, loading: false}
         this.state = state;
       } else {
-        const state = {loaded: false}
+        const state = {loading: false}
         this.state = state
       }
     }));
+  }
+
+  @action
+  public loading = (): void => {
+    this.state.loading = true;
   }
   
   public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.user, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {

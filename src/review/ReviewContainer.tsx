@@ -24,10 +24,10 @@ class ReviewContainer extends React.Component<ReviewProps, {}> {
   }
   
   render() {
-    const { review, loaded } = this.props.reviewStore.state;
+    const { review, loading } = this.props.reviewStore.state;
     return (
       <div>
-        {loaded === false || !review ? null : 
+        {loading === true || !review ? null : 
           <Review
             review={review}
           />

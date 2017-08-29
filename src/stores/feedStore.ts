@@ -6,7 +6,8 @@ import { databaseRef, storage } from '../database/database';
 type FeedsState = {
   feeds: ReviewType.Review[]
   loaded: boolean,
-  ended: boolean
+  ended: boolean,
+  history: ['like' | 'pass', ReviewType.reviewId][]
 };
 
 export class FeedStore {
@@ -14,7 +15,8 @@ export class FeedStore {
   state: FeedsState = {
     feeds: [],
     loaded: false,
-    ended: false
+    ended: false,
+    history: []
   };
   storageRef = storage().ref();
 
@@ -28,7 +30,8 @@ export class FeedStore {
         const state: FeedsState = {
           feeds: [],
           loaded: true,
-          ended: false
+          ended: false,
+          history: this.state.history
         };      
         const reviewsFromDB = snapshot.val()
         if (reviewsFromDB !== null) {
@@ -42,14 +45,30 @@ export class FeedStore {
     }));
   }
 
+  @action
   likeCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(review)
+    this.state.history.push(['like', review.reviewId])
   }
   
+  @action
   passCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(review)
+    this.state.history.push(['pass', review.reviewId])
+  }
+
+  @action
+  unDo(userInfo: UserType) {
+    const lastDone = this.state.history.pop()
+    if (!lastDone) {
+      return;
+    }
+    const likeOrPass = lastDone[0]
+    const reviewId = lastDone[1]
+    databaseRef.child('reviews').child(reviewId).child(`${likeOrPass}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } })
+    databaseRef.child('users').child(userInfo.uid).child(likeOrPass).child(reviewId).set({})
   }
 }
 

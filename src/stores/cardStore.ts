@@ -49,7 +49,12 @@ export class CardStore {
 
   @action
   public goBack = () => {
-    this.state.index = this.state.index - 1
+    if (this.state.index > 0) {
+      this.state.index = this.state.index - 1
+      return true
+    } else {
+      return false
+    }
   }
 }
 

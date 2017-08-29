@@ -2,13 +2,18 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom'
 import { DIRECTIONS } from './utils'
 import { CardStore } from 'stores/cardStore';
+import { FeedStore } from 'stores/feedStore';
+import { AuthStore } from 'stores/authStore';
 import { inject, observer } from 'mobx-react';
+import { UserType } from '../type/User'
 
 interface CardContainerProps {
   className?: string
   alertLeft?: JSX.Element
   alertRight?: JSX.Element
   cardStore?: CardStore
+  feedStore?: FeedStore
+  authStore?: AuthStore
   goBackJSXElement?(f: () => void): JSX.Element;
   onSwipeTop?(): void
   onSwipeBottom?(): void
@@ -16,6 +21,8 @@ interface CardContainerProps {
 }
 
 @inject('cardStore')
+@inject('feedStore')
+@inject('authStore')
 @observer    
 class CardContainer extends React.Component<CardContainerProps, {}> {
   private container: HTMLElement
@@ -24,21 +31,27 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
     super(props);
   }
   
-  removeCard (side: string) {
+  removeCard = (side: string) => {
     const { children, onEnd } = this.props;
     (this.props.cardStore as CardStore).removeCard(side, children as React.ReactNode[], onEnd);
   }
   
-  componentDidMount () {
+  componentDidMount() {
     this.container = ReactDOM.findDOMNode(this);
     (this.props.cardStore as CardStore).setSize(this.container)
     window.addEventListener('resize', () => (this.props.cardStore as CardStore).setSize(this.container))
   }
 
-   componentWillUnmount () {
+  componentWillUnmount() {
     window.removeEventListener('resize', () => (this.props.cardStore as CardStore).setSize(this.container))
   }
   
+  goBack = () => {
+    if ((this.props.cardStore as CardStore).goBack()) {
+      (this.props.feedStore as FeedStore).unDo(((this.props.authStore as AuthStore).state.userInfo as UserType))
+    }
+  }
+
   render () {
     const { index, containerSize } = (this.props.cardStore as CardStore).state
     const { children, className, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props
@@ -66,7 +79,7 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
             {_card}
           </div>
         </div>
-          {!!goBackJSXElement ? goBackJSXElement((this.props.cardStore as CardStore).goBack) : null}
+          {!!goBackJSXElement ? goBackJSXElement(this.goBack) : null}
       </div>
     )
   }

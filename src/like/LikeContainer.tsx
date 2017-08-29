@@ -7,7 +7,7 @@ import { UserType } from 'type/User';
 import * as csstips from 'csstips';
 import { style } from 'typestyle';
 import { toJS } from 'mobx';
-import { Grid,  } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 export interface LikeContainerProps {
   authStore: AuthStore;
@@ -20,7 +20,10 @@ class LikeContainer extends React.Component<LikeContainerProps, {}> {
     const { userInfo } = this.props.authStore.state;
     const likes = toJS((userInfo as UserType).like);
     return (
-      <Grid>
+      <Grid
+        container={true}
+        divided="vertically"
+      >
         <Grid.Row columns={3}>
             {!!userInfo && Object.keys(likes).map((reviewId, index) => (
               <Grid.Column

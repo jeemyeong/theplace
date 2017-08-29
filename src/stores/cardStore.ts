@@ -49,7 +49,7 @@ export class CardStore {
 
   @action
   public goBack = () => {
-    this.state = {index: this.state.index - 1, ...this.state}
+    this.state.index = this.state.index - 1
   }
 }
 

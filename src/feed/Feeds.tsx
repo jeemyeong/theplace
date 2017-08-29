@@ -27,7 +27,7 @@ const CustomGoBackJSXElement = (goBack: () => void) => (
   <button
     onClick={goBack}
   >
-    이전카드보기
+    취소
   </button>
 )
 
@@ -46,7 +46,7 @@ const Feeds = ({
       goBackJSXElement={CustomGoBackJSXElement} 
     >
       {feeds
-        .filter((feed: ReviewType.Review) => (!userInfo.like[feed.reviewId] && !userInfo.pass[feed.reviewId] ))
+        .filter((feed: ReviewType.Review) => ((!userInfo.like || !userInfo.like[feed.reviewId]) && (!userInfo.pass || !userInfo.pass[feed.reviewId])))
         .map((feed, key) => 
           <DraggableCard
             key={key}

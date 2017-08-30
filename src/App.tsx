@@ -10,7 +10,6 @@ import ReviewContainer from './review/ReviewContainer';
 import LikeContainer from './like/LikeContainer';
 import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
-
 import * as csstips from 'csstips';
 import { auth, databaseRef } from './database/database';
 
@@ -29,16 +28,16 @@ const BackgroundStyle = style(csstips.fillParent, csstips.flexRoot, {
 });
 
 const AppStyle = style(
-  media({minWidth: 0, maxWidth: 375}, {
+  media({minWidth: 0, maxWidth: 414}, {
     fontFamily: 'Noto Sans KR',
     backgroundColor: 'white',
     width: '100%',
     height: '100%',
   }),
-  media({minWidth: 376}, {
+  media({minWidth: 415}, {
     fontFamily: 'Noto Sans KR',
-    width: '375px',
-    height: '667px',
+    width: '414px',
+    height: '736px',
     margin: 'auto',
     backgroundColor: 'white'
 }));
@@ -46,7 +45,7 @@ const AppStyle = style(
 const headerStyle = style(csstips.centerCenter, {
   zIndex: 10,
   position: 'relative',
-  height: '9%',
+  height: '6%',
   top: 0,
   width: '100%',
   backgroundColor: 'white',
@@ -59,14 +58,24 @@ const titleStyle = style(csstips.centerCenter, {
 
 const mainStyle = style({
   position: 'relative',
-  height: '82%',
+  top: 0,
+  height: '89%',
   width: '100%',
+  backgroundColor: 'white',
+});
+
+const mainContainerStyle = style({
+  paddingTop: 30,
+  paddingBottom: 30,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'white'
 });
 
 const footerStyle = style({
   zIndex: 10,
   position: 'relative',
-  height: '9%',
+  height: '6%',
   bottom: 0,
   width: '100%',
   backgroundColor: 'white',
@@ -101,7 +110,13 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const {loginWithFacebook, state} = this.props.authStore as AuthStore;
     if (!state.authed) {
-      return (<Auth loginWithFacebook={loginWithFacebook}/>)
+      return (
+        <div className={BackgroundStyle}>
+          <div className={AppStyle}>
+            <Auth loginWithFacebook={loginWithFacebook}/>
+          </div>
+        </div>
+      )
     }
 
     const { location, push, goBack } = this.props.routingStore as RouterStore;
@@ -116,13 +131,15 @@ class App extends React.Component<AppProps, {}> {
             </span>
           </header>
           <main className={mainStyle}>
-            <Switch>
-              <Route exact={true} path="/" component={FeedContainer}/>
-              <Route path="/reviews/:reviewId" component={ReviewContainer}/>
-              <Route path="/write" component={WriteContainer}/>
-              <Route path="/like" component={LikeContainer}/>
-              <Redirect to="/"/>
-            </Switch>
+            <div className={mainContainerStyle}>
+              <Switch>
+                <Route exact={true} path="/" component={FeedContainer}/>
+                <Route path="/reviews/:reviewId" component={ReviewContainer}/>
+                <Route path="/write" component={WriteContainer}/>
+                <Route path="/like" component={LikeContainer}/>
+                <Redirect to="/"/>
+              </Switch>
+            </div>
           </main>
           <footer className={footerStyle}>
             <Menu secondary={true} widths={5}>

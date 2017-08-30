@@ -7,6 +7,7 @@ type CardState = {
   alertRight: boolean;
   alertTop: boolean;
   alertBottom: boolean;
+  loaded: boolean;
   containerSize: { x: number, y: number }
 };
 
@@ -18,6 +19,7 @@ export class CardStore {
     alertRight: false,
     alertTop: false,
     alertBottom: false,
+    loaded: false,
     containerSize: { x: 0, y: 0 }
   };
 
@@ -28,6 +30,12 @@ export class CardStore {
       y: container.offsetHeight
     }
     this.state.containerSize = containerSize;
+    this.state.loaded = true;
+  }
+
+  @action
+  public unmount = () => {
+    this.state.loaded = false;
   }
 
   @action

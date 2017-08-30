@@ -20,22 +20,24 @@ class LikeContainer extends React.Component<LikeContainerProps, {}> {
     const { userInfo } = this.props.authStore.state;
     const likes = toJS((userInfo as UserType).like);
     return (
-      <Grid
-        container={true}
-        divided="vertically"
-      >
-        <Grid.Row columns={3}>
-            {!!userInfo && !!likes && Object.keys(likes).map((reviewId, index) => (
-              <Grid.Column
-                key={index}
-              >
-                <Like
-                    like={(likes[reviewId] as ReviewType.Review)}
-                />
-              </Grid.Column>
-            ))}
-        </Grid.Row>
-      </Grid>
+      <div>
+        <Grid
+          container={true}
+          divided="vertically"
+        >
+          <Grid.Row columns={3}>
+              {!!userInfo && !!likes && Object.keys(likes).map((reviewId, index) => (
+                <Grid.Column
+                  key={index}
+                >
+                  <Like
+                      like={(likes[reviewId] as ReviewType.Review)}
+                  />
+                </Grid.Column>
+              ))}
+          </Grid.Row>
+        </Grid>
+      </div>
     );
   }
 }

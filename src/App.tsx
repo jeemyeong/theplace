@@ -64,7 +64,8 @@ const mainStyle = style({
   backgroundColor: 'white',
 });
 
-const mainContainerStyle = style({
+const mainContainerStyle = style(
+  csstips.scrollY, {
   paddingTop: 30,
   paddingBottom: 30,
   width: '100%',

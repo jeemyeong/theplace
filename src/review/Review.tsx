@@ -8,19 +8,15 @@ import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
 
 const ReviewStyle = style({
-  flexGrow: 1,
   paddingBottom: '100%',
   height: 0,
   width: '100%',
-  backgroundColor: 'yellow',
+  backgroundColor: 'red',
   position: 'relative'
 });
 
-const cardImageStyle = (imgUrl: string) => style(
-  /** Default */
-  media({minWidth: 0, maxWidth: 999}, {backgroundSize: 'cover'}),
-  /** Change for bigger screens */
-  media({minWidth: 1000}, {backgroundSize: '50%'}), {
+const cardImageStyle = (imgUrl: string) => style({
+  backgroundSize: 'cover',
   backgroundImage: `url(${imgUrl})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
@@ -63,22 +59,24 @@ const restaurantAndEvaluateBoxStyle = style(
 const restaurantStyle = style(
   csstips.content, {
   fontWeight: 'bold',
-  fontSize: '7vw',
+  fontSize: '150%',
   marginRight: '3%',
 });
 
 const evaluateStyle = style(
-  csstips.flex, {
-  fontSize: '4.5vw',
+  csstips.normalize, {
+  fontSize: '80%',
 });
 
-const reviewLineStyle = style({
+const reviewLineStyle = style(
+  csstips.normalize, {
   color: 'white',
-  fontSize: '3.5vw',
+  fontSize: '90%',
   paddingLeft: '3%',
   paddingTop: '3%',
   paddingRight: '3%',
   paddingBottom: '1%',
+  textAlign: 'left'
 });
 
 const profileImageWrapper = style({

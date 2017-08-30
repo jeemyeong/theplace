@@ -76,6 +76,7 @@ const reviewLineStyle = style(
   paddingTop: '3%',
   paddingRight: '3%',
   paddingBottom: '1%',
+  textAlign: 'left'
 });
 
 const profileImageWrapper = style({

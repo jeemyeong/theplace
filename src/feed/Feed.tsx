@@ -82,7 +82,7 @@ const reviewLineStyle = style(
 const profileImageWrapper = style({
   float: 'left',
   display: 'inline-block',
-  width: '15%',
+  width: '10%',
   marginRight: '1%'
 });
 

@@ -7,7 +7,6 @@ import { inject, observer } from 'mobx-react';
 import Write from './Write';
 import * as Dropzone from 'react-dropzone';
 import { Button, Form, TextArea, Icon, Image } from 'semantic-ui-react'
-import { FormProps } from 'semantic-ui-react/dist/commonjs/collections/Form'
 
 const WriteContainerStyle = style(csstips.fillParent, {
   width: '80%',
@@ -36,32 +35,39 @@ interface WriteProps {
 @inject('writeStore')
 @observer    
 class WriteContainer extends React.Component<WriteProps, {}> {
-  // tslint:disable-next-line:no-any
-  onDrop = (acceptedFiles: any, rejectedFiles: any) => {
-    console.log(acceptedFiles);
-    console.log(rejectedFiles);
-  }
-  handleSubmit = (event: React.FormEvent<HTMLElement>, data: FormProps) => {
-    console.log(event);
-    console.log(data);
-  }
   render() {
     return (
       <div className={WriteContainerStyle}>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.props.writeStore.handleSubmit}>
           <div className={DropzoneStyle}>
             <Dropzone
-              onDrop={this.onDrop}
+              onDrop={this.props.writeStore.onDrop}
               maxSize={5242880}
               accept={`image/*`}
               style={dropZoneStyle}
             >
-              5MB 이하의 사진을 첨부해주세요!
+              {this.props.writeStore.state.photoFiles.length > 0 ?
+                this.props.writeStore.state.photoFiles.map((file: Dropzone.ImageFile, index: number) => <Image src={file.preview} key={index}/>) :
+                <Icon name="image" size="big"/>
+              }
             </Dropzone>
+            5MB 이하의 사진을 첨부해주세요!
           </div>
+          <Form.Input
+            label="식당이름"
+            onChange={this.props.writeStore.writeRestaurant}
+            value={this.props.writeStore.state.restaurant}
+          />
           <Form.Field
             control={TextArea}
-            placeholder="내용"
+            onChange={this.props.writeStore.writeReviewText}
+            value={this.props.writeStore.state.reviewText}
+            label="리뷰"
+          />
+          <Form.Input
+            onChange={this.props.writeStore.writeEvaluate}
+            value={this.props.writeStore.state.evaluate}
+            label="평가"
           />
           <Button type="submit">
             입력

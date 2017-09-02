@@ -77,7 +77,7 @@ export class WriteStore {
     if (typeof(evaluate) === 'number' && evaluate <= 5) {
       this.state.evaluate = evaluate;
     } else if (typeof(evaluate) === 'number') {
-      alert("5점 이하로 평가해주세요!")
+      alert('5점 이하로 평가해주세요!')
     }
   }
 

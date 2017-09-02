@@ -74,8 +74,10 @@ export class WriteStore {
   @action
   public writeEvaluate = (event: React.SyntheticEvent<HTMLInputElement>) => {
     const evaluate = Number(event.currentTarget.value);
-    if (typeof(evaluate) === 'number') {
+    if (typeof(evaluate) === 'number' && evaluate <= 5) {
       this.state.evaluate = evaluate;
+    } else if (typeof(evaluate) === 'number') {
+      alert("5점 이하로 평가해주세요!")
     }
   }
 

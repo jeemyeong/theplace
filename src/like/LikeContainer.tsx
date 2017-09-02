@@ -25,15 +25,18 @@ class LikeContainer extends React.Component<LikeContainerProps, {}> {
         divided="vertically"
       >
         <Grid.Row columns={3}>
-            {!!userInfo && !!likes && Object.keys(likes).map((reviewId, index) => (
-              <Grid.Column
-                key={index}
-              >
-                <Like
-                    like={(likes[reviewId] as ReviewType.Review)}
-                />
-              </Grid.Column>
-            ))}
+            {!!userInfo && !!likes ?
+              Object.keys(likes).map((reviewId, index) => (
+                <Grid.Column
+                  key={index}
+                >
+                  <Like
+                      like={(likes[reviewId] as ReviewType.Review)}
+                  />
+                </Grid.Column>
+              )) :
+              <div>Like가 없어요!</div>
+            }
         </Grid.Row>
       </Grid>
     );

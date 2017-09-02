@@ -77,7 +77,7 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
     }
     const c = (children as React.ReactNode[])[index]
     // tslint:disable-next-line:no-any
-    const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : null;
+    const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : '피드가 없어요ㅠㅠ';
 
     return (
       <div className={style(csstips.fillParent, {})}>

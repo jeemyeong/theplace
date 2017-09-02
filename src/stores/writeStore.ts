@@ -1,14 +1,17 @@
-import { observable, action } from 'mobx';
+import { observable, action, autorun } from 'mobx';
 import { ReviewType } from 'type/Review';
 import { databaseRef, storage } from '../database/database';
 import * as Dropzone from 'react-dropzone';
 import { FormProps } from 'semantic-ui-react/dist/commonjs/collections/Form'
+import authStore from './authStore';
+import { UserType } from '../type/User'
 
 type WriteState = {
   reviewText: string,
   photoFiles: Dropzone.ImageFile[],
   evaluate: ReviewType.evaluate,
   restaurant: ReviewType.restaurant
+  writter: ReviewType.writter
 };
 
 export class WriteStore {
@@ -18,8 +21,30 @@ export class WriteStore {
     reviewText: '',
     photoFiles: [],
     evaluate: 0,
+    writter: {
+      uid: '',
+      displayName: '',
+      photoUrl: '',
+    }
   };
   storageRef = storage().ref();
+
+  constructor() {
+    autorun(() => {
+      if (!!authStore.state.userInfo) {
+        this.setUser(authStore.state.userInfo)
+      }
+    })
+  }
+  @action
+  setUser = (user: UserType) => {
+    const writter: ReviewType.writter = {
+      uid: user.uid,
+      displayName: user.displayName as string,
+      photoUrl: user.photoURL as string
+    }
+    this.state.writter = writter
+  }
 
   @action
   handleSubmit = (event: React.FormEvent<HTMLElement>, data: FormProps) => {
@@ -29,11 +54,11 @@ export class WriteStore {
 
   @action
   onDrop = (acceptedFiles: Dropzone.ImageFile[], rejectedFiles: Dropzone.ImageFile[]) => {
-    console.log(acceptedFiles);
     if (acceptedFiles[0] !== undefined) {
       this.state.photoFiles = acceptedFiles
     } else {
-      console.log('ERROR');
+      // tslint:disable-next-line:no-console
+      console.log('Dropzone Error');
     }
   }
 
@@ -48,11 +73,14 @@ export class WriteStore {
   }
   @action
   public writeEvaluate = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    this.state.evaluate = Number(event.currentTarget.value);
+    const evaluate = Number(event.currentTarget.value);
+    if (typeof(evaluate) === 'number') {
+      this.state.evaluate = evaluate;
+    }
   }
 
   @action
-  public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.user, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {
+  public addReview = (imgUrlArray: ReviewType.imgUrl[], author: ReviewType.writter, restaurant: ReviewType.restaurant, reviewText: ReviewType.reviewText, evaluate: ReviewType.evaluate, reviewId: ReviewType.reviewId) => {
     const ref = databaseRef.child('reviews').push();
     const review = {
       author,

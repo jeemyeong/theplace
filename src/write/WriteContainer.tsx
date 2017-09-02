@@ -4,9 +4,9 @@ import { ReviewType } from 'type/Review';
 import * as csstips from 'csstips';
 import { style } from 'typestyle';
 import { inject, observer } from 'mobx-react';
-import Write from './Write';
 import * as Dropzone from 'react-dropzone';
 import { Button, Form, TextArea, Icon, Image } from 'semantic-ui-react'
+import WritePreview from './WritePreview'
 
 const WriteContainerStyle = style(csstips.fillParent, {
   width: '80%',
@@ -16,18 +16,27 @@ const DropzoneStyle = style({
   width: '80%',
   margin: 'auto'
 })
-const dropZoneStyle = {
+const dropZoneStyle = style({
   margin: 'auto',
-  marginTop: '0.2em',
-  marginBottom: '0.2em',
   width: '100%',
-  height: '200px',
   borderWidth: '2px',
   borderColor: 'rgb(102, 102, 102)',
   borderStyle: 'dashed',
   borderRadius: '5px',
   display: 'table'
-}
+})
+
+const notMountedDropzoneStyle = style(
+  csstips.flexRoot,
+  csstips.centerJustified,
+  csstips.vertical, {
+  width: '100%',
+  height: '200px'
+})
+
+const imageIconWrapperStyle = style(csstips.centerCenter, {
+})
+
 interface WriteProps {
   writeStore: WriteStore;
 }
@@ -44,12 +53,16 @@ class WriteContainer extends React.Component<WriteProps, {}> {
               onDrop={this.props.writeStore.onDrop}
               maxSize={5242880}
               accept={`image/*`}
-              style={dropZoneStyle}
+              className={dropZoneStyle}
             >
-              {this.props.writeStore.state.photoFiles.length > 0 ?
-                this.props.writeStore.state.photoFiles.map((file: Dropzone.ImageFile, index: number) => <Image src={file.preview} key={index}/>) :
-                <Icon name="image" size="big"/>
-              }
+                {this.props.writeStore.state.photoFiles.length > 0 ?
+                  this.props.writeStore.state.photoFiles.map((file: Dropzone.ImageFile, index: number) => (<WritePreview index={index} key={index}/>)) :
+                  <div className={notMountedDropzoneStyle}>
+                    <div className={imageIconWrapperStyle}>
+                      <Icon name="image" size="big" />
+                    </div>
+                  </div>
+                }
             </Dropzone>
             5MB 이하의 사진을 첨부해주세요!
           </div>
@@ -66,7 +79,6 @@ class WriteContainer extends React.Component<WriteProps, {}> {
           />
           <Form.Input
             onChange={this.props.writeStore.writeEvaluate}
-            value={this.props.writeStore.state.evaluate}
             label="평가"
           />
           <Button type="submit">

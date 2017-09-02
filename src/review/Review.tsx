@@ -105,8 +105,13 @@ const commentLineStyle = style(
   textAlign: 'left'
 });
 
-const commentFormStyle = style(csstips.horizontal, {
+const commentFormStyle = style(
+  csstips.horizontal,
+  csstips.normalize, {
+})
 
+const IconButtonWrapperStyle = style({
+  margin: 'auto'
 })
 
 interface ReviewProps {
@@ -128,7 +133,7 @@ class Review extends React.Component<ReviewProps, {}> {
     const review = state.review as ReviewType.Review
     const { writtingComment } = state;
     return (
-      <div>
+      <div className={`animated fadeIn`}>
         <div className={ReviewStyle}>
           <div className={cardImageStyle(review.imgUrlArray[0])}>
             <div
@@ -177,29 +182,28 @@ class Review extends React.Component<ReviewProps, {}> {
               </span>
               {comment.commentText.length + comment.writter.displayName.length > 52 ? comment.commentText.slice(0, 52 - review.writter.displayName.length ) + '...' : comment.commentText}
               {comment.writter.uid === writtingComment.writter.uid ? 
-                <Button onClick={() => deleteComment(comment)} size="mini">
-                  Delete
-                </Button> :
+                <Icon onClick={() => deleteComment(comment)} size="large" name="close"/> :
                 null
               }
             </div>
           ))}
+          <Form onSubmit={() => addComment()}>
+            <div className={commentFormStyle}>
+              <Form.Input
+                onChange={writeComment}
+                value={writtingComment.commentText}
+                className={style(csstips.flex11)}
+              />
+              <div className={IconButtonWrapperStyle}>
+                <Icon
+                  name="conversation"
+                  size="large"
+                  onClick={() => addComment()}
+                />
+              </div>
+            </div>      
+          </Form>
         </div>
-        <Form onSubmit={() => addComment()}>
-          <div className={commentFormStyle}>
-            <Form.Input
-              onChange={writeComment}
-              value={writtingComment.commentText}
-              className={style(csstips.flex11)}
-            />
-            <Form.Button
-              type="submit"
-              size="mini"
-              content="작성"
-              className={style(csstips.flex2)}
-            />
-          </div>      
-        </Form>
       </div>      
     );
   }

@@ -43,7 +43,7 @@ class Like extends React.Component<LikeProps, {}> {
     const { like, routingStore } = this.props;
     const { push } = this.props.routingStore as RouterStore;
     return (
-      <div className={LikeStyle}>
+      <div className={`${LikeStyle} animated fadeIn`}>
         <div
           className={cardImageStyle(like.imgUrlArray[0])}
           onClick={() => push(`/reviews/${like.reviewId}`)}

@@ -102,7 +102,7 @@ class Feed extends React.Component<FeedProps, {}> {
     const { feed, routingStore } = this.props;
     const { push } = this.props.routingStore as RouterStore;
     return (
-      <div className={FeedStyle}>
+      <div className={`${FeedStyle} animated fadeIn`}>
         <div className={cardImageStyle(feed.imgUrlArray[0])}>
           <div
             className={backgroundImageWithoutReviewBoxStyle}

@@ -47,7 +47,7 @@ interface WriteProps {
 class WriteContainer extends React.Component<WriteProps, {}> {
   render() {
     return (
-      <div className={WriteContainerStyle}>
+      <div className={`${WriteContainerStyle} animated fadeIn`}>
         <Form onSubmit={() => this.props.writeStore.handleSubmit()}>
           <div className={DropzoneStyle}>
             <Dropzone

@@ -34,13 +34,21 @@ const AppStyle = style(
     width: '100%',
     height: '100%',
   }),
-  media({minWidth: 415}, {
+  media({minWidth: 415, minHeight: 736}, {
     fontFamily: 'Noto Sans KR',
     width: '414px',
     height: '736px',
     margin: 'auto',
     backgroundColor: 'white'
-}));
+  }),
+  media({minWidth: 415, maxHeight: 735}, {
+    fontFamily: 'Noto Sans KR',
+    width: '375px',
+    height: '667px',
+    margin: 'auto',
+    backgroundColor: 'white'
+  }),
+);
 
 const headerStyle = style(csstips.centerCenter, {
   zIndex: 10,

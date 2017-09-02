@@ -75,7 +75,7 @@ const titleStyle = style(csstips.centerCenter, {
 const mainStyle = style({
   position: 'relative',
   top: 0,
-  height: '89%',
+  height: '88%',
   width: '100%',
   backgroundColor: 'white',
 });

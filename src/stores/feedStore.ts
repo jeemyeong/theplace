@@ -41,7 +41,6 @@ export class FeedStore {
             state.feeds.push(reviewsFromDB[id])
           }
         }
-        console.log('GET FEEDS');
         this.state = state
       }
     }));

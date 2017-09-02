@@ -107,7 +107,8 @@ export class WriteStore {
       reviewId: reviewId,
       likeCount: 0,
       passCount: 0,
-      stringfiedDate: this.toDateString(new Date())      
+      stringfiedDate: this.toDateString(new Date()),
+      comments: []
     }
     await ref.set(review)
     alert('성공!🖐')

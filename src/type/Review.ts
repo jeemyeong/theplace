@@ -5,7 +5,13 @@ export namespace ReviewType {
   export type evaluate = number;
   export type reviewId = string;
   export type uid = string;
+  export type cid = string;
   export type stringfiedDate = string;
+  export type comment = {
+    writter: writter,
+    commentText: string,
+    cid: string
+  };
   export type writter = {
     uid: string,
     displayName: string,
@@ -20,6 +26,7 @@ export namespace ReviewType {
     reviewId: reviewId,
     likeCount: number,
     passCount: number,
-    stringfiedDate: stringfiedDate
+    stringfiedDate: stringfiedDate,
+    comments: comment[]
   };
 }

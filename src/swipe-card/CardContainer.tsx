@@ -81,14 +81,14 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
 
     let newIndex = 0;
     for (; newIndex < feeds.length; newIndex++) {
-      const feed = feeds[index];
+      const feed = feeds[newIndex];
       if ((!(userInfo as UserType).like || !(userInfo as UserType).like[feed.reviewId]) && (!(userInfo as UserType).pass || !(userInfo as UserType).pass[feed.reviewId])) {
         break;
       } else {
         // 
       }
     }
-    const c = (children as React.ReactNode[])[index]
+    const c = (children as React.ReactNode[])[newIndex]
     // tslint:disable-next-line:no-any
     const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : '피드가 없어요ㅠㅠ';
 

@@ -41,6 +41,7 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "deploy": "react-scripts-ts build && gh-pages -d build -r https://github.com/theplace/theplace.github.io -b master",
-    "initSeedData": "tsc && node build/dist/database/initSeedData.js"
+    "removeAllData": "tsc && node build/dist/database/removeAllData.js",
+    "initSeedData": "tsc && node build/dist/database/removeAllData.js && node build/dist/database/initSeedData.js"
   }
 }

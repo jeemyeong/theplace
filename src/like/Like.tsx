@@ -16,11 +16,8 @@ const LikeStyle = style({
   position: 'relative'
 });
 
-const cardImageStyle = (imgUrl: string) => style(
-  /** Default */
-  media({minWidth: 0, maxWidth: 999}, {backgroundSize: 'cover'}),
-  /** Change for bigger screens */
-  media({minWidth: 1000}, {backgroundSize: '50%'}), {
+const cardImageStyle = (imgUrl: string) => style({
+  backgroundSize: 'cover',  
   backgroundImage: `url(${imgUrl})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',

@@ -5,13 +5,15 @@ import { ReviewType } from '../type/Review'
 
 type AuthState = {
   authed: boolean,
+  loading: boolean
   userInfo?: UserType
 };
 
 export class AuthStore {
   @observable
   state: AuthState = {
-    authed: false
+    authed: false,
+    loading: true
   };
 
   @action
@@ -19,6 +21,12 @@ export class AuthStore {
     const provider = new firebase.auth.FacebookAuthProvider()
     auth.signInWithPopup(provider)
   }
+
+  @action
+  public loaded = () => {
+    this.state.loading = false;
+  }
+  
   @action
   public setAuthState = (user: firebase.User) => {
     databaseRef.child('users').child(user.uid).once('value', action((snapshot: firebase.database.DataSnapshot) => {
@@ -35,6 +43,7 @@ export class AuthStore {
         }
         const state: AuthState = {
           authed: true,
+          loading: false,
           userInfo
         }
         this.state = state

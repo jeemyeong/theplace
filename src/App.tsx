@@ -23,6 +23,14 @@ interface AppProps {
   authStore?: AuthStore;
 }
 
+const loadingWrapperStyle = style({
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 10
+})
+
 const BackgroundStyle = style(csstips.fillParent, csstips.flexRoot, {
   backgroundColor: '#333333'
 });
@@ -112,12 +120,24 @@ class App extends React.Component<AppProps, {}> {
         userRef.child('uid').set(user.uid).then(() => setAuthState(user))
       }
     })
+    setTimeout(() => {(this.props.authStore as AuthStore).loaded()}, 2500);
   }
   componentWillUnmount() {
     this.removeListener()
   }
   render() {
     const {loginWithFacebook, state} = this.props.authStore as AuthStore;
+    if (!!state.loading) {
+      return (
+        <div className={BackgroundStyle}>
+          <div className={AppStyle}>
+            <div className={loadingWrapperStyle}>
+                <Icon loading={true} name="spinner" size="big" />
+            </div>
+          </div>
+        </div>
+      )
+    }
     if (!state.authed) {
       return (
         <div className={BackgroundStyle}>

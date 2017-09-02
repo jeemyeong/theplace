@@ -35,7 +35,18 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
     }
     this.handlePan = this.handlePan.bind(this)
   }
-  
+  resetPosition () {
+    const initialPosition = {
+      x: 37.5,
+      y: 37.5
+    }
+    this.setState({
+      x: initialPosition.x,
+      y: initialPosition.y,
+      initialPosition: initialPosition,
+      startPosition: { x: 0, y: 0 }
+    })
+  }
   panstart () {
     const { x, y } = this.state
     this.setState({
@@ -63,6 +74,7 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
       this.props[`onSwipe${direction}`]()
       this.props[`onOutScreen${direction}`]()
     } else {
+      this.resetPosition()
       this.setState({ animation: true })
     }
 
@@ -100,6 +112,7 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
     this.hammer.on('panstart panend pancancel panmove', this.handlePan)
     this.hammer.on('swipestart swipeend swipecancel swipemove', this.handleSwipe)
 
+    this.resetPosition()
   }
   componentWillUnmount () {
     if (this.hammer) {

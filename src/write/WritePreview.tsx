@@ -4,10 +4,10 @@ import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
-import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
+import { WriteStore } from 'stores/writeStore';
 
-const FeedStyle = style({
+const ReviewStyle = style({
   paddingBottom: '100%',
   height: 0,
   width: '100%',
@@ -17,7 +17,7 @@ const FeedStyle = style({
 
 const cardImageStyle = (imgUrl: string) => style({
   backgroundSize: 'cover',
-  backgroundImage: `url("${imgUrl}")`,
+  backgroundImage: `url(${imgUrl})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundColor: 'white',
@@ -90,20 +90,20 @@ const nicknameStyle = style({
   fontWeight: 'bold'
 });
 
-interface FeedProps {
-  feed: ReviewType.Review;
-  routingStore?: RouterStore;
+interface WritePreviewProps {
+  writeStore?: WriteStore;  
+  index: number;
 }
 
-@inject('routingStore')
+@inject('writeStore')
 @observer
-class Feed extends React.Component<FeedProps, {}> {
+class WritePreview extends React.Component<WritePreviewProps, {}> {
   public render(): JSX.Element {
-    const { feed, routingStore } = this.props;
-    const { push } = this.props.routingStore as RouterStore;
+    const { index } = this.props;
+    const { state } = this.props.writeStore as WriteStore;
     return (
-      <div className={FeedStyle}>
-        <div className={cardImageStyle(feed.imgUrlArray[0])}>
+      <div className={ReviewStyle}>
+        <div className={!!state.photoFiles[0].preview ? cardImageStyle(state.photoFiles[index].preview as string) : ''}>
           <div
             className={backgroundImageWithoutReviewBoxStyle}
           >
@@ -115,23 +115,22 @@ class Feed extends React.Component<FeedProps, {}> {
             <div className={restaurantAndEvaluateBoxStyle}>
               <div
                 className={restaurantStyle}
-                onClick={() => push(`/reviews/${feed.reviewId}`)}
               >
-                {feed.restaurant}
+                {state.restaurant}
               </div>
-              <Rating rating={feed.evaluate} className={evaluateStyle}/>
+              <Rating rating={state.evaluate} className={evaluateStyle}/>
             </div>
             <div className={reviewLineStyle}>
               <div className={profileImageWrapper}>
                 <Image
-                  src={feed.writter.photoUrl}
+                  src={state.writter.photoUrl}
                   shape={'circular'}
                 />
               </div>
               <span className={nicknameStyle}>
-                {feed.writter.displayName + ' '}
+                {state.writter.displayName + ' '}
               </span>
-              {feed.reviewText.length + feed.writter.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.writter.displayName.length ) + '...' : feed.reviewText}
+              {state.reviewText.length + state.writter.displayName.length > 52 ? state.reviewText.slice(0, 52 - state.writter.displayName.length ) + '...' : state.reviewText}
             </div>
           </div> 
         </div>
@@ -140,4 +139,4 @@ class Feed extends React.Component<FeedProps, {}> {
   }
 }
 
-export default Feed;
+export default WritePreview;

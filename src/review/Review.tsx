@@ -1,27 +1,24 @@
 import * as React from 'react';
-import { Divider, Image } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
+import { Button, Form, TextArea, Icon, Image } from 'semantic-ui-react'
+import { ReviewStore } from 'stores/reviewStore';
 
 const ReviewStyle = style({
-  flexGrow: 1,
   paddingBottom: '100%',
   height: 0,
   width: '100%',
-  backgroundColor: 'yellow',
+  backgroundColor: 'red',
   position: 'relative'
 });
 
-const cardImageStyle = (imgUrl: string) => style(
-  /** Default */
-  media({minWidth: 0, maxWidth: 999}, {backgroundSize: 'cover'}),
-  /** Change for bigger screens */
-  media({minWidth: 1000}, {backgroundSize: '50%'}), {
-  backgroundImage: `url(${imgUrl})`,
+const cardImageStyle = (imgUrl: string) => style({
+  backgroundSize: 'cover',
+  backgroundImage: `url("${imgUrl}")`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundColor: 'white',
@@ -63,28 +60,30 @@ const restaurantAndEvaluateBoxStyle = style(
 const restaurantStyle = style(
   csstips.content, {
   fontWeight: 'bold',
-  fontSize: '7vw',
+  fontSize: '150%',
   marginRight: '3%',
 });
 
 const evaluateStyle = style(
-  csstips.flex, {
-  fontSize: '4.5vw',
+  csstips.normalize, {
+  fontSize: '80%',
 });
 
-const reviewLineStyle = style({
+const reviewLineStyle = style(
+  csstips.normalize, {
   color: 'white',
-  fontSize: '3.5vw',
+  fontSize: '90%',
   paddingLeft: '3%',
   paddingTop: '3%',
   paddingRight: '3%',
   paddingBottom: '1%',
+  textAlign: 'left'
 });
 
 const profileImageWrapper = style({
   float: 'left',
   display: 'inline-block',
-  width: '5vw',
+  width: '10%',
   marginRight: '1%'
 });
 
@@ -92,51 +91,115 @@ const nicknameStyle = style({
   fontWeight: 'bold'
 });
 
+const commentLinesStyle = style(csstips.vertical, {
+});
+
+const commentLineStyle = style(
+  csstips.normalize, {
+  color: 'black',
+  fontSize: '90%',
+  paddingLeft: '3%',
+  paddingTop: '3%',
+  paddingRight: '3%',
+  paddingBottom: '1%',
+  textAlign: 'left'
+});
+
+const commentFormStyle = style(csstips.horizontal, {
+
+})
+
 interface ReviewProps {
-  review: ReviewType.Review;
+  reviewStore?: ReviewStore
   routingStore?: RouterStore;
+  // writeComment: (event: React.SyntheticEvent<HTMLInputElement>) => void;
+  // addComment: () => void;
+  // deleteComment: (comment: ReviewType.comment) => void;
 }
 
+@inject('reviewStore')
 @inject('routingStore')
 @observer
 class Review extends React.Component<ReviewProps, {}> {
   public render(): JSX.Element {
-    const { review, routingStore } = this.props;
+    const { reviewStore, routingStore } = this.props;
     const { push } = this.props.routingStore as RouterStore;
+    const { state, writeComment, addComment, deleteComment } = this.props.reviewStore as ReviewStore;
+    const review = state.review as ReviewType.Review
+    const { writtingComment } = state;
     return (
-      <div className={ReviewStyle}>
-        <div className={cardImageStyle(review.imgUrlArray[0])}>
-          <div
-            className={backgroundImageWithoutReviewBoxStyle}
-          >
-            {null}
-          </div>
-          <div
-            className={reviewBoxStyle}
-          >
-            <div className={restaurantAndEvaluateBoxStyle}>
-              <div
-                className={restaurantStyle}
-                onClick={() => push(`/reviews/${review.reviewId}`)}
-              >
-                {review.restaurant}
-              </div>
-              <Rating rating={review.evaluate} className={evaluateStyle}/>
+      <div>
+        <div className={ReviewStyle}>
+          <div className={cardImageStyle(review.imgUrlArray[0])}>
+            <div
+              className={backgroundImageWithoutReviewBoxStyle}
+            >
+              {null}
             </div>
-            <div className={reviewLineStyle}>
+            <div
+              className={reviewBoxStyle}
+            >
+              <div className={restaurantAndEvaluateBoxStyle}>
+                <div
+                  className={restaurantStyle}
+                  onClick={() => push(`/reviews/${review.reviewId}`)}
+                >
+                  {review.restaurant}
+                </div>
+                <Rating rating={review.evaluate} className={evaluateStyle}/>
+              </div>
+              <div className={reviewLineStyle}>
+                <div className={profileImageWrapper}>
+                  <Image
+                    src={review.writter.photoUrl}
+                    shape={'circular'}
+                  />
+                </div>
+                <span className={nicknameStyle}>
+                  {review.writter.displayName + ' '}
+                </span>
+                {review.reviewText.length + review.writter.displayName.length > 52 ? review.reviewText.slice(0, 52 - review.writter.displayName.length ) + '...' : review.reviewText}
+              </div>
+            </div> 
+          </div>
+        </div>      
+        <div className={commentLinesStyle}>
+          {!!review.comments && review.comments.length > 0 && review.comments.map((comment, index) => (
+            <div className={commentLineStyle} key={index}>
               <div className={profileImageWrapper}>
                 <Image
-                  src={review.user.photoUrl}
+                  src={comment.writter.photoUrl}
                   shape={'circular'}
                 />
               </div>
               <span className={nicknameStyle}>
-                {review.user.displayName + ' '}
+                {comment.writter.displayName + ' '}
               </span>
-              {review.reviewText.length + review.user.displayName.length > 52 ? review.reviewText.slice(0, 52 - review.user.displayName.length ) + '...' : review.reviewText}
+              {comment.commentText.length + comment.writter.displayName.length > 52 ? comment.commentText.slice(0, 52 - review.writter.displayName.length ) + '...' : comment.commentText}
+              {comment.writter.uid === writtingComment.writter.uid ? 
+                <Button onClick={() => deleteComment(comment)} size="mini">
+                  Delete
+                </Button> :
+                null
+              }
             </div>
-          </div> 
+          ))}
         </div>
+        <Form onSubmit={() => addComment()}>
+          <div className={commentFormStyle}>
+            <Form.Input
+              onChange={writeComment}
+              value={writtingComment.commentText}
+              className={style(csstips.flex11)}
+            />
+            <Form.Button
+              type="submit"
+              size="mini"
+              content="작성"
+              className={style(csstips.flex2)}
+            />
+          </div>      
+        </Form>
       </div>      
     );
   }

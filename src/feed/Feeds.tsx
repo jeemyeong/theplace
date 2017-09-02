@@ -6,10 +6,12 @@ import { UserType } from 'type/User';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as PropTypes from 'prop-types';
-import Cards, { DraggableCard } from '../swipe-card';
+import CardContainer, { DraggableCard } from '../swipe-card';
 import './Feeds.css';
 
 const FeedsStyle = style({
+  width: '100%',
+  height: '100%'
 });
 
 interface FeedsProps {
@@ -24,11 +26,11 @@ const onSwipeRightWrapper = (review: ReviewType.Review, onSwipeRight: (review: R
 const CustomAlertLeft = <span>Pass</span>
 const CustomAlertRight = <span>Like</span>
 const CustomGoBackJSXElement = (goBack: () => void) => (
-  <button
+  <div
     onClick={goBack}
   >
-    이전카드보기
-  </button>
+    취소
+  </div>
 )
 
 const Feeds = ({
@@ -37,29 +39,24 @@ const Feeds = ({
   onSwipeLeft,
   onSwipeRight
 }: FeedsProps) => (
-  <div className={FeedsStyle}>
-    <Cards
-      onEnd={() => alert('끝났습니다!!!')}
-      className={'master-root'}
-      alertRight={CustomAlertRight} 
-      alertLeft={CustomAlertLeft} 
-      goBackJSXElement={CustomGoBackJSXElement} 
-    >
-      {feeds
-        .filter((feed) => !((feed.likeUsers && feed.likeUsers[userInfo.uid]) || (feed.passUsers && feed.passUsers[userInfo.uid])))
-        .map((feed, key) => 
-          <DraggableCard
-            key={key}
-            onSwipeLeft={onSwipeLeftWrapper(feed, onSwipeLeft)} 
-            onSwipeRight={onSwipeRightWrapper(feed, onSwipeRight)}
-          >
-            <Feed
-              feed={feed}
-            />
-          </DraggableCard>
-        )}
-    </Cards>
-  </div>
+  <CardContainer
+    alertRight={CustomAlertRight} 
+    alertLeft={CustomAlertLeft} 
+    goBackJSXElement={CustomGoBackJSXElement} 
+  >
+    {feeds
+      .map((feed, key) => 
+        <DraggableCard
+          key={key}
+          onSwipeLeft={onSwipeLeftWrapper(feed, onSwipeLeft)} 
+          onSwipeRight={onSwipeRightWrapper(feed, onSwipeRight)}
+        >
+          <Feed
+            feed={feed}
+          />
+        </DraggableCard>
+      )}
+  </CardContainer>
 );
 
 export default Feeds;

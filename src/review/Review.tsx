@@ -17,7 +17,7 @@ const ReviewStyle = style({
 
 const cardImageStyle = (imgUrl: string) => style({
   backgroundSize: 'cover',
-  backgroundImage: `url(${imgUrl})`,
+  backgroundImage: `url("${imgUrl}")`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundColor: 'white',

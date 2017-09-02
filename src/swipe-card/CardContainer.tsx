@@ -47,18 +47,6 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
     (this.props.cardStore as CardStore).removeCard(side, children as React.ReactNode[], onEnd);
   }
   
-  componentDidMount() {
-    const { index, containerSize } = (this.props.cardStore as CardStore).state
-    this.container = ReactDOM.findDOMNode(this);
-    (this.props.cardStore as CardStore).setSize(this.container)
-    window.addEventListener('resize', () => (this.props.cardStore as CardStore).setSize(this.container))
-  }
-
-  componentWillUnmount() {
-    (this.props.cardStore as CardStore).unmount()
-    window.removeEventListener('resize', () => (this.props.cardStore as CardStore).setSize(this.container))
-  }
-
   goBack = () => {
     if ((this.props.cardStore as CardStore).goBack()) {
       (this.props.feedStore as FeedStore).unDo(((this.props.authStore as AuthStore).state.userInfo as UserType))
@@ -70,9 +58,6 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
     const { feeds } = (this.props.feedStore as FeedStore).state
     const { userInfo } = (this.props.authStore as AuthStore).state
     const { children, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props
-    if (!loaded) {
-      return  <div className={CardContainerStyle} />
-    }
     
     const props = {
       containerSize,

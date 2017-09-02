@@ -26,31 +26,14 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
   constructor (props: DraggableCardProps) {
     super(props)
     this.state = {
-      x: 0,
-      y: 0,
-      initialPosition: { x: 0, y: 0 },
+      x: 37.5,
+      y: 37.5,
+      initialPosition: { x: 37.5, y: 37.5 },
       startPosition: { x: 0, y: 0 },
       animation: null,
       pristine: true
     }
-    this.resetPosition = this.resetPosition.bind(this)
     this.handlePan = this.handlePan.bind(this)
-  }
-  resetPosition () {
-    const { x, y } = this.props.containerSize as { x: number, y: number }
-    const card: HTMLElement = ReactDOM.findDOMNode(this)
-
-    const initialPosition = {
-      x: Math.round((x - card.offsetWidth) / 2),
-      y: Math.round((y - card.offsetHeight) / 2)
-    }
-
-    this.setState({
-      x: initialPosition.x,
-      y: initialPosition.y,
-      initialPosition: initialPosition,
-      startPosition: { x: 0, y: 0 }
-    })
   }
   
   panstart () {
@@ -80,7 +63,6 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
       this.props[`onSwipe${direction}`]()
       this.props[`onOutScreen${direction}`]()
     } else {
-      this.resetPosition()
       this.setState({ animation: true })
     }
 
@@ -118,8 +100,6 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
     this.hammer.on('panstart panend pancancel panmove', this.handlePan)
     this.hammer.on('swipestart swipeend swipecancel swipemove', this.handleSwipe)
 
-    this.resetPosition()
-    window.addEventListener('resize', this.resetPosition)
   }
   componentWillUnmount () {
     if (this.hammer) {
@@ -127,7 +107,6 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
       this.hammer.destroy()
       this.hammer = null
     }
-    window.removeEventListener('resize', this.resetPosition)
   }
   render () {
     const { x, y, animation, pristine } = this.state

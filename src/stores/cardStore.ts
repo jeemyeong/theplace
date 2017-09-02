@@ -19,19 +19,9 @@ export class CardStore {
     alertRight: false,
     alertTop: false,
     alertBottom: false,
-    loaded: false,
-    containerSize: { x: 0, y: 0 }
+    loaded: true,
+    containerSize: { x: 375, y: 375 }
   };
-
-  @action
-  public setSize = (container: HTMLElement) => {
-    const containerSize = {
-      x: container.offsetWidth,
-      y: container.offsetHeight
-    }
-    this.state.containerSize = containerSize;
-    this.state.loaded = true;
-  }
 
   @action
   public unmount = () => {

@@ -12,7 +12,7 @@ const ReviewStyle = style({
   paddingBottom: '100%',
   height: 0,
   width: '100%',
-  backgroundColor: 'red',
+  backgroundColor: 'white',
   position: 'relative'
 });
 

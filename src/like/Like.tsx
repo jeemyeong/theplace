@@ -12,7 +12,7 @@ const LikeStyle = style({
   paddingBottom: '100%',
   height: 0,
   width: '100%',
-  backgroundColor: 'yellow',
+  backgroundColor: 'white',
   position: 'relative'
 });
 

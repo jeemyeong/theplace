@@ -41,13 +41,14 @@ interface WriteProps {
   writeStore: WriteStore;
 }
 
+@inject('routingStore')
 @inject('writeStore')
 @observer    
 class WriteContainer extends React.Component<WriteProps, {}> {
   render() {
     return (
       <div className={WriteContainerStyle}>
-        <Form onSubmit={this.props.writeStore.handleSubmit}>
+        <Form onSubmit={() => this.props.writeStore.handleSubmit()}>
           <div className={DropzoneStyle}>
             <Dropzone
               onDrop={this.props.writeStore.onDrop}

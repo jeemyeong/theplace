@@ -3,6 +3,7 @@ import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import { databaseRef, storage } from '../database/database';
 import { toJS } from 'mobx';
+import authStore from './authStore';
 
 type FeedsState = {
   feeds: ReviewType.Review[]
@@ -50,6 +51,7 @@ export class FeedStore {
   likeCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(toJS(review))
+    authStore.likeReview(toJS(review))
     this.state.history.push(['like', review.reviewId])
   }
   
@@ -57,6 +59,7 @@ export class FeedStore {
   passCard(review: ReviewType.Review, userInfo: UserType) {
     databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
     databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(toJS(review))
+    authStore.passReview(toJS(review))
     this.state.history.push(['pass', review.reviewId])
   }
 
@@ -70,6 +73,11 @@ export class FeedStore {
     const reviewId = lastDone[1]
     databaseRef.child('reviews').child(reviewId).child(`${likeOrPass}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } })
     databaseRef.child('users').child(userInfo.uid).child(likeOrPass).child(reviewId).set({})
+    if (likeOrPass === 'like') {
+      authStore.unDoLike(reviewId)
+    } else {
+      authStore.unDoPass(reviewId)
+    }
   }
 }
 

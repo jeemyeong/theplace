@@ -40,13 +40,11 @@ const Feeds = ({
   onSwipeRight
 }: FeedsProps) => (
   <CardContainer
-    onEnd={() => alert('끝났습니다!!!')}
     alertRight={CustomAlertRight} 
     alertLeft={CustomAlertLeft} 
     goBackJSXElement={CustomGoBackJSXElement} 
   >
     {feeds
-      .filter((feed: ReviewType.Review) => ((!userInfo.like || !userInfo.like[feed.reviewId]) && (!userInfo.pass || !userInfo.pass[feed.reviewId])))
       .map((feed, key) => 
         <DraggableCard
           key={key}

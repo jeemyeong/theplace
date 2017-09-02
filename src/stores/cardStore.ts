@@ -64,6 +64,11 @@ export class CardStore {
       return false
     }
   }
+
+  @action
+  public increaseIndex = () => {
+    this.state.index = this.state.index + 1
+  }
 }
 
 export default new CardStore();

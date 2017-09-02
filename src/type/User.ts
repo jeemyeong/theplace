@@ -4,7 +4,7 @@ export type UserType = {
   displayName: string | null,
   photoURL: string | null,
   email: string | null,
-  like: ReviewType.Review[],
-  pass: ReviewType.Review[],
+  like: {[reviewId: string]: ReviewType.Review},
+  pass: {[reviewId: string]: ReviewType.Review},
   write: ReviewType.Review[],
 };

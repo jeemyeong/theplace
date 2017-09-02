@@ -5,6 +5,7 @@ import { CardStore } from 'stores/cardStore';
 import { FeedStore } from 'stores/feedStore';
 import { AuthStore } from 'stores/authStore';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import { UserType } from '../type/User'
 import { style } from 'typestyle';
 import * as csstips from 'csstips';
@@ -66,14 +67,26 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
 
   render () {
     const { index, containerSize, loaded } = (this.props.cardStore as CardStore).state
+    const { feeds } = (this.props.feedStore as FeedStore).state
+    const { userInfo } = (this.props.authStore as AuthStore).state
     const { children, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props
     if (!loaded) {
       return  <div className={CardContainerStyle} />
     }
-
+    
     const props = {
       containerSize,
       ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => this.removeCard(d) }), {}),
+    }
+
+    let newIndex = 0;
+    for (; newIndex < feeds.length; newIndex++) {
+      const feed = feeds[index];
+      if ((!(userInfo as UserType).like || !(userInfo as UserType).like[feed.reviewId]) && (!(userInfo as UserType).pass || !(userInfo as UserType).pass[feed.reviewId])) {
+        break;
+      } else {
+        // 
+      }
     }
     const c = (children as React.ReactNode[])[index]
     // tslint:disable-next-line:no-any

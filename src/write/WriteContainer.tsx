@@ -41,11 +41,28 @@ interface WriteProps {
   writeStore: WriteStore;
 }
 
+const loadingWrapperStyle = style({
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 10
+})
+
 @inject('routingStore')
 @inject('writeStore')
 @observer    
 class WriteContainer extends React.Component<WriteProps, {}> {
   render() {
+    const { state } = this.props.writeStore as WriteStore;    
+    if (!!state.loading) {
+      return (
+        <div className={loadingWrapperStyle}>
+            <Icon loading={true} name="spinner" size="big" />
+        </div>
+      )
+    }
+
     return (
       <div className={WriteContainerStyle}>
         <Form onSubmit={() => this.props.writeStore.handleSubmit()}>

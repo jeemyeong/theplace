@@ -12,6 +12,7 @@ type WriteState = {
   evaluate: ReviewType.evaluate,
   restaurant: ReviewType.restaurant
   writter: ReviewType.writter
+  loading: boolean
 };
 
 export class WriteStore {
@@ -25,7 +26,8 @@ export class WriteStore {
       uid: '',
       displayName: '',
       photoUrl: '',
-    }
+    },
+    loading: false
   };
   storageRef = storage().ref();
 
@@ -89,12 +91,14 @@ export class WriteStore {
       reviewText: '',
       photoFiles: [],
       evaluate: 0,
-      writter: this.state.writter
+      writter: this.state.writter,
+      loading: false
     };
     this.state = state
   }
 
   addReview = async () => {
+    this.state.loading = true
     const ref = databaseRef.child('reviews').push()
     const reviewId = ref.key as string
     const imgUrlArray = await this.getUrlsByUploading(this.state.photoFiles, reviewId);

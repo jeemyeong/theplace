@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Divider, Image } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
+import IronImage from '../modules/IronImage';
 
 const FeedStyle = style({
   paddingBottom: '100%',
@@ -63,13 +64,11 @@ const restaurantStyle = style(
   marginRight: '3%',
 });
 
-const evaluateStyle = style(
-  csstips.normalize, {
+const evaluateStyle = style({
   fontSize: '80%',
 });
 
-const reviewLineStyle = style(
-  csstips.normalize, {
+const reviewLineStyle = style({
   color: 'white',
   fontSize: '90%',
   paddingLeft: '3%',
@@ -123,9 +122,8 @@ class Feed extends React.Component<FeedProps, {}> {
             </div>
             <div className={reviewLineStyle}>
               <div className={profileImageWrapper}>
-                <Image
+                <IronImage
                   src={feed.writter.photoUrl}
-                  shape={'circular'}
                 />
               </div>
               <span className={nicknameStyle}>

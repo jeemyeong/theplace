@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Divider, Image } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Rating from '../modules/Rating';
 import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
+import IronImage from '../modules/IronImage';
 
 const LikeStyle = style({
   flexGrow: 1,
@@ -16,9 +17,8 @@ const LikeStyle = style({
   position: 'relative'
 });
 
-const cardImageStyle = (imgUrl: string) => style({
+const cardImageWrapperStyle = style({
   backgroundSize: 'cover',  
-  backgroundImage: `url("${imgUrl}")`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundColor: 'white',
@@ -31,7 +31,7 @@ const cardImageStyle = (imgUrl: string) => style({
   position: 'absolute'
 });
 
-interface LikeProps {
+export interface LikeProps {
   like: ReviewType.Review;
   routingStore?: RouterStore;
 }
@@ -45,9 +45,12 @@ class Like extends React.Component<LikeProps, {}> {
     return (
       <div className={LikeStyle}>
         <div
-          className={cardImageStyle(like.imgUrlArray[0])}
-          onClick={() => push(`/reviews/${like.reviewId}`)}
-        />
+          className={cardImageWrapperStyle}
+          onClick={() => push(`/reviews/${like.reviewId}`)}>
+            <IronImage
+              src={like.imgUrlArray[0]}
+            />
+        </div>
       </div>      
     );
   }

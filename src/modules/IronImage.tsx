@@ -33,7 +33,7 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
         `background-image: url('${this.props.src}')`
       );
       toChange.classList.add('iron-image-fade-in');
-      this.setState({ironImageHd : toChange, onload: true}, () => console.log("COMPELETE"))
+      this.setState({ironImageHd : toChange, onload: true}, () => console.log('COMPELETE'))
     }
   }
 
@@ -57,7 +57,7 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
         />
         <div 
           className="iron-image-preload" 
-          style={{ backgroundColor: "azure" }}
+          style={{ backgroundColor: 'azure' }}
         />
       </div>
     );

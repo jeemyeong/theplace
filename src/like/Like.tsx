@@ -46,7 +46,8 @@ class Like extends React.Component<LikeProps, {}> {
       <div className={LikeStyle}>
         <div
           className={cardImageWrapperStyle}
-          onClick={() => push(`/reviews/${like.reviewId}`)}>
+          onClick={() => push(`/reviews/${like.reviewId}`)}
+        >
             <IronImage
               src={like.imgUrlArray[0]}
             />

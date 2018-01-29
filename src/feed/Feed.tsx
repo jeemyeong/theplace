@@ -12,16 +12,11 @@ const FeedStyle = style({
   paddingBottom: '100%',
   height: 0,
   width: '100%',
-  backgroundColor: 'red',
+  backgroundColor: 'white',
   position: 'relative'
 });
 
-const cardImageStyle = (imgUrl: string) => style({
-  backgroundSize: 'cover',
-  backgroundImage: `url("${imgUrl}")`,
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundColor: 'white',
+const cardImageStyle = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -102,36 +97,40 @@ class Feed extends React.Component<FeedProps, {}> {
     const { push } = this.props.routingStore as RouterStore;
     return (
       <div className={FeedStyle}>
-        <div className={cardImageStyle(feed.imgUrlArray[0])}>
-          <div
-            className={backgroundImageWithoutReviewBoxStyle}
+        <div className={cardImageStyle}>
+          <IronImage
+            src={feed.imgUrlArray[0]}
           >
-            {null}
-          </div>
-          <div
-            className={reviewBoxStyle}
-          >
-            <div className={restaurantAndEvaluateBoxStyle}>
-              <div
-                className={restaurantStyle}
-                onClick={() => push(`/reviews/${feed.reviewId}`)}
-              >
-                {feed.restaurant}
-              </div>
-              <Rating rating={feed.evaluate} className={evaluateStyle}/>
+            <div
+              className={backgroundImageWithoutReviewBoxStyle}
+            >
+              {null}
             </div>
-            <div className={reviewLineStyle}>
-              <div className={profileImageWrapper}>
-                <IronImage
-                  src={feed.writter.photoUrl}
-                />
+            <div
+              className={reviewBoxStyle}
+            >
+              <div className={restaurantAndEvaluateBoxStyle}>
+                <div
+                  className={restaurantStyle}
+                  onClick={() => push(`/reviews/${feed.reviewId}`)}
+                >
+                  {feed.restaurant}
+                </div>
+                <Rating rating={feed.evaluate} className={evaluateStyle}/>
               </div>
-              <span className={nicknameStyle}>
-                {feed.writter.displayName + ' '}
-              </span>
-              {feed.reviewText.length + feed.writter.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.writter.displayName.length ) + '...' : feed.reviewText}
+              <div className={reviewLineStyle}>
+                <div className={profileImageWrapper}>
+                  <IronImage
+                    src={feed.writter.photoUrl}
+                  />
+                </div>
+                <span className={nicknameStyle}>
+                  {feed.writter.displayName + ' '}
+                </span>
+                {feed.reviewText.length + feed.writter.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.writter.displayName.length ) + '...' : feed.reviewText}
+              </div>
             </div>
-          </div> 
+          </IronImage>
         </div>
       </div>      
     );

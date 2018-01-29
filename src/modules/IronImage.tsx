@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { style, media } from 'typestyle';
+import './IronImage.css';
 
 export interface IronImageProps {
   src: string
@@ -54,10 +55,12 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
               )
             }
           }}
-        />
+        >
+          {this.props.children}
+        </div>
         <div 
           className="iron-image-preload" 
-          style={{ backgroundColor: 'azure' }}
+          style={{ backgroundImage: 'url(https://loading.io/spinners/balls/index.circle-slack-loading-icon.svg)' }}
         />
       </div>
     );

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { style, media } from 'typestyle';
 import './IronImage.css';
 
 export interface IronImageProps {
@@ -9,65 +8,32 @@ export interface IronImageProps {
 export interface IronImageState {
   init: boolean,
   onload: boolean,
-  ironImageHd: HTMLDivElement | null;
 }
 
-const cardImageStyle = style({
-  width: '100%'
-})
-
 class IronImage extends React.Component<IronImageProps, IronImageState> {
-    private mounted: boolean;
   constructor (props: IronImageProps) {
     super(props)
-    this.state = { init: false, onload: false, ironImageHd: null }
-  }
-
-  loadImage(imageLoadedElem: HTMLDivElement | null) { 
-    const hdLoaderImg = new Image();
-
-    hdLoaderImg.src = this.props.src;
-
-    hdLoaderImg.onload = () => {
-      const toChange: HTMLDivElement = (this.state.ironImageHd as HTMLDivElement);
-      toChange.setAttribute(
-        'style',
-        `background-image: url('${this.props.src}')`
-      );
-      toChange.classList.add('iron-image-fade-in');
-      if (this.mounted) {
-          this.setState({ironImageHd : toChange, onload: true})
-      }
-    }
-  }
-  componentDidMount() {
-    this.mounted = true;
-  }
-  componentWillUnmount() {
-    this.mounted = false;
+    this.state = { init: false, onload: false }
   }
 
   render() {
-    const { init } = this.state;
+    const { onload } = this.state;
     const { src } = this.props;
     return (
       <div className="iron-image-container">
-        <div 
-          className="iron-image-loaded" 
-          ref={imageLoadedElem => {
-            if (this.state.init === false) {
-              this.setState(
-                {ironImageHd: imageLoadedElem, init: true}, () => this.loadImage(imageLoadedElem)
-              )
-            }
-          }}
-        >
-          {this.props.children}
-        </div>
-        <div 
-          className="iron-image-preload" 
-          style={{ backgroundImage: 'url(https://loading.io/spinners/balls/index.circle-slack-loading-icon.svg)' }}
-        />
+        { onload ?
+            <div
+                className="iron-image-loaded iron-image-fade-in"
+                style={{backgroundImage: `url('${this.props.src}')`}}
+            >
+                {this.props.children}
+            </div> :
+            <div
+                className="iron-image-preload"
+                style={{ backgroundImage: 'url(https://loading.io/spinners/balls/index.circle-slack-loading-icon.svg)' }}
+            />
+        }
+        <img style={{visibility: "hidden"}} src={src} onLoad={() => this.setState({onload: true})}/>
       </div>
     );
   }

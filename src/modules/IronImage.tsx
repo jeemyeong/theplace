@@ -31,11 +31,9 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
             <div
                 className="iron-image-preload"
                 style={{ backgroundImage: 'url(https://loading.io/spinners/balls/index.circle-slack-loading-icon.svg)' }}
-            >
-              <img style={{visibility: 'hidden'}} src={src} onLoad={() => this.setState({onload: true})}/>
-            </div>
-            
+            />
         }
+        <img style={{visibility: "hidden"}} src={src} onLoad={() => this.setState({onload: true})}/>
       </div>
     );
   }

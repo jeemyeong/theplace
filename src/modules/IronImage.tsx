@@ -17,6 +17,7 @@ const cardImageStyle = style({
 })
 
 class IronImage extends React.Component<IronImageProps, IronImageState> {
+    private mounted: boolean;
   constructor (props: IronImageProps) {
     super(props)
     this.state = { init: false, onload: false, ironImageHd: null }
@@ -34,13 +35,18 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
         `background-image: url('${this.props.src}')`
       );
       toChange.classList.add('iron-image-fade-in');
-      this.setState({ironImageHd : toChange, onload: true}, () => console.log('COMPELETE'))
+      if (this.mounted) {
+          this.setState({ironImageHd : toChange, onload: true})
+      }
     }
   }
-
-  handleImageLoaded(src: string) {
-    this.setState({init: true})
+  componentDidMount() {
+    this.mounted = true;
   }
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
   render() {
     const { init } = this.state;
     const { src } = this.props;

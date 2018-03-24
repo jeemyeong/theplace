@@ -12,6 +12,7 @@ import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { auth, databaseRef } from './database/database';
+import UserInfo = firebase.UserInfo;
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -107,17 +108,15 @@ class App extends React.Component<AppProps, {}> {
     this.removeListener = auth.onAuthStateChanged((user: firebase.User) => {
       if (user && !!this.props.authStore) {
         const setAuthState = this.props.authStore.setAuthState
-        const userInfo = {
+        const userInfo: firebase.UserInfo = {
           displayName: user.displayName,
           email: user.email,
-          photoURL: user.photoURL,
-          uid: user.uid
+          photoURL: (user.providerData[0] as UserInfo).photoURL || user.photoURL,
+          uid: user.uid,
+          providerId: user.providerId,
+          phoneNumber: user.phoneNumber
         }
-        const userRef = databaseRef.child('users').child(user.uid)
-        userRef.child('displayName').set(user.displayName)
-        userRef.child('email').set(user.email)
-        userRef.child('photoURL').set(user.photoURL)
-        userRef.child('uid').set(user.uid).then(() => setAuthState(user))
+        databaseRef.child('users').child(user.uid).set(userInfo).then(() => setAuthState(userInfo))
       }
     })
     setTimeout(() => {(this.props.authStore as AuthStore).loaded()}, 2500);

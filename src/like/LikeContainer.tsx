@@ -6,7 +6,7 @@ import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import { toJS } from 'mobx';
 import { Grid } from 'semantic-ui-react'
-import AppLayout from '../AppLayout';
+import AppLayout from '../layout/AppLayout';
 import withAppLayout from '../hoc/withAppLayout';
 
 export interface LikeContainerProps {

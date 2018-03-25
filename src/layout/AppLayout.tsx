@@ -3,7 +3,7 @@ import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import { AuthStore } from 'stores/authStore';
-import Auth from './auth/Auth';
+import Auth from '../auth/Auth';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';

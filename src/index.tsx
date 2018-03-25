@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './AppLayout';
+import App from './layout/AppLayout';
 import feedStore from './stores/feedStore';
 import reviewStore from './stores/reviewStore';
 import authStore from './stores/authStore';

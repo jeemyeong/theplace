@@ -20,7 +20,6 @@ cssRaw(`
 
 interface AppProps {
   routingStore: RouterStore;
-  authStore: AuthStore;
 }
 
 const loadingWrapperStyle = style({
@@ -107,7 +106,7 @@ const Loading = () => (
         </div>
     </div>
 )
-const LoginWithFacebook = ({loginWithFacebook}: AppProps['authStore']) => (
+const LoginWithFacebook = ({loginWithFacebook}: AuthStore) => (
     <div className={BackgroundStyle}>
         <div className={AppStyle}>
             <Auth loginWithFacebook={loginWithFacebook}/>
@@ -124,11 +123,11 @@ const enhance = compose<AppProps, React.StatelessComponent>(
     ),
     branch(
         ({authStore}) => !authStore.state.authed,
-        renderComponent<AppProps>(({authStore}) => <LoginWithFacebook {...authStore}/>)
+        renderComponent<{authStore: AuthStore}>(({authStore}) => <LoginWithFacebook {...authStore}/>)
     ),
 )
 
-const App = ({routingStore, authStore}: AppProps) => {
+const App = ({routingStore}: AppProps) => {
   const { location, push, goBack } = routingStore;
   const pathname = !!location ? location.pathname : null;
   return (

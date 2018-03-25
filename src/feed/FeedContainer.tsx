@@ -5,9 +5,7 @@ import { AuthStore } from 'stores/authStore';
 import Feeds from './Feeds';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
-import * as csstips from 'csstips';
-import { style } from 'typestyle';
-import AppLayout from '../AppLayout';
+import withAppLayout from '../hoc/withAppLayout';
 
 export interface FeedContainerProps {
   feedStore: FeedStore;
@@ -24,16 +22,14 @@ class FeedContainer extends React.Component<FeedContainerProps, {}> {
     const { feeds } = this.props.feedStore.state;
     const { userInfo } = this.props.authStore.state;
     return (
-      <AppLayout>
         <Feeds
           feeds={feeds}
           userInfo={userInfo as UserType}
           onSwipeLeft={this.onSwipeLeft}
           onSwipeRight={this.onSwipeRight}
         />
-      </AppLayout>
     );
   }
 }
 
-export default FeedContainer;
+export default withAppLayout(FeedContainer);

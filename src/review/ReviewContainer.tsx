@@ -7,7 +7,7 @@ import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import Review from './Review';
 import { Icon } from 'semantic-ui-react';
-import AppLayout from '../AppLayout';
+import withAppLayout from '../hoc/withAppLayout';
 
 interface ReviewProps {
   routingStore: RouterStore;
@@ -36,18 +36,16 @@ class ReviewContainer extends React.Component<ReviewProps, {}> {
     const { writeComment, state, addComment, deleteComment } = this.props.reviewStore;
     const { review, loading } = this.props.reviewStore.state;
     return (
-      <AppLayout>
-        <div>
-          {loading === true || !review ?
-            <div className={loadingWrapperStyle}>
-              <Icon loading={true} name="spinner" size="big" />
-            </div> :
-            <Review/>
-          }
-        </div>
-      </AppLayout>
+      <div>
+        {loading === true || !review ?
+          <div className={loadingWrapperStyle}>
+            <Icon loading={true} name="spinner" size="big" />
+          </div> :
+          <Review/>
+        }
+      </div>
     );
   }
 }
 
-export default ReviewContainer;
+export default withAppLayout(ReviewContainer);

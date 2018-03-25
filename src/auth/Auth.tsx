@@ -15,7 +15,6 @@ const LoginImageStyle = style({
 interface AuthProps {
   loginWithFacebook(): void
 }
-@observer
 class Auth extends React.Component<AuthProps, {}> {
   render() {
     return (

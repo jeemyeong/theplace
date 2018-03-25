@@ -11,6 +11,12 @@ type AuthState = {
 };
 
 export class AuthStore {
+  @observable
+  state: AuthState = {
+      authed: false,
+      loading: true
+  };
+
   constructor() {
       auth.onAuthStateChanged((user: firebase.User) => {
           if (user) {
@@ -28,12 +34,6 @@ export class AuthStore {
           }
       })
   }
-
-  @observable
-  state: AuthState = {
-    authed: false,
-    loading: true
-  };
 
   @action
   public loginWithFacebook = () => {

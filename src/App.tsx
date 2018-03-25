@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
-import authStore, { AuthStore } from 'stores/authStore';
+import { AuthStore } from 'stores/authStore';
 import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
 import Auth from './auth/Auth';
@@ -11,6 +11,7 @@ import LikeContainer from './like/LikeContainer';
 import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
+import { branch, compose, renderComponent } from 'recompose';
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -18,8 +19,8 @@ cssRaw(`
 `);
 
 interface AppProps {
-  routingStore?: RouterStore;
-  authStore?: AuthStore;
+  routingStore: RouterStore;
+  authStore: AuthStore;
 }
 
 const loadingWrapperStyle = style({
@@ -97,34 +98,39 @@ const footerStyle = style({
   backgroundColor: 'white',
 });
 
-@inject('routingStore')
-@inject('authStore')
-@observer
-class App extends React.Component<AppProps, {}> {
-  render() {
-    const {loginWithFacebook, state} = this.props.authStore as AuthStore;
-    if (!!state.loading) {
-      return (
-        <div className={BackgroundStyle}>
-          <div className={AppStyle}>
+const Loading = () => (
+    <div className={BackgroundStyle}>
+        <div className={AppStyle}>
             <div className={loadingWrapperStyle}>
                 <Icon loading={true} name="spinner" size="big" />
             </div>
-          </div>
         </div>
-      )
-    }
-    if (!state.authed) {
-      return (
-        <div className={BackgroundStyle}>
-          <div className={AppStyle}>
+    </div>
+)
+const LoginWithFacebook = ({loginWithFacebook}: AppProps['authStore']) => (
+    <div className={BackgroundStyle}>
+        <div className={AppStyle}>
             <Auth loginWithFacebook={loginWithFacebook}/>
-          </div>
         </div>
-      )
-    }
+    </div>
+)
+const enhance = compose(
+    inject('routingStore'),
+    inject('authStore'),
+    observer,
+    branch(
+        ({authStore}) => authStore.state.loading,
+        renderComponent(Loading)
+    ),
+    branch(
+        ({authStore}) => !authStore.state.authed,
+        renderComponent<AppProps>(({authStore}) => <LoginWithFacebook {...authStore}/>)
+    ),
+)
 
-    const { location, push, goBack } = this.props.routingStore as RouterStore;
+class App extends React.Component<AppProps, {}> {
+  render() {
+    const { location, push, goBack } = this.props.routingStore;
     const pathname = !!location ? location.pathname : null;
     return (
       <div className={BackgroundStyle}>
@@ -171,4 +177,4 @@ class App extends React.Component<AppProps, {}> {
   }
 }
 
-export default App;
+export default enhance(App);

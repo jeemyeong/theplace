@@ -12,6 +12,8 @@ import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
+import AppRouter from './AppRouter';
+import {toJS} from "mobx";
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -114,7 +116,6 @@ const LoginWithFacebook = ({loginWithFacebook}: AuthStore) => (
     </div>
 )
 const enhance = compose<AppProps, React.StatelessComponent>(
-    inject('routingStore'),
     inject('authStore'),
     observer,
     branch(
@@ -125,6 +126,9 @@ const enhance = compose<AppProps, React.StatelessComponent>(
         ({authStore}) => !authStore.state.authed,
         renderComponent<{authStore: AuthStore}>(({authStore}) => <LoginWithFacebook {...authStore}/>)
     ),
+    inject('routingStore'),
+    inject('testStore'),
+    observer,
 )
 
 const App = ({routingStore}: AppProps) => {

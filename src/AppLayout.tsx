@@ -3,16 +3,10 @@ import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import { AuthStore } from 'stores/authStore';
-import { Route, Switch, Redirect } from 'react-router';
-import FeedContainer from './feed/FeedContainer';
 import Auth from './auth/Auth';
-import ReviewContainer from './review/ReviewContainer';
-import LikeContainer from './like/LikeContainer';
-import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
-import {toJS} from "mobx";
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -21,6 +15,7 @@ cssRaw(`
 
 interface AppProps {
   routingStore?: RouterStore;
+  children: React.Component
 }
 
 const loadingWrapperStyle = style({
@@ -129,8 +124,7 @@ const enhance = compose<AppProps, React.StatelessComponent>(
     observer,
 )
 
-const App = ({routingStore}: AppProps) => {
-  console.log(routingStore)
+const AppLayout = ({routingStore, children}: AppProps) => {
   const { location, push, goBack } = routingStore as RouterStore;
   const pathname = !!location ? location.pathname : null;
   return (
@@ -144,13 +138,7 @@ const App = ({routingStore}: AppProps) => {
         </header>
         <main className={mainStyle}>
           <div className={mainContainerStyle}>
-            <Switch>
-              <Route exact={true} path="/" component={FeedContainer}/>
-              <Route path="/reviews/:reviewId" component={ReviewContainer}/>
-              <Route path="/write" component={WriteContainer}/>
-              <Route path="/like" component={LikeContainer}/>
-              <Redirect to="/"/>
-            </Switch>
+            {children}
           </div>
         </main>
         <footer className={footerStyle}>
@@ -175,4 +163,4 @@ const App = ({routingStore}: AppProps) => {
       </div>
     </div>
 )}
-export default enhance(App);
+export default enhance(AppLayout);

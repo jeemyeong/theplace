@@ -122,9 +122,6 @@ class App extends React.Component<AppProps, {}> {
       }
     })
   }
-  componentWillUnmount() {
-    this.removeListener()
-  }
   render() {
     const {loginWithFacebook, state} = this.props.authStore as AuthStore;
     if (!!state.loading) {

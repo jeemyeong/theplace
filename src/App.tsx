@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon, Menu, Button } from 'semantic-ui-react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
-import { AuthStore } from 'stores/authStore';
+import authStore, { AuthStore } from 'stores/authStore';
 import { Route, Switch, Redirect } from 'react-router';
 import FeedContainer from './feed/FeedContainer';
 import Auth from './auth/Auth';
@@ -11,8 +11,6 @@ import LikeContainer from './like/LikeContainer';
 import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
-import { auth, databaseRef } from './database/database';
-import UserInfo = firebase.UserInfo;
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -103,25 +101,6 @@ const footerStyle = style({
 @inject('authStore')
 @observer
 class App extends React.Component<AppProps, {}> {
-  private removeListener: () => void;
-  componentDidMount() {
-    this.removeListener = auth.onAuthStateChanged((user: firebase.User) => {
-      if (user && !!this.props.authStore) {
-        const setAuthState = this.props.authStore.setAuthState
-        const userInfo: firebase.UserInfo = {
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: (user.providerData[0] as UserInfo).photoURL || user.photoURL,
-          uid: user.uid,
-          providerId: user.providerId,
-          phoneNumber: user.phoneNumber
-        }
-        databaseRef.child('users').child(user.uid).set(userInfo).then(() => setAuthState(userInfo))
-      } else {
-        (this.props.authStore as AuthStore).loaded()
-      }
-    })
-  }
   render() {
     const {loginWithFacebook, state} = this.props.authStore as AuthStore;
     if (!!state.loading) {

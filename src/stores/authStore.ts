@@ -2,6 +2,7 @@ import { observable, action } from 'mobx';
 import firebase, { auth, databaseRef } from '../database/database';
 import { UserType } from '../type/User'
 import { ReviewType } from '../type/Review'
+import UserInfo = firebase.UserInfo;
 
 type AuthState = {
   authed: boolean,
@@ -10,6 +11,24 @@ type AuthState = {
 };
 
 export class AuthStore {
+  constructor() {
+      auth.onAuthStateChanged((user: firebase.User) => {
+          if (user) {
+              const userInfo: firebase.UserInfo = {
+                  displayName: user.displayName,
+                  email: user.email,
+                  photoURL: (user.providerData[0] as UserInfo).photoURL || user.photoURL,
+                  uid: user.uid,
+                  providerId: user.providerId,
+                  phoneNumber: user.phoneNumber
+              }
+              databaseRef.child('users').child(user.uid).set(userInfo).then(() => this.setAuthState(userInfo))
+          } else {
+              this.loaded()
+          }
+      })
+  }
+
   @observable
   state: AuthState = {
     authed: false,

@@ -64,13 +64,11 @@ const restaurantStyle = style(
   marginRight: '3%',
 });
 
-const evaluateStyle = style(
-  csstips.normalize, {
+const evaluateStyle = style({
   fontSize: '80%',
 });
 
-const reviewLineStyle = style(
-  csstips.normalize, {
+const reviewLineStyle = style({
   color: 'white',
   fontSize: '90%',
   paddingLeft: '3%',
@@ -94,8 +92,7 @@ const nicknameStyle = style({
 const commentLinesStyle = style(csstips.vertical, {
 });
 
-const commentLineStyle = style(
-  csstips.normalize, {
+const commentLineStyle = style({
   color: 'black',
   fontSize: '90%',
   paddingLeft: '3%',

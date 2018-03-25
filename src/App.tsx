@@ -11,7 +11,7 @@ import LikeContainer from './like/LikeContainer';
 import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
-import { branch, compose, renderComponent } from 'recompose';
+import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
 
 cssRaw(`
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -114,7 +114,7 @@ const LoginWithFacebook = ({loginWithFacebook}: AppProps['authStore']) => (
         </div>
     </div>
 )
-const enhance = compose(
+const enhance = compose<AppProps, React.StatelessComponent>(
     inject('routingStore'),
     inject('authStore'),
     observer,
@@ -128,53 +128,49 @@ const enhance = compose(
     ),
 )
 
-class App extends React.Component<AppProps, {}> {
-  render() {
-    const { location, push, goBack } = this.props.routingStore;
-    const pathname = !!location ? location.pathname : null;
-    return (
-      <div className={BackgroundStyle}>
-        <div className={AppStyle}>
-          <header className={headerStyle}>
-            <Icon size="big" name="target"/>
-            <span className={titleStyle}>
+const App = ({routingStore, authStore}: AppProps) => {
+  const { location, push, goBack } = routingStore;
+  const pathname = !!location ? location.pathname : null;
+  return (
+    <div className={BackgroundStyle}>
+      <div className={AppStyle}>
+        <header className={headerStyle}>
+          <Icon size="big" name="target"/>
+          <span className={titleStyle}>
               The Place
             </span>
-          </header>
-          <main className={mainStyle}>
-            <div className={mainContainerStyle}>
-              <Switch>
-                <Route exact={true} path="/" component={FeedContainer}/>
-                <Route path="/reviews/:reviewId" component={ReviewContainer}/>
-                <Route path="/write" component={WriteContainer}/>
-                <Route path="/like" component={LikeContainer}/>
-                <Redirect to="/"/>
-              </Switch>
-            </div>
-          </main>
-          <footer className={footerStyle}>
-            <Menu secondary={true} widths={3}>
-              <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
-                <Icon size="large" name="home"/>
-              </Menu.Item>
-              {/* <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
+        </header>
+        <main className={mainStyle}>
+          <div className={mainContainerStyle}>
+            <Switch>
+              <Route exact={true} path="/" component={FeedContainer}/>
+              <Route path="/reviews/:reviewId" component={ReviewContainer}/>
+              <Route path="/write" component={WriteContainer}/>
+              <Route path="/like" component={LikeContainer}/>
+              <Redirect to="/"/>
+            </Switch>
+          </div>
+        </main>
+        <footer className={footerStyle}>
+          <Menu secondary={true} widths={3}>
+            <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
+              <Icon size="large" name="home"/>
+            </Menu.Item>
+            {/* <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
                 <Icon size="large" name="users"/>
               </Menu.Item> */}
-              <Menu.Item name="write" active={pathname === '/write'} onClick={() => push('/write')}>
-                <Icon size="large" name="write"/>
-              </Menu.Item>
-              {/* <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
+            <Menu.Item name="write" active={pathname === '/write'} onClick={() => push('/write')}>
+              <Icon size="large" name="write"/>
+            </Menu.Item>
+            {/* <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
                 <Icon size="large" name="map pin"/>
               </Menu.Item> */}
-              <Menu.Item name="list layout" active={pathname === '/like'} onClick={() => push('/like')}>
-                <Icon size="large" name="list layout"/>
-              </Menu.Item>
-            </Menu>
-          </footer>
-        </div>
+            <Menu.Item name="list layout" active={pathname === '/like'} onClick={() => push('/like')}>
+              <Icon size="large" name="list layout"/>
+            </Menu.Item>
+          </Menu>
+        </footer>
       </div>
-    );
-  }
-}
-
+    </div>
+)}
 export default enhance(App);

@@ -117,9 +117,10 @@ class App extends React.Component<AppProps, {}> {
           phoneNumber: user.phoneNumber
         }
         databaseRef.child('users').child(user.uid).set(userInfo).then(() => setAuthState(userInfo))
+      } else {
+        (this.props.authStore as AuthStore).loaded()
       }
     })
-    setTimeout(() => {(this.props.authStore as AuthStore).loaded()}, 2500);
   }
   componentWillUnmount() {
     this.removeListener()

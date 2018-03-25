@@ -12,7 +12,6 @@ import WriteContainer from './write/WriteContainer';
 import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
-import AppRouter from './AppRouter';
 import {toJS} from "mobx";
 
 cssRaw(`
@@ -21,7 +20,7 @@ cssRaw(`
 `);
 
 interface AppProps {
-  routingStore: RouterStore;
+  routingStore?: RouterStore;
 }
 
 const loadingWrapperStyle = style({
@@ -127,12 +126,12 @@ const enhance = compose<AppProps, React.StatelessComponent>(
         renderComponent<{authStore: AuthStore}>(({authStore}) => <LoginWithFacebook {...authStore}/>)
     ),
     inject('routingStore'),
-    inject('testStore'),
     observer,
 )
 
 const App = ({routingStore}: AppProps) => {
-  const { location, push, goBack } = routingStore;
+  console.log(routingStore)
+  const { location, push, goBack } = routingStore as RouterStore;
   const pathname = !!location ? location.pathname : null;
   return (
     <div className={BackgroundStyle}>

@@ -7,7 +7,7 @@ import { UserType } from 'type/User';
 import { toJS } from 'mobx';
 import { Grid } from 'semantic-ui-react'
 import AppLayout from '../layout/AppLayout';
-import withAppLayout from '../hoc/withAppLayout';
+import withAppLayout from '../layout/withAppLayout';
 
 export interface LikeContainerProps {
   authStore: AuthStore;

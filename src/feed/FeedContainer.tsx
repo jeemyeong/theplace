@@ -5,7 +5,7 @@ import { AuthStore } from 'stores/authStore';
 import Feeds from './Feeds';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
-import withAppLayout from '../hoc/withAppLayout';
+import withAppLayout from '../layout/withAppLayout';
 
 export interface FeedContainerProps {
   feedStore: FeedStore;

@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 import * as Dropzone from 'react-dropzone';
 import { Button, Form, TextArea, Icon, Image } from 'semantic-ui-react'
 import WritePreview from './WritePreview'
-import withAppLayout from '../hoc/withAppLayout';
+import withAppLayout from '../layout/withAppLayout';
 
 const WriteContainerStyle = style(csstips.fillParent, {
   width: '80%',

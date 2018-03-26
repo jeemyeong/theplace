@@ -8,11 +8,6 @@ import { style, media, cssRaw } from 'typestyle';
 import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
 
-cssRaw(`
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url('https://fonts.googleapis.com/css?family=Saira+Condensed');
-`);
-
 interface AppProps {
   routingStore?: RouterStore;
   children: React.Component

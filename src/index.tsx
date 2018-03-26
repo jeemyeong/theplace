@@ -12,8 +12,15 @@ import { Provider } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import { normalize, setupPage } from 'csstips';
+import './index.css';
+import 'semantic-ui-css/semantic.min.css';
+import WriteContainer from './write/WriteContainer';
+import FeedContainer from './feed/FeedContainer';
+import LikeContainer from './like/LikeContainer';
+import ReviewContainer from './review/ReviewContainer';
+import { cssRaw } from 'typestyle';
 
-normalize();
+// normalize();
 setupPage('#root');
 
 const browserHistory = createBrowserHistory();
@@ -31,13 +38,10 @@ const stores = {
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
-// import registerServiceWorker from './registerServiceWorker';
-import './index.css';
-import 'semantic-ui-css/semantic.min.css';
-import WriteContainer from './write/WriteContainer';
-import FeedContainer from './feed/FeedContainer';
-import LikeContainer from './like/LikeContainer';
-import ReviewContainer from './review/ReviewContainer';
+cssRaw(`
+@import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import url('https://fonts.googleapis.com/css?family=Saira+Condensed');
+`);
 
 useStrict(true);
 

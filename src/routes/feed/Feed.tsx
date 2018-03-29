@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Divider } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
-import Rating from '../modules/Rating';
+import Rating from '../../common/Rating';
 import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
-import IronImage from '../modules/IronImage';
+import IronImage from '../../common/IronImage';
 
 const FeedStyle = style({
   paddingBottom: '100%',

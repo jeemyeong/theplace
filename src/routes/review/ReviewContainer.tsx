@@ -7,7 +7,7 @@ import { inject, observer } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
 import Review from './Review';
 import { Icon } from 'semantic-ui-react';
-import withAppLayout from '../layout/withAppLayout';
+import withAppLayout from '../../layout/withAppLayout';
 
 interface ReviewProps {
   routingStore: RouterStore;

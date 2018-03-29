@@ -14,10 +14,10 @@ import { Redirect, Route, Router, Switch } from 'react-router';
 import { normalize, setupPage } from 'csstips';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
-import WriteContainer from './write/WriteContainer';
-import FeedContainer from './feed/FeedContainer';
-import LikeContainer from './like/LikeContainer';
-import ReviewContainer from './review/ReviewContainer';
+import WriteContainer from './routes/write/WriteContainer';
+import FeedContainer from './routes/feed/FeedContainer';
+import LikeContainer from './routes/like/LikeContainer';
+import ReviewContainer from './routes/review/ReviewContainer';
 import { cssRaw } from 'typestyle';
 
 // normalize();

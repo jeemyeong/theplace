@@ -6,8 +6,8 @@ import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import { toJS } from 'mobx';
 import { Grid } from 'semantic-ui-react'
-import AppLayout from '../layout/AppLayout';
-import withAppLayout from '../layout/withAppLayout';
+import AppLayout from '../../layout/AppLayout';
+import withAppLayout from '../../layout/withAppLayout';
 
 export interface LikeContainerProps {
   authStore: AuthStore;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Divider, Image } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
-import Rating from '../modules/Rating';
+import Rating from '../../common/Rating';
 import * as csstips from 'csstips';
 import { inject, observer } from 'mobx-react';
 import { WriteStore } from 'stores/writeStore';

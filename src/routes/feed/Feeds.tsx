@@ -6,7 +6,7 @@ import { UserType } from 'type/User';
 import Feed from './Feed';
 import * as csstips from 'csstips';
 import * as PropTypes from 'prop-types';
-import CardContainer, { DraggableCard } from '../swipe-card';
+import CardContainer, { DraggableCard } from './swipe-card/index';
 import './Feeds.css';
 
 const FeedsStyle = style({

@@ -6,7 +6,7 @@ import { FeedStore } from 'stores/feedStore';
 import { AuthStore } from 'stores/authStore';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
-import { UserType } from '../type/User'
+import { UserType } from '../../../type/User'
 import { style } from 'typestyle';
 import * as csstips from 'csstips';
 

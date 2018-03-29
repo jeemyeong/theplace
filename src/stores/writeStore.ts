@@ -7,7 +7,7 @@ import authStore from './authStore';
 import { UserType } from '../type/User'
 
 type WriteState = {
-  reviewText: string,
+  reviewText: ReviewType.reviewText,
   photoFiles: Dropzone.ImageFile[],
   evaluate: ReviewType.evaluate,
   restaurant: ReviewType.restaurant

@@ -7,6 +7,7 @@ import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
 import IronImage from '../../common/IronImage';
+import Review from '../../common/Review';
 
 const FeedStyle = style({
   paddingBottom: '100%',
@@ -118,12 +119,7 @@ class Feed extends React.Component<FeedProps, {}> {
                 </div>
                 <Rating rating={feed.evaluate} className={evaluateStyle}/>
               </div>
-              <div className={reviewLineStyle}>
-                <span className={nicknameStyle}>
-                  {feed.writter.displayName + ' '}
-                </span>
-                {feed.reviewText.length + (feed.writter.displayName || '').length > 52 ? feed.reviewText.slice(0, 52 - (feed.writter.displayName || '').length ) + '...' : feed.reviewText}
-              </div>
+              <Review writter={feed.writter} reviewText={feed.reviewText}/>
             </div>
           </IronImage>
         </div>

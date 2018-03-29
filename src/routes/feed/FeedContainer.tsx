@@ -6,30 +6,40 @@ import Feeds from './Feeds';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import withAppLayout from '../../layout/withAppLayout';
+import { compose, withHandlers } from 'recompose';
 
 export interface FeedContainerProps {
   feedStore: FeedStore;
   authStore: AuthStore;
 }
 
-@inject('feedStore')
-@inject('authStore')
-@observer
-class FeedContainer extends React.Component<FeedContainerProps, {}> {
-  onSwipeLeft = (review: ReviewType.Review) => this.props.feedStore.passCard(review, this.props.authStore.state.userInfo as UserType)
-  onSwipeRight = (review: ReviewType.Review) => this.props.feedStore.likeCard(review, this.props.authStore.state.userInfo as UserType)
-  render() {
-    const { feeds } = this.props.feedStore.state;
-    const { userInfo } = this.props.authStore.state;
-    return (
-        <Feeds
-          feeds={feeds}
-          userInfo={userInfo as UserType}
-          onSwipeLeft={this.onSwipeLeft}
-          onSwipeRight={this.onSwipeRight}
-        />
-    );
-  }
+const injectStores = compose(
+  inject('feedStore'),
+  inject('authStore'),
+  observer
+)
+
+const enhance = compose<FeedContainerProps, {}>(
+  withAppLayout,
+  injectStores,
+)
+
+const FeedContainer = ({
+  feedStore,
+  authStore,
+}: FeedContainerProps) => {
+  const { feeds } = feedStore.state;
+  const { userInfo } = authStore.state;
+  const onSwipeLeft = (review: ReviewType.Review) => feedStore.passCard(review, authStore.state.userInfo as UserType);
+  const onSwipeRight = (review: ReviewType.Review) => feedStore.likeCard(review, authStore.state.userInfo as UserType);
+  return (
+    <Feeds
+      feeds={feeds}
+      userInfo={userInfo as UserType}
+      onSwipeLeft={onSwipeLeft}
+      onSwipeRight={onSwipeRight}
+    />
+  )
 }
 
-export default withAppLayout(FeedContainer);
+export default enhance(FeedContainer);

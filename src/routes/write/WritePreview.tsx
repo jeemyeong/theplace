@@ -6,6 +6,7 @@ import Rating from '../../common/Rating';
 import * as csstips from 'csstips';
 import { inject, observer } from 'mobx-react';
 import { WriteStore } from 'stores/writeStore';
+import Review from '../../common/Review';
 
 const ReviewStyle = style({
   paddingBottom: '100%',
@@ -111,12 +112,7 @@ class WritePreview extends React.Component<WritePreviewProps, {}> {
               </div>
               <Rating rating={state.evaluate} className={evaluateStyle}/>
             </div>
-            <div className={reviewLineStyle}>
-              <span className={nicknameStyle}>
-                {state.writter.displayName + ' '}
-              </span>
-              {state.reviewText.length + (state.writter.displayName || '').length > 52 ? state.reviewText.slice(0, 52 - (state.writter.displayName || '').length ) + '...' : state.reviewText}
-            </div>
+            <Review writter={state.writter} reviewText={state.reviewText}/>
           </div> 
         </div>
       </div>      

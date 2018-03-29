@@ -7,6 +7,7 @@ import * as csstips from 'csstips';
 import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
 import IronImage from '../../common/IronImage';
+import { compose } from 'recompose';
 
 const LikeStyle = style({
   flexGrow: 1,
@@ -18,7 +19,7 @@ const LikeStyle = style({
 });
 
 const cardImageWrapperStyle = style({
-  backgroundSize: 'cover',  
+  backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundColor: 'white',
@@ -33,28 +34,23 @@ const cardImageWrapperStyle = style({
 
 export interface LikeProps {
   like: ReviewType.Review;
-  routingStore?: RouterStore;
+  push: RouterStore['push'];
 }
 
-@inject('routingStore')
-@observer
-class Like extends React.Component<LikeProps, {}> {
-  public render(): JSX.Element {
-    const { like, routingStore } = this.props;
-    const { push } = this.props.routingStore as RouterStore;
-    return (
-      <div className={LikeStyle}>
-        <div
-          className={cardImageWrapperStyle}
-          onClick={() => push(`/reviews/${like.reviewId}`)}
-        >
-            <IronImage
-              src={like.imgUrlArray[0]}
-            />
-        </div>
-      </div>      
-    );
-  }
-}
+const Like = ({
+  like,
+  push
+}: LikeProps) => (
+  <div className={LikeStyle}>
+    <div
+      className={cardImageWrapperStyle}
+      onClick={() => push(`/reviews/${like.reviewId}`)}
+    >
+      <IronImage
+        src={like.imgUrlArray[0]}
+      />
+    </div>
+  </div>
+)
 
 export default Like;

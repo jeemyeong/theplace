@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { Loader, Image } from 'semantic-ui-react';
 import { style } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import Feed from './Feed';
-import * as csstips from 'csstips';
-import * as PropTypes from 'prop-types';
 import CardContainer, { DraggableCard } from './swipe-card/index';
 import './Feeds.css';
 
@@ -33,7 +30,7 @@ const CustomGoBackJSXElement = (goBack: () => void) => (
   </div>
 )
 
-const Feeds = ({
+export default ({
   feeds,
   userInfo,
   onSwipeLeft,
@@ -58,5 +55,3 @@ const Feeds = ({
       )}
   </CardContainer>
 );
-
-export default Feeds;

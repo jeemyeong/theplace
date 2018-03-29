@@ -7,6 +7,7 @@ import * as Dropzone from 'react-dropzone';
 import { Button, Form, TextArea, Icon, Image } from 'semantic-ui-react'
 import WritePreview from './WritePreview'
 import withAppLayout from '../../layout/withAppLayout';
+import { compose } from 'recompose';
 
 const WriteContainerStyle = style(csstips.fillParent, {
   width: '80%',
@@ -41,72 +42,64 @@ interface WriteProps {
   writeStore: WriteStore;
 }
 
-const loadingWrapperStyle = style({
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  zIndex: 10
-})
+const injectStores = compose(
+  inject('writeStore'),
+  inject('routingStore'),
+  observer
+)
 
-@inject('routingStore')
-@inject('writeStore')
-@observer    
-class WriteContainer extends React.Component<WriteProps, {}> {
-  render() {
-    const { state } = this.props.writeStore as WriteStore;    
-    if (!!state.loading) {
-      return (
-        <div className={loadingWrapperStyle}>
-            <Icon loading={true} name="spinner" size="big" />
+const enhance = compose<WriteProps, {}>(
+  withAppLayout,
+  injectStores,
+)
+
+const WriteContainer = ({
+  writeStore
+}: WriteProps) => {
+  const { state } = writeStore;
+  return (
+    <div className={WriteContainerStyle}>
+      <Form onSubmit={() => writeStore.handleSubmit()}>
+        <div className={DropzoneStyle}>
+          <Dropzone
+            onDrop={writeStore.onDrop}
+            maxSize={5242880}
+            accept={`image/*`}
+            className={dropZoneStyle}
+          >
+            {writeStore.state.photoFiles.length > 0 ?
+              writeStore.state.photoFiles.map((file: Dropzone.ImageFile, index: number) => (<WritePreview index={index} key={index}/>)) :
+              <div className={notMountedDropzoneStyle}>
+                <div className={imageIconWrapperStyle}>
+                  <Icon name="image" size="big" />
+                </div>
+              </div>
+            }
+          </Dropzone>
+          5MB 이하의 사진을 첨부해주세요!
         </div>
-      )
-    }
+        <Form.Input
+          label="식당이름"
+          onChange={writeStore.writeRestaurant}
+          value={writeStore.state.restaurant}
+        />
+        <Form.Field
+          control={TextArea}
+          onChange={writeStore.writeReviewText}
+          value={writeStore.state.reviewText}
+          label="리뷰"
+        />
+        <Form.Input
+          onChange={writeStore.writeEvaluate}
+          label="평가"
+        />
+        <Button type="submit">
+          입력
+        </Button>
 
-    return (
-      <div className={WriteContainerStyle}>
-        <Form onSubmit={() => this.props.writeStore.handleSubmit()}>
-          <div className={DropzoneStyle}>
-            <Dropzone
-              onDrop={this.props.writeStore.onDrop}
-              maxSize={5242880}
-              accept={`image/*`}
-              className={dropZoneStyle}
-            >
-                {this.props.writeStore.state.photoFiles.length > 0 ?
-                  this.props.writeStore.state.photoFiles.map((file: Dropzone.ImageFile, index: number) => (<WritePreview index={index} key={index}/>)) :
-                  <div className={notMountedDropzoneStyle}>
-                    <div className={imageIconWrapperStyle}>
-                      <Icon name="image" size="big" />
-                    </div>
-                  </div>
-                }
-            </Dropzone>
-            5MB 이하의 사진을 첨부해주세요!
-          </div>
-          <Form.Input
-            label="식당이름"
-            onChange={this.props.writeStore.writeRestaurant}
-            value={this.props.writeStore.state.restaurant}
-          />
-          <Form.Field
-            control={TextArea}
-            onChange={this.props.writeStore.writeReviewText}
-            value={this.props.writeStore.state.reviewText}
-            label="리뷰"
-          />
-          <Form.Input
-            onChange={this.props.writeStore.writeEvaluate}
-            label="평가"
-          />
-          <Button type="submit">
-            입력
-          </Button>
-
-        </Form>
-      </div>
-    );
-  }
+      </Form>
+    </div>
+  )
 }
 
-export default withAppLayout(WriteContainer);
+export default enhance(WriteContainer);

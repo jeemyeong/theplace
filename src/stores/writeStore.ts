@@ -25,7 +25,6 @@ export class WriteStore {
     writter: {
       uid: '',
       displayName: '',
-      photoUrl: '',
     },
     loading: false
   };
@@ -43,7 +42,6 @@ export class WriteStore {
     const writter: ReviewType.writter = {
       uid: user.uid,
       displayName: user.displayName as string,
-      photoUrl: user.photoURL as string
     }
     this.state.writter = writter
   }

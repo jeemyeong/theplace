@@ -54,7 +54,6 @@ export class AuthStore {
         const userInfo: UserType = {
           displayName: userFromDB.displayName,
           email: userFromDB.email,
-          photoURL: userFromDB.photoURL,
           uid: userFromDB.uid,
           like: userFromDB.like,
           pass: userFromDB.pass,

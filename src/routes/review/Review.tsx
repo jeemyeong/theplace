@@ -146,16 +146,10 @@ class Review extends React.Component<ReviewProps, {}> {
                 <Rating rating={review.evaluate} className={evaluateStyle}/>
               </div>
               <div className={reviewLineStyle}>
-                <div className={profileImageWrapper}>
-                  <Image
-                    src={review.writter.photoUrl}
-                    shape={'circular'}
-                  />
-                </div>
                 <span className={nicknameStyle}>
                   {review.writter.displayName + ' '}
                 </span>
-                {review.reviewText.length + review.writter.displayName.length > 52 ? review.reviewText.slice(0, 52 - review.writter.displayName.length ) + '...' : review.reviewText}
+                {review.reviewText.length + (review.writter.displayName || '').length > 52 ? review.reviewText.slice(0, 52 - (review.writter.displayName || '').length ) + '...' : review.reviewText}
               </div>
             </div> 
           </div>
@@ -163,16 +157,10 @@ class Review extends React.Component<ReviewProps, {}> {
         <div className={commentLinesStyle}>
           {!!review.comments && review.comments.length > 0 && review.comments.map((comment, index) => (
             <div className={commentLineStyle} key={index}>
-              <div className={profileImageWrapper}>
-                <Image
-                  src={comment.writter.photoUrl}
-                  shape={'circular'}
-                />
-              </div>
               <span className={nicknameStyle}>
                 {comment.writter.displayName + ' '}
               </span>
-              {comment.commentText.length + comment.writter.displayName.length > 52 ? comment.commentText.slice(0, 52 - review.writter.displayName.length ) + '...' : comment.commentText}
+              {comment.commentText.length + (comment.writter.displayName || '').length > 52 ? comment.commentText.slice(0, 52 - (comment.writter.displayName || '').length ) + '...' : comment.commentText}
               {comment.writter.uid === writtingComment.writter.uid ? 
                 <Button onClick={() => deleteComment(comment)} size="mini">
                   Delete

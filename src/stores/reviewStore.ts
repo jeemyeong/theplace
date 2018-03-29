@@ -18,7 +18,6 @@ export class ReviewStore {
       writter: {
         uid: '',
         displayName: '',
-        photoUrl: '',
       },
       commentText: '',
       cid: ''
@@ -38,7 +37,6 @@ export class ReviewStore {
     const writter: ReviewType.writter = {
       uid: user.uid,
       displayName: user.displayName as string,
-      photoUrl: user.photoURL as string
     }
     this.state.writtingComment.writter = writter
   }

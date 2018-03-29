@@ -1,3 +1,5 @@
+import { UserType } from './User';
+
 export namespace ReviewType {
   export type imgUrl = string;
   export type restaurant = string;
@@ -13,10 +15,9 @@ export namespace ReviewType {
     cid: string
   };
   export type writter = {
-    uid: string,
-    displayName: string,
-    photoUrl: string,
-  };
+    uid: UserType['uid'],
+    displayName: UserType['displayName'] | null
+  }
   export type Review = {
     imgUrlArray: {[n: number]: imgUrl},
     writter: writter,

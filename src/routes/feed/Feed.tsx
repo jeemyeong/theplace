@@ -119,15 +119,10 @@ class Feed extends React.Component<FeedProps, {}> {
                 <Rating rating={feed.evaluate} className={evaluateStyle}/>
               </div>
               <div className={reviewLineStyle}>
-                <div className={profileImageWrapper}>
-                  <IronImage
-                    src={feed.writter.photoUrl}
-                  />
-                </div>
                 <span className={nicknameStyle}>
                   {feed.writter.displayName + ' '}
                 </span>
-                {feed.reviewText.length + feed.writter.displayName.length > 52 ? feed.reviewText.slice(0, 52 - feed.writter.displayName.length ) + '...' : feed.reviewText}
+                {feed.reviewText.length + (feed.writter.displayName || '').length > 52 ? feed.reviewText.slice(0, 52 - (feed.writter.displayName || '').length ) + '...' : feed.reviewText}
               </div>
             </div>
           </IronImage>

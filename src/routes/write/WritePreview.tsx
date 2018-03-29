@@ -63,13 +63,11 @@ const restaurantStyle = style(
   marginRight: '3%',
 });
 
-const evaluateStyle = style(
-  csstips.normalize, {
+const evaluateStyle = style({
   fontSize: '80%',
 });
 
-const reviewLineStyle = style(
-  csstips.normalize, {
+const reviewLineStyle = style({
   color: 'white',
   fontSize: '90%',
   paddingLeft: '3%',
@@ -77,13 +75,6 @@ const reviewLineStyle = style(
   paddingRight: '3%',
   paddingBottom: '1%',
   textAlign: 'left'
-});
-
-const profileImageWrapper = style({
-  float: 'left',
-  display: 'inline-block',
-  width: '10%',
-  marginRight: '1%'
 });
 
 const nicknameStyle = style({
@@ -121,16 +112,10 @@ class WritePreview extends React.Component<WritePreviewProps, {}> {
               <Rating rating={state.evaluate} className={evaluateStyle}/>
             </div>
             <div className={reviewLineStyle}>
-              <div className={profileImageWrapper}>
-                <Image
-                  src={state.writter.photoUrl}
-                  shape={'circular'}
-                />
-              </div>
               <span className={nicknameStyle}>
                 {state.writter.displayName + ' '}
               </span>
-              {state.reviewText.length + state.writter.displayName.length > 52 ? state.reviewText.slice(0, 52 - state.writter.displayName.length ) + '...' : state.reviewText}
+              {state.reviewText.length + (state.writter.displayName || '').length > 52 ? state.reviewText.slice(0, 52 - (state.writter.displayName || '').length ) + '...' : state.reviewText}
             </div>
           </div> 
         </div>

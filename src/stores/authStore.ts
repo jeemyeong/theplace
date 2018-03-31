@@ -6,7 +6,7 @@ import UserInfo = firebase.UserInfo;
 
 type AuthState = {
   authed: boolean,
-  loading: boolean
+  checking: boolean
   userInfo: UserType | null
 };
 
@@ -14,7 +14,7 @@ export class AuthStore {
   @observable
   state: AuthState = {
       authed: false,
-      loading: true,
+      checking: true,
       userInfo: null
   };
 
@@ -31,7 +31,7 @@ export class AuthStore {
               }
               databaseRef.child('users').child(user.uid).set(userInfo).then(() => this.setAuthState(userInfo))
           } else {
-              this.loaded()
+              this.checked()
           }
       })
   }
@@ -43,8 +43,8 @@ export class AuthStore {
   }
 
   @action
-  public loaded = () => {
-    this.state.loading = false;
+  public checked = () => {
+    this.state.checking = false;
   }
   
   @action
@@ -62,11 +62,11 @@ export class AuthStore {
         }
         const state: AuthState = {
           authed: true,
-          loading: false,
+          checking: false,
           userInfo
         }
         this.state = state
-      }      
+      }
     }))
   }
   @action

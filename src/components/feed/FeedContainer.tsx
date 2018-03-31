@@ -14,14 +14,13 @@ export interface FeedContainerProps {
 }
 
 const injectStores = compose(
-  inject('feedStore'),
-  inject('authStore'),
-  observer
+
 )
 
 const enhance = compose<FeedContainerProps, {}>(
-  withAppLayout,
-  injectStores,
+  inject('feedStore'),
+  inject('authStore'),
+  observer
 )
 
 const FeedContainer = ({

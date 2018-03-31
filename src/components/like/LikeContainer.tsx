@@ -6,7 +6,7 @@ import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import { toJS } from 'mobx';
 import { Grid } from 'semantic-ui-react'
-import AppLayout from '../../layout/AppLayout';
+import AppLayout from '../../layout/withAppLayout';
 import withAppLayout from '../../layout/withAppLayout';
 import { compose } from 'recompose';
 import { RouterStore } from 'mobx-react-router';
@@ -17,7 +17,6 @@ export interface LikeContainerProps {
 }
 
 const enhance = compose<LikeContainerProps, {}>(
-  withAppLayout,
   inject('authStore'),
   inject('routingStore'),
   observer
@@ -27,6 +26,9 @@ const LikeContainer = ({
   routingStore
 }: LikeContainerProps) => {
   const { userInfo } = authStore.state;
+  if (!userInfo) {
+    return null
+  }
   const likes = toJS((userInfo as UserType).like);
   return (
     <Grid

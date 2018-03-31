@@ -42,15 +42,10 @@ interface WriteProps {
   writeStore: WriteStore;
 }
 
-const injectStores = compose(
+const enhance = compose<WriteProps, {}>(
   inject('writeStore'),
   inject('routingStore'),
   observer
-)
-
-const enhance = compose<WriteProps, {}>(
-  withAppLayout,
-  injectStores,
 )
 
 const WriteContainer = ({

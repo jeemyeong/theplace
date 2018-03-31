@@ -7,14 +7,15 @@ import UserInfo = firebase.UserInfo;
 type AuthState = {
   authed: boolean,
   loading: boolean
-  userInfo?: UserType
+  userInfo: UserType | null
 };
 
 export class AuthStore {
   @observable
   state: AuthState = {
       authed: false,
-      loading: true
+      loading: true,
+      userInfo: null
   };
 
   constructor() {

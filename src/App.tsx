@@ -3,7 +3,7 @@ import withAppLayout from './layout/withAppLayout';
 import WriteContainer from './components/write/WriteContainer';
 import ReviewContainer from './components/review/ReviewContainer';
 import FeedContainer from './components/feed/FeedContainer';
-import LikeContainer from './components/like/LikeContainer';
+import Likes from './components/like/Likes';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import cardStore from './stores/cardStore';
 import authStore, { AuthStore } from './stores/authStore';
@@ -46,7 +46,7 @@ export default () => (
         <Route exact={true} path="/" component={compose(withAuth, withAppLayout)(FeedContainer)}/>
         <Route path="/reviews/:reviewId" component={compose(withAuth, withAppLayout)(ReviewContainer)}/>
         <Route path="/write" component={compose(withAuth, withAppLayout)(WriteContainer)}/>
-        <Route path="/like" component={compose(withAuth, withAppLayout)(LikeContainer)}/>
+        <Route path="/like" component={compose(withAuth, withAppLayout)(Likes)}/>
         <Redirect to="/"/>
       </Switch>
     </Router>

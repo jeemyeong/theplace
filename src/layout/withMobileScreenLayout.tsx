@@ -5,15 +5,17 @@ import wrap from '../hoc/wrap';
 
 const mobileBackgroundStyle = style(csstips.fillParent, csstips.flexRoot, {
   backgroundColor: '#333333',
-  textAlign: 'center'
+  textAlign: 'center',
+  height: '100vh',
+  width: '100vw'
 });
 
 const mobileScreenStyle = style(
   media({minWidth: 0, maxWidth: 414}, {
     fontFamily: 'Noto Sans KR',
     backgroundColor: 'white',
-    width: '100%',
-    height: '100%',
+    width: '100vw',
+    height: '100vh',
   }),
   media({minWidth: 415, minHeight: 736}, {
     fontFamily: 'Noto Sans KR',

@@ -9,7 +9,8 @@ import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
 
 interface AppProps {
-  routingStore?: RouterStore;
+  routingStore: RouterStore;
+  authStore: AuthStore;
   children: React.Component
 }
 
@@ -111,9 +112,11 @@ const enhance = compose<AppProps, React.StatelessComponent>(
         ({authStore}) => authStore.state.loading,
         renderComponent(Loading)
     ),
+    inject('authStore'),
+    observer,
     branch(
         ({authStore}) => !authStore.state.authed,
-        renderComponent<{authStore: AuthStore}>(({authStore}) => <LoginWithFacebook {...authStore}/>)
+        renderComponent(({authStore}: AppProps) => (<LoginWithFacebook loginWithFacebook={authStore.loginWithFacebook} {...authStore}/>))
     ),
     inject('routingStore'),
     observer,

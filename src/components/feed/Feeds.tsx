@@ -18,17 +18,17 @@ interface FeedsProps {
   onSwipeRight: (review: ReviewType.Review) => void
 }
 
-const onSwipeLeftWrapper = (review: ReviewType.Review, onSwipeLeft: (review: ReviewType.Review) => void) => () => onSwipeLeft(review)
-const onSwipeRightWrapper = (review: ReviewType.Review, onSwipeRight: (review: ReviewType.Review) => void) => () => onSwipeRight(review)
-const CustomAlertLeft = <span>Pass</span>
-const CustomAlertRight = <span>Like</span>
+const onSwipeLeftWrapper = (review: ReviewType.Review, onSwipeLeft: (review: ReviewType.Review) => void) => () => onSwipeLeft(review);
+const onSwipeRightWrapper = (review: ReviewType.Review, onSwipeRight: (review: ReviewType.Review) => void) => () => onSwipeRight(review);
+const CustomAlertLeft = <span>Pass</span>;
+const CustomAlertRight = <span>Like</span>;
 const CustomGoBackJSXElement = (goBack: () => void) => (
   <div
     onClick={goBack}
   >
     취소
   </div>
-)
+);
 
 export default ({
   feeds,

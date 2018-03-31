@@ -37,36 +37,36 @@ export class ReviewStore {
     const writter: ReviewType.writter = {
       uid: user.uid,
       displayName: user.displayName as string,
-    }
+    };
     this.state.writtingComment.writter = writter
-  }
+  };
 
   @action
   public getReview = (id: ReviewType.reviewId): void => {
-    this.loading()
+    this.loading();
     const ref = databaseRef.child('reviews').child(id);
     ref.on('value', action((snapshot: firebase.database.DataSnapshot) => {
       const review = snapshot.val();
       if (!!review) {
-        const state = {...this.state, review, loading: false}
-        state.review.comments = !!review.comments ? Object.keys(review.comments).map((key, index) => review.comments[key]) : []
+        const state = {...this.state, review, loading: false};
+        state.review.comments = !!review.comments ? Object.keys(review.comments).map((key, index) => review.comments[key]) : [];
         this.state = state;
       } else {
-        const state = {...this.state, loading: false}
+        const state = {...this.state, loading: false};
         this.state = state
       }
     }));
-  }
+  };
 
   @action
   addComment = () => {
-    const ref = databaseRef.child('reviews').child((this.state.review as ReviewType.Review).reviewId).child('comments').push()
-    const cid = ref.key
+    const ref = databaseRef.child('reviews').child((this.state.review as ReviewType.Review).reviewId).child('comments').push();
+    const cid = ref.key;
     const comment = {
       ...this.state.writtingComment,
       cid
-    }
-    ref.set(comment)
+    };
+    ref.set(comment);
     this.state.writtingComment.commentText = '';
   };
 

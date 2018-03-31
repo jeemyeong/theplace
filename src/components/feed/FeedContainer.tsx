@@ -15,13 +15,13 @@ export interface FeedContainerProps {
 
 const injectStores = compose(
 
-)
+);
 
 const enhance = compose<FeedContainerProps, {}>(
   inject('feedStore'),
   inject('authStore'),
   observer
-)
+);
 
 const FeedContainer = ({
   feedStore,
@@ -39,6 +39,6 @@ const FeedContainer = ({
       onSwipeRight={onSwipeRight}
     />
   )
-}
+};
 
 export default enhance(FeedContainer);

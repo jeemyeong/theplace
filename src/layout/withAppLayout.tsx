@@ -8,6 +8,7 @@ import * as csstips from 'csstips';
 import { branch, ComponentEnhancer, compose, renderComponent } from 'recompose';
 import MobileScreenLayout, { default as withMobileScreenLayout } from './withMobileScreenLayout';
 import wrap from '../hoc/wrap';
+import { History } from 'history';
 
 interface AppProps {
   routingStore: RouterStore;
@@ -15,7 +16,7 @@ interface AppProps {
   children: React.Component
 }
 
-const layoutStyle = style({
+const appLayoutStyle = style({
     height: '100%'
 });
 
@@ -58,46 +59,62 @@ const footerStyle = style({
   width: '100%',
   backgroundColor: 'white',
 });
+
+const Header = () => (
+  <header className={headerStyle}>
+    <Icon size="big" name="target"/>
+    <span className={titleStyle}>
+      The Place
+    </span>
+  </header>
+);
+
+const Main = ({children}: {children: React.Component}) => (
+  <main className={mainStyle}>
+    <div className={mainContainerStyle}>
+      {children}
+    </div>
+  </main>
+);
+
+const Footer = ({pathname, push}: {pathname: string | null, push: RouterStore['push']}) => (
+  <footer className={footerStyle}>
+    <Menu secondary={true} widths={3}>
+      <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
+        <Icon size="large" name="home"/>
+      </Menu.Item>
+      {/* <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
+              <Icon size="large" name="users"/>
+            </Menu.Item> */}
+      <Menu.Item name="write" active={pathname === '/write'} onClick={() => push('/write')}>
+        <Icon size="large" name="write"/>
+      </Menu.Item>
+      {/* <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
+              <Icon size="large" name="map pin"/>
+            </Menu.Item> */}
+      <Menu.Item name="list layout" active={pathname === '/like'} onClick={() => push('/like')}>
+        <Icon size="large" name="list layout"/>
+      </Menu.Item>
+    </Menu>
+  </footer>
+);
+
 const enhance = compose<{}, {}>(
   withMobileScreenLayout,
   inject('routingStore'),
   observer,
-)
+);
+
 const AppLayout: React.StatelessComponent = ({routingStore, children}: AppProps) => {
   const { location, push, goBack } = routingStore as RouterStore;
   const pathname = !!location ? location.pathname : null;
   return (
-    <div className={layoutStyle}>
-      <header className={headerStyle}>
-        <Icon size="big" name="target"/>
-        <span className={titleStyle}>
-            The Place
-          </span>
-      </header>
-      <main className={mainStyle}>
-        <div className={mainContainerStyle}>
-          {children}
-        </div>
-      </main>
-      <footer className={footerStyle}>
-        <Menu secondary={true} widths={3}>
-          <Menu.Item name="feeds" active={pathname === '/'} onClick={() => push('/')}>
-            <Icon size="large" name="home"/>
-          </Menu.Item>
-          {/* <Menu.Item name="users" active={pathname === '/users'} onClick={() => push('/users')}>
-              <Icon size="large" name="users"/>
-            </Menu.Item> */}
-          <Menu.Item name="write" active={pathname === '/write'} onClick={() => push('/write')}>
-            <Icon size="large" name="write"/>
-          </Menu.Item>
-          {/* <Menu.Item name="map pin" active={pathname === '/map'} onClick={() => push('/map')}>
-              <Icon size="large" name="map pin"/>
-            </Menu.Item> */}
-          <Menu.Item name="list layout" active={pathname === '/like'} onClick={() => push('/like')}>
-            <Icon size="large" name="list layout"/>
-          </Menu.Item>
-        </Menu>
-      </footer>
+    <div className={appLayoutStyle}>
+      <Header/>
+      <Main>
+        {children}
+      </Main>
+      <Footer pathname={pathname} push={push}/>
     </div>
-)}
+)};
 export default wrap(enhance(AppLayout));

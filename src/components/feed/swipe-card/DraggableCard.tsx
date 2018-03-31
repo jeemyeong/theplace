@@ -24,7 +24,7 @@ interface DraggableCardState {
 class DraggableCard extends React.Component<DraggableCardProps, DraggableCardState> {
   public hammer: HammerManager | null;
   constructor (props: DraggableCardProps) {
-    super(props)
+    super(props);
     this.state = {
       x: 37.5,
       y: 37.5,
@@ -32,14 +32,14 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
       startPosition: { x: 0, y: 0 },
       animation: null,
       pristine: true
-    }
+    };
     this.handlePan = this.handlePan.bind(this)
   }
   resetPosition () {
     const initialPosition = {
       x: 37.5,
       y: 37.5
-    }
+    };
     this.setState({
       x: initialPosition.x,
       y: initialPosition.y,
@@ -48,7 +48,7 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
     })
   }
   panstart () {
-    const { x, y } = this.state
+    const { x, y } = this.state;
     this.setState({
       animation: false,
       startPosition: { x, y },
@@ -56,25 +56,25 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
     })
   }
   panend (ev: HammerInput) {
-    const screen = this.props.containerSize as { x: number, y: number }
-    const card: HTMLElement = ReactDOM.findDOMNode(this)
+    const screen = this.props.containerSize as { x: number, y: number };
+    const card: HTMLElement = ReactDOM.findDOMNode(this);
 
     const getDirection = () => {
       switch (true) {
-        case (this.state.x < -50): return 'Left'
-        case (this.state.x + (card.offsetWidth - 50) > screen.x): return 'Right'
-        case (this.state.y < -50): return 'Top'
-        case (this.state.y + (card.offsetHeight - 50) > screen.y): return 'Bottom'
+        case (this.state.x < -50): return 'Left';
+        case (this.state.x + (card.offsetWidth - 50) > screen.x): return 'Right';
+        case (this.state.y < -50): return 'Top';
+        case (this.state.y + (card.offsetHeight - 50) > screen.y): return 'Bottom';
         default: return false
       }
-    }
-    const direction = getDirection()
+    };
+    const direction = getDirection();
 
     if (this.props[`onSwipe${direction}`]) {
-      this.props[`onSwipe${direction}`]()
+      this.props[`onSwipe${direction}`]();
       this.props[`onOutScreen${direction}`]()
     } else {
-      this.resetPosition()
+      this.resetPosition();
       this.setState({ animation: true })
     }
 
@@ -88,8 +88,8 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
   }
 
   handlePan (ev: HammerInput) {
-    ev.preventDefault()
-    this[ev.type](ev)
+    ev.preventDefault();
+    this[ev.type](ev);
     return false
   }
 
@@ -99,31 +99,31 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
   }
 
   calculatePosition (deltaX: number, deltaY: number) {
-    const { initialPosition : { x, y } } = this.state
+    const { initialPosition : { x, y } } = this.state;
     return {
       x: (x + deltaX),
       y: (y + deltaY)
     }
   }
   componentDidMount () {
-    this.hammer = new Hammer.Manager(ReactDOM.findDOMNode(this))
-    this.hammer.add(new Hammer.Pan({ threshold: 2 }))
+    this.hammer = new Hammer.Manager(ReactDOM.findDOMNode(this));
+    this.hammer.add(new Hammer.Pan({ threshold: 2 }));
     
-    this.hammer.on('panstart panend pancancel panmove', this.handlePan)
-    this.hammer.on('swipestart swipeend swipecancel swipemove', this.handleSwipe)
+    this.hammer.on('panstart panend pancancel panmove', this.handlePan);
+    this.hammer.on('swipestart swipeend swipecancel swipemove', this.handleSwipe);
 
     this.resetPosition()
   }
   componentWillUnmount () {
     if (this.hammer) {
-      this.hammer.stop(true)
-      this.hammer.destroy()
+      this.hammer.stop(true);
+      this.hammer.destroy();
       this.hammer = null
     }
   }
   render () {
-    const { x, y, animation, pristine } = this.state
-    const style = translate3d(x, y)
+    const { x, y, animation, pristine } = this.state;
+    const style = translate3d(x, y);
     return <SimpleCard {...this.props} style={style} className={animation ? 'animate' : pristine ? 'inactive' : ''} />
   }
 }

@@ -90,7 +90,7 @@ const commentLineStyle = style({
 
 const commentFormStyle = style(csstips.horizontal, {
 
-})
+});
 
 interface ReviewProps {
   reviewStore: ReviewStore
@@ -100,10 +100,10 @@ const injectStores = compose(
   inject('reviewStore'),
   inject('routingStore'),
   observer
-)
+);
 const enhance = compose<ReviewProps, {}>(
   injectStores,
-)
+);
 
 const ReviewDetail = ({
   reviewStore,
@@ -111,7 +111,7 @@ const ReviewDetail = ({
 }: ReviewProps) => {
   const { push } = routingStore;
   const { state, writeComment, addComment, deleteComment } = reviewStore;
-  const review = state.review as ReviewType.Review
+  const review = state.review as ReviewType.Review;
   const { writtingComment } = state;
   return (
     <div>
@@ -171,6 +171,6 @@ const ReviewDetail = ({
       </Form>
     </div>
   );
-}
+};
 
 export default enhance(ReviewDetail);

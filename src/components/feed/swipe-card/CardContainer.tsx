@@ -36,7 +36,7 @@ const CardContainerStyle = style({
 @inject('authStore')
 @observer    
 class CardContainer extends React.Component<CardContainerProps, {}> {
-  private container: HTMLElement
+  private container: HTMLElement;
 
   constructor(props: CardContainerProps) {
     super(props);
@@ -45,24 +45,24 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
   removeCard = (side: string) => {
     const { children, onEnd } = this.props;
     (this.props.cardStore as CardStore).removeCard(side, children as React.ReactNode[], onEnd);
-  }
+  };
   
   goBack = () => {
     if ((this.props.cardStore as CardStore).goBack()) {
       (this.props.feedStore as FeedStore).unDo(((this.props.authStore as AuthStore).state.userInfo as UserType))
     }
-  }
+  };
 
   render () {
-    const { index, containerSize, loaded } = (this.props.cardStore as CardStore).state
-    const { feeds } = (this.props.feedStore as FeedStore).state
-    const { userInfo } = (this.props.authStore as AuthStore).state
-    const { children, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props
+    const { index, containerSize, loaded } = (this.props.cardStore as CardStore).state;
+    const { feeds } = (this.props.feedStore as FeedStore).state;
+    const { userInfo } = (this.props.authStore as AuthStore).state;
+    const { children, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props;
     
     const props = {
       containerSize,
       ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => this.removeCard(d) }), {}),
-    }
+    };
 
     let newIndex = 0;
     for (; newIndex < feeds.length; newIndex++) {
@@ -73,7 +73,7 @@ class CardContainer extends React.Component<CardContainerProps, {}> {
         // 
       }
     }
-    const c = (children as React.ReactNode[])[newIndex]
+    const c = (children as React.ReactNode[])[newIndex];
     // tslint:disable-next-line:no-any
     const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : '피드가 없어요ㅠㅠ';
 

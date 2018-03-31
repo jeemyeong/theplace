@@ -12,11 +12,11 @@ import { compose } from 'recompose';
 const WriteContainerStyle = style(csstips.fillParent, {
   width: '80%',
   margin: 'auto'
-})
+});
 const DropzoneStyle = style({
   width: '80%',
   margin: 'auto'
-})
+});
 const dropZoneStyle = style({
   margin: 'auto',
   width: '100%',
@@ -25,7 +25,7 @@ const dropZoneStyle = style({
   borderStyle: 'dashed',
   borderRadius: '5px',
   display: 'table'
-})
+});
 
 const notMountedDropzoneStyle = style(
   csstips.flexRoot,
@@ -33,10 +33,10 @@ const notMountedDropzoneStyle = style(
   csstips.vertical, {
   width: '100%',
   height: '200px'
-})
+});
 
 const imageIconWrapperStyle = style(csstips.centerCenter, {
-})
+});
 
 interface WriteProps {
   writeStore: WriteStore;
@@ -46,7 +46,7 @@ const enhance = compose<WriteProps, {}>(
   inject('writeStore'),
   inject('routingStore'),
   observer
-)
+);
 
 const WriteContainer = ({
   writeStore
@@ -95,6 +95,6 @@ const WriteContainer = ({
       </Form>
     </div>
   )
-}
+};
 
 export default enhance(WriteContainer);

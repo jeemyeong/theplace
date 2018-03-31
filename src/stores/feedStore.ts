@@ -35,7 +35,7 @@ export class FeedStore {
           ended: false,
           history: this.state.history
         };      
-        const reviewsFromDB = snapshot.val()
+        const reviewsFromDB = snapshot.val();
         if (reviewsFromDB !== null) {
           for (const id of Object.keys(reviewsFromDB)) {
             state.feeds.push(reviewsFromDB[id])
@@ -48,30 +48,30 @@ export class FeedStore {
 
   @action
   likeCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
-    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(toJS(review))
-    authStore.likeReview(toJS(review))
+    databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
+    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(toJS(review));
+    authStore.likeReview(toJS(review));
     this.state.history.push(['like', review.reviewId])
   }
   
   @action
   passCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }})
-    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(toJS(review))
-    authStore.passReview(toJS(review))
+    databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
+    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(toJS(review));
+    authStore.passReview(toJS(review));
     this.state.history.push(['pass', review.reviewId])
   }
 
   @action
   unDo(userInfo: UserType) {
-    const lastDone = this.state.history.pop()
+    const lastDone = this.state.history.pop();
     if (!lastDone) {
       return;
     }
-    const likeOrPass = lastDone[0]
-    const reviewId = lastDone[1]
-    databaseRef.child('reviews').child(reviewId).child(`${likeOrPass}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } })
-    databaseRef.child('users').child(userInfo.uid).child(likeOrPass).child(reviewId).set({})
+    const likeOrPass = lastDone[0];
+    const reviewId = lastDone[1];
+    databaseRef.child('reviews').child(reviewId).child(`${likeOrPass}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } });
+    databaseRef.child('users').child(userInfo.uid).child(likeOrPass).child(reviewId).set({});
     if (likeOrPass === 'like') {
       authStore.unDoLike(reviewId)
     } else {

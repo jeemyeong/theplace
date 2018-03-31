@@ -15,6 +15,6 @@ export const Spinner = () => (
   <div className={loadingWrapperStyle}>
     <Icon loading={true} name="spinner" size="big" />
   </div>
-)
+);
 
 export default withMobileScreenLayout(Spinner)

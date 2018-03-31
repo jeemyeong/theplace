@@ -14,21 +14,21 @@ interface CardState {
 }
 class Card extends React.Component<CardProps, CardState> {
   constructor (props: CardProps) {
-    super(props)
-    this.state = { initialPosition: { x: 0, y: 0 } }
+    super(props);
+    this.state = { initialPosition: { x: 0, y: 0 } };
     this.setInitialPosition = this.setInitialPosition.bind(this)
   }
   setInitialPosition () {
-    const card: HTMLElement = ReactDOM.findDOMNode(this)
+    const card: HTMLElement = ReactDOM.findDOMNode(this);
     const initialPosition = {
       x: Math.round(((this.props.containerSize as { x: number, y: number }).x - card.offsetWidth) / 2),
       y: Math.round(((this.props.containerSize as { x: number, y: number }).y - card.offsetHeight) / 2)
-    }
+    };
     this.setState({ initialPosition })
   }
 
   componentDidMount () {
-    this.setInitialPosition()
+    this.setInitialPosition();
     window.addEventListener('resize', this.setInitialPosition)
   }
 
@@ -37,13 +37,13 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   render () {
-    const { initialPosition: { x, y } } = this.state
-    const { className = 'inactive' } = this.props
+    const { initialPosition: { x, y } } = this.state;
+    const { className = 'inactive' } = this.props;
     var style = {
       ...translate3d(x, y),
       zIndex: this.props.index,
       ...this.props.style
-    }
+    };
 
     return (
       <div style={style} className={`card ${className}`}>

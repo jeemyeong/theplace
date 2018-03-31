@@ -12,7 +12,7 @@ export interface IronImageState {
 
 class IronImage extends React.Component<IronImageProps, IronImageState> {
   constructor (props: IronImageProps) {
-    super(props)
+    super(props);
     this.state = { init: false, onload: false }
   }
 

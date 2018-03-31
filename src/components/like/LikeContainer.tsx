@@ -20,7 +20,7 @@ const enhance = compose<LikeContainerProps, {}>(
   inject('authStore'),
   inject('routingStore'),
   observer
-)
+);
 const LikeContainer = ({
   authStore,
   routingStore
@@ -36,7 +36,7 @@ const LikeContainer = ({
       divided="vertically"
     >
       <Grid.Row columns={3}>
-        {!!userInfo && !!likes && Object.keys(likes).length > 0 ?
+        {!!likes && Object.keys(likes).length > 0 ?
           Object.keys(likes).map((reviewId, index) => (
             <Grid.Column key={index}>
               <Like like={(likes[reviewId] as ReviewType.Review)} push={routingStore.push}/>
@@ -47,6 +47,6 @@ const LikeContainer = ({
       </Grid.Row>
     </Grid>
   )
-}
+};
 
 export default enhance(LikeContainer);

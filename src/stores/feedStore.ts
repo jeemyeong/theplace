@@ -12,7 +12,7 @@ type FeedsState = {
   ended: boolean,
   history: ['like' | 'pass', ReviewType.reviewId][],
   containerSize: { x: number, y: number },
-  alert: {left: false, right: false}
+  alert: {left: boolean, right: boolean}
 };
 
 export class FeedStore {
@@ -71,9 +71,12 @@ export class FeedStore {
     };
     state.history.push(['like', currentFeed.reviewId]);
     state.currentFeed = state.feeds.pop();
+    state.alert.right = true;
     this.state = state;
+
+    setTimeout(this.closeAlert, 1000);
   };
-  
+
   @action
   passCard = (userInfo: UserType) => {
     const { currentFeed } = this.state;
@@ -90,7 +93,21 @@ export class FeedStore {
     };
     state.history.push(['pass', currentFeed.reviewId]);
     state.currentFeed = state.feeds.pop();
+    state.alert.left = true;
     this.state = state;
+
+    setTimeout(this.closeAlert, 1000);
+  };
+
+  @action
+  closeAlert = () => {
+    this.state = {
+      ...this.state,
+      alert: {
+        left: false,
+        right: false
+      }
+    }
   };
 
   @action

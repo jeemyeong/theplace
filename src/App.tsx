@@ -5,13 +5,12 @@ import ReviewContainer from './components/review/ReviewContainer';
 import FeedContainer from './components/feed/FeedContainer';
 import Likes from './components/like/Likes';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import cardStore from './stores/cardStore';
-import authStore, { AuthStore } from './stores/authStore';
+import authStore from './stores/authStore';
 import feedStore from './stores/feedStore';
 import reviewStore from './stores/reviewStore';
 import writeStore from './stores/writeStore';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { cssRaw, style } from 'typestyle';
+import { cssRaw } from 'typestyle';
 import { Provider } from 'mobx-react';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import { useStrict } from 'mobx';
@@ -26,7 +25,6 @@ const stores = {
   feedStore,
   reviewStore,
   authStore,
-  cardStore,
   writeStore,
 };
 

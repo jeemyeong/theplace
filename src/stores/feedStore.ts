@@ -10,7 +10,10 @@ type FeedsState = {
   currentFeed?: ReviewType.Review,
   loaded: boolean,
   ended: boolean,
-  history: ['like' | 'pass', ReviewType.reviewId][],
+  history: {
+    type: 'like' | 'pass',
+    review: ReviewType.Review
+  }[],
   containerSize: { x: number, y: number },
   alert: {left: boolean, right: boolean}
 };
@@ -69,7 +72,7 @@ export class FeedStore {
       feeds: [...this.state.feeds],
       history: [...this.state.history]
     };
-    state.history.push(['like', currentFeed.reviewId]);
+    state.history.push({type: 'like', review: currentFeed});
     state.currentFeed = state.feeds.pop();
     state.alert.right = true;
     this.state = state;
@@ -91,7 +94,7 @@ export class FeedStore {
       feeds: [...this.state.feeds],
       history: [...this.state.history]
     };
-    state.history.push(['pass', currentFeed.reviewId]);
+    state.history.push({type: 'pass', review: currentFeed});
     state.currentFeed = state.feeds.pop();
     state.alert.left = true;
     this.state = state;
@@ -116,15 +119,25 @@ export class FeedStore {
     if (!lastDone) {
       return;
     }
-    const likeOrPass = lastDone[0];
-    const reviewId = lastDone[1];
-    databaseRef.child('reviews').child(reviewId).child(`${likeOrPass}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } });
-    databaseRef.child('users').child(userInfo.uid).child(likeOrPass).child(reviewId).set({});
-    if (likeOrPass === 'like') {
+    const { type, review } = lastDone;
+    const { reviewId } = review;
+    databaseRef.child('reviews').child(reviewId).child(`${type}Count`).transaction((count) => {if (count) { count-- ; return count } else { return 1 } });
+    databaseRef.child('users').child(userInfo.uid).child(type).child(reviewId).set({});
+    if (type === 'like') {
       authStore.unDoLike(reviewId)
     } else {
       authStore.unDoPass(reviewId)
     }
+    const state = {
+      ...this.state,
+      feeds: [...this.state.feeds],
+      history: [...this.state.history]
+    };
+    if (!!state.currentFeed) {
+      state.feeds.push(state.currentFeed);
+    }
+    state.currentFeed = lastDone.review;
+    this.state = state;
   };
 }
 

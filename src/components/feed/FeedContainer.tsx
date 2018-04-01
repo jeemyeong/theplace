@@ -2,15 +2,11 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { FeedStore } from 'stores/feedStore';
 import { AuthStore } from 'stores/authStore';
-import { ReviewType } from 'type/Review';
-import { UserType } from 'type/User';
 import { compose } from 'recompose';
-import CardContainer from './swipe-card/CardContainer';
 import DraggableCard from './swipe-card/DraggableCard';
 import Feed from './Feed';
 import './Feed.css';
 import { style } from 'typestyle';
-import { CardStore } from '../../stores/cardStore';
 
 export interface FeedContainerProps {
   feedStore: FeedStore;
@@ -27,11 +23,9 @@ const enhance = compose<FeedContainerProps, {}>(
   observer
 );
 
-const onSwipeLeftWrapper = (review: ReviewType.Review, onSwipeLeft: (review: ReviewType.Review) => void) => () => onSwipeLeft(review);
-const onSwipeRightWrapper = (review: ReviewType.Review, onSwipeRight: (review: ReviewType.Review) => void) => () => onSwipeRight(review);
 const CustomAlertLeft = () => <span>Pass</span>;
 const CustomAlertRight = () => <span>Like</span>;
-const CustomGoBackJSXElement = (goBack: () => void) => (
+const CustomGoBackJSXElement = ({goBack}: {goBack: () => void}) => (
   <div
     onClick={goBack}
   >
@@ -53,7 +47,7 @@ const FeedContainer = ({
   authStore,
 }: FeedContainerProps) => {
   const { currentFeed, containerSize, alert } = feedStore.state;
-  const { passCard, likeCard } = feedStore;
+  const { passCard, likeCard, unDo } = feedStore;
   if (!currentFeed) {
     return null;
   }
@@ -78,6 +72,10 @@ const FeedContainer = ({
           feed={currentFeed}
         />
       </DraggableCard>
+      <div>
+        <CustomGoBackJSXElement goBack={() => unDo(userInfo)}/>
+      </div>
+
     </div>
   )
 };

@@ -101,7 +101,7 @@ const Feed = ({
 }: FeedProps) => {
   const { push } = routingStore;
   if (!feed || !feed.imgUrlArray) {
-    return null
+    return <div>No card</div>
   }
   return (
     <div className={FeedStyle}>

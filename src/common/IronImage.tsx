@@ -7,18 +7,15 @@ export interface IronImageProps {
 
 export interface IronImageState {
   init: boolean,
-  onload: boolean,
+  src: string,
 }
 
 class IronImage extends React.Component<IronImageProps, IronImageState> {
-  constructor (props: IronImageProps) {
-    super(props);
-    this.state = { init: false, onload: false }
-  }
+  state = { init: false, src: '' };
 
   render() {
-    const { onload } = this.state;
     const { src } = this.props;
+    const onload = src === this.state.src;
     return (
       <div className="iron-image-container">
         { onload ?
@@ -33,7 +30,7 @@ class IronImage extends React.Component<IronImageProps, IronImageState> {
                 style={{ backgroundImage: 'url(/spinner.svg)' }}
             />
         }
-        <img style={{visibility: 'hidden'}} src={src} onLoad={() => this.setState({onload: true})}/>
+        <img style={{visibility: 'hidden'}} src={src} onLoad={() => this.setState({src: src})}/>
       </div>
     );
   }

@@ -72,7 +72,7 @@ class DraggableCard extends React.Component<DraggableCardProps, DraggableCardSta
 
     if (this.props[`onSwipe${direction}`]) {
       this.props[`onSwipe${direction}`]();
-      this.props[`onOutScreen${direction}`]()
+      this.resetPosition();
     } else {
       this.resetPosition();
       this.setState({ animation: true })

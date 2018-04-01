@@ -80,7 +80,6 @@ const CardContainer = ({
     : '피드가 없어요ㅠㅠ';
 
   return (
-    <div className={style(csstips.fillParent, {})}>
       <div className={CardContainerStyle}>
         {DIRECTIONS.map(d =>
           <div key={d} className={`${cardStore.state[`alert${d}`] ? 'alert-visible' : ''} alert-${d.toLowerCase()} alert`}>
@@ -91,8 +90,6 @@ const CardContainer = ({
           {child}
         </div>
       </div>
-        {!!goBackJSXElement ? goBackJSXElement(goBack) : null}
-    </div>
   )
 }
 

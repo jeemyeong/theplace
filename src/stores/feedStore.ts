@@ -6,10 +6,13 @@ import { toJS } from 'mobx';
 import authStore from './authStore';
 
 type FeedsState = {
-  feeds: ReviewType.Review[]
+  feeds: ReviewType.Review[],
+  currentFeed?: ReviewType.Review,
   loaded: boolean,
   ended: boolean,
-  history: ['like' | 'pass', ReviewType.reviewId][]
+  history: ['like' | 'pass', ReviewType.reviewId][],
+  containerSize: { x: number, y: number },
+  alert: {left: false, right: false}
 };
 
 export class FeedStore {
@@ -18,7 +21,12 @@ export class FeedStore {
     feeds: [],
     loaded: false,
     ended: false,
-    history: []
+    history: [],
+    containerSize: { x: 375, y: 375 },
+    alert: {
+      left: false,
+      right: false
+    }
   };
   storageRef = storage().ref();
 
@@ -30,7 +38,7 @@ export class FeedStore {
     databaseRef.child('reviews').once('value', action((snapshot: firebase.database.DataSnapshot) => {
       if (snapshot) {
         const state: FeedsState = {
-          feeds: [],
+          ...this.state,
           loaded: true,
           ended: false,
           history: this.state.history
@@ -40,6 +48,7 @@ export class FeedStore {
           for (const id of Object.keys(reviewsFromDB)) {
             state.feeds.push(reviewsFromDB[id])
           }
+          state.currentFeed = state.feeds.pop();
         }
         this.state = state
       }
@@ -47,23 +56,45 @@ export class FeedStore {
   }
 
   @action
-  likeCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
-    databaseRef.child('users').child(userInfo.uid).child('like').child(review.reviewId).set(toJS(review));
-    authStore.likeReview(toJS(review));
-    this.state.history.push(['like', review.reviewId])
-  }
+  likeCard = (userInfo: UserType) => {
+    const { currentFeed } = this.state;
+    if (!currentFeed) {
+      return;
+    }
+    databaseRef.child('reviews').child(currentFeed.reviewId).child('likeCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
+    databaseRef.child('users').child(userInfo.uid).child('like').child(currentFeed.reviewId).set(toJS(currentFeed));
+    authStore.likeReview(toJS(currentFeed));
+    const state = {
+      ...this.state,
+      feeds: [...this.state.feeds],
+      history: [...this.state.history]
+    };
+    state.history.push(['like', currentFeed.reviewId]);
+    state.currentFeed = state.feeds.pop();
+    this.state = state;
+  };
   
   @action
-  passCard(review: ReviewType.Review, userInfo: UserType) {
-    databaseRef.child('reviews').child(review.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
-    databaseRef.child('users').child(userInfo.uid).child('pass').child(review.reviewId).set(toJS(review));
-    authStore.passReview(toJS(review));
-    this.state.history.push(['pass', review.reviewId])
-  }
+  passCard = (userInfo: UserType) => {
+    const { currentFeed } = this.state;
+    if (!currentFeed) {
+      return;
+    }
+    databaseRef.child('reviews').child(currentFeed.reviewId).child('passCount').transaction((count) => { if (count) { count++ ; return count } else { return 1 }});
+    databaseRef.child('users').child(userInfo.uid).child('pass').child(currentFeed.reviewId).set(toJS(currentFeed));
+    authStore.passReview(toJS(currentFeed));
+    const state = {
+      ...this.state,
+      feeds: [...this.state.feeds],
+      history: [...this.state.history]
+    };
+    state.history.push(['pass', currentFeed.reviewId]);
+    state.currentFeed = state.feeds.pop();
+    this.state = state;
+  };
 
   @action
-  unDo(userInfo: UserType) {
+  unDo = (userInfo: UserType) => {
     const lastDone = this.state.history.pop();
     if (!lastDone) {
       return;
@@ -77,7 +108,7 @@ export class FeedStore {
     } else {
       authStore.unDoPass(reviewId)
     }
-  }
+  };
 }
 
 export default new FeedStore();

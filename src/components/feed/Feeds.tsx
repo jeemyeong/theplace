@@ -3,8 +3,9 @@ import { style } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import { UserType } from 'type/User';
 import Feed from './Feed';
-import CardContainer, { DraggableCard } from './swipe-card/index';
 import './Feeds.css';
+import CardContainer from './swipe-card/CardContainer';
+import DraggableCard from './swipe-card/DraggableCard';
 
 const FeedsStyle = style({
   width: '100%',
@@ -37,9 +38,9 @@ export default ({
   onSwipeRight
 }: FeedsProps) => (
   <CardContainer
-    alertRight={CustomAlertRight} 
-    alertLeft={CustomAlertLeft} 
-    goBackJSXElement={CustomGoBackJSXElement} 
+    alertRight={CustomAlertRight}
+    alertLeft={CustomAlertLeft}
+    goBackJSXElement={CustomGoBackJSXElement}
   >
     {feeds
       .map((feed, key) => 

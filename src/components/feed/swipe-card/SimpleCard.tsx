@@ -16,9 +16,8 @@ class Card extends React.Component<CardProps, CardState> {
   constructor (props: CardProps) {
     super(props);
     this.state = { initialPosition: { x: 0, y: 0 } };
-    this.setInitialPosition = this.setInitialPosition.bind(this)
   }
-  setInitialPosition () {
+  setInitialPosition = () => {
     const card: HTMLElement = ReactDOM.findDOMNode(this);
     const initialPosition = {
       x: Math.round(((this.props.containerSize as { x: number, y: number }).x - card.offsetWidth) / 2),

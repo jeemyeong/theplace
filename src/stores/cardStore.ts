@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import * as ReactDOM from 'react-dom'
 
-type CardState = {
+export type CardState = {
   index: number;  
   alertLeft: boolean;
   alertRight: boolean;
@@ -29,15 +29,11 @@ export class CardStore {
   };
 
   @action
-  public removeCard = (side: string, children: React.ReactNode[], onEnd?: () => void) => {
+  public removeCard = (side: string, children: React.ReactNode[]) => {
     const stateAfterAlert: CardState = {...this.state};
     stateAfterAlert[`alert${side}`] = false;
     stateAfterAlert.index = stateAfterAlert.index + 1;
     setTimeout(action(() => {this.state = stateAfterAlert}), 300);
-    
-    if ((children as React.ReactNode[]).length === (this.state.index + 1) && onEnd) {
-      onEnd()
-    }
 
     const stateWhileAlerting = {index: this.state.index + 1, ...this.state};
     stateWhileAlerting[`alert${side}`] = true;

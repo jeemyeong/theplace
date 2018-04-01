@@ -1,25 +1,22 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom'
-import { DIRECTIONS } from './utils'
-import { CardStore } from 'stores/cardStore';
+import { CardState, CardStore } from 'stores/cardStore';
 import { FeedStore } from 'stores/feedStore';
 import { AuthStore } from 'stores/authStore';
 import { inject, observer } from 'mobx-react';
-import { toJS } from 'mobx';
 import { UserType } from '../../../type/User'
 import { style } from 'typestyle';
 import * as csstips from 'csstips';
+import { compose, withHandlers } from 'recompose';
 
 interface CardContainerProps {
   alertLeft?: JSX.Element
   alertRight?: JSX.Element
-  cardStore?: CardStore
-  feedStore?: FeedStore
-  authStore?: AuthStore
+  cardStore: CardStore
+  feedStore: FeedStore
+  authStore: AuthStore
+  children: React.Component | React.Component[]
   goBackJSXElement?(f: () => void): JSX.Element;
-  onSwipeTop?(): void
-  onSwipeBottom?(): void
-  onEnd?(): void
+  goBack(): void
 }
 
 const CardContainerStyle = style({
@@ -31,68 +28,72 @@ const CardContainerStyle = style({
   border: '1px solid #e5e5e5',
 });
 
-@inject('cardStore')
-@inject('feedStore')
-@inject('authStore')
-@observer    
-class CardContainer extends React.Component<CardContainerProps, {}> {
-  private container: HTMLElement;
-
-  constructor(props: CardContainerProps) {
-    super(props);
-  }
-  
-  removeCard = (side: string) => {
-    const { children, onEnd } = this.props;
-    (this.props.cardStore as CardStore).removeCard(side, children as React.ReactNode[], onEnd);
-  };
-  
-  goBack = () => {
-    if ((this.props.cardStore as CardStore).goBack()) {
-      (this.props.feedStore as FeedStore).unDo(((this.props.authStore as AuthStore).state.userInfo as UserType))
-    }
-  };
-
-  render () {
-    const { index, containerSize, loaded } = (this.props.cardStore as CardStore).state;
-    const { feeds } = (this.props.feedStore as FeedStore).state;
-    const { userInfo } = (this.props.authStore as AuthStore).state;
-    const { children, onSwipeTop, onSwipeBottom, goBackJSXElement } = this.props;
-    
-    const props = {
-      containerSize,
-      ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => this.removeCard(d) }), {}),
-    };
-
-    let newIndex = 0;
-    for (; newIndex < feeds.length; newIndex++) {
-      const feed = feeds[newIndex];
-      if (!!userInfo && (!(userInfo as UserType).like || !(userInfo as UserType).like[feed.reviewId]) && (!(userInfo as UserType).pass || !(userInfo as UserType).pass[feed.reviewId])) {
-        break;
-      } else {
-        // 
+const DIRECTIONS = [ 'Right', 'Left', 'Top', 'Bottom' ];
+const enhance = compose<{}, {alertRight?: JSX.Element, alertLeft?: JSX.Element, goBackJSXElement?(f: () => void): JSX.Element}> (
+  inject('cardStore'),
+  inject('authStore'),
+  inject('feedStore'),
+  observer,
+  withHandlers({
+    removeCard: ({cardStore, children, onEnd}) => (side: string) => {
+      cardStore.removeCard(side, children as React.ReactNode[], onEnd);
+    },
+    goBack: ({cardStore, feedStore, authStore}) => () => {
+      if (cardStore.goBack()) {
+        feedStore.unDo(authStore.state.userInfo as UserType)
       }
     }
-    const c = (children as React.ReactNode[])[newIndex];
-    // tslint:disable-next-line:no-any
-    const _card = !!c ? React.cloneElement(c as React.ReactElement<any>, props) : '피드가 없어요ㅠㅠ';
+  }),
+  inject('cardStore'),
+  inject('feedStore'),
+  inject('authStore'),
+  observer
+);
+const CardContainer = ({
+  alertLeft,
+  alertRight,
+  cardStore,
+  feedStore,
+  authStore,
+  goBack,
+  goBackJSXElement,
+  children,
+}: CardContainerProps) => {
+  const { containerSize } = cardStore.state;
+  const { feeds } = feedStore.state;
+  const { userInfo } = authStore.state;
 
-    return (
-      <div className={style(csstips.fillParent, {})}>
-        <div className={CardContainerStyle}>
-          {DIRECTIONS.map(d => 
-            <div key={d} className={`${(this.props.cardStore as CardStore).state[`alert${d}`] ? 'alert-visible' : ''} alert-${d.toLowerCase()} alert`}>
-              {this.props[`alert${d}`]}
-            </div>
-          )}
-          <div id="cards">
-            {_card}
-          </div>
-        </div>
-          {!!goBackJSXElement ? goBackJSXElement(this.goBack) : null}
-      </div>
-    )
+  const propsToChildren = {
+    containerSize,
+    ...DIRECTIONS.reduce((m, d) => ({ ...m, [`onOutScreen${d}`]: () => cardStore.removeCard(d, children as React.ReactNode[]) }), {}),
+  };
+
+  let newIndex = 0;
+  for (; newIndex < feeds.length; newIndex++) {
+    const feed = feeds[newIndex];
+    if (!!userInfo && (!userInfo.like || !userInfo.like[feed.reviewId]) && (!userInfo.pass || !userInfo.pass[feed.reviewId])) {
+      break;
+    }
   }
+  const child = !!children[newIndex] ?
+    React.cloneElement(children[newIndex] as React.ReactElement<{containerSize: CardState['containerSize']}>, propsToChildren)
+    : '피드가 없어요ㅠㅠ';
+
+  return (
+    <div className={style(csstips.fillParent, {})}>
+      <div className={CardContainerStyle}>
+        {DIRECTIONS.map(d =>
+          <div key={d} className={`${cardStore.state[`alert${d}`] ? 'alert-visible' : ''} alert-${d.toLowerCase()} alert`}>
+            {[`alert${d}`]}
+          </div>
+        )}
+        <div id="cards">
+          {child}
+        </div>
+      </div>
+        {!!goBackJSXElement ? goBackJSXElement(goBack) : null}
+    </div>
+  )
 }
 
-export default CardContainer
+export default enhance(CardContainer)

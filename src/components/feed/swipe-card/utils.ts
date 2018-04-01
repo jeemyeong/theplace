@@ -1,4 +1,3 @@
-
 export const translate3d = (x: number, y: number) => {
   const translate = `translate3d(${x}px, ${y}px, 0px)`;
   return {
@@ -7,5 +6,3 @@ export const translate3d = (x: number, y: number) => {
     transform: translate
   }
 };
-
-export const DIRECTIONS = [ 'Right', 'Left', 'Top', 'Bottom' ];

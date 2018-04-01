@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Divider } from 'semantic-ui-react';
 import { style, media } from 'typestyle';
 import { ReviewType } from 'type/Review';
 import Rating from '../../common/Rating';
@@ -8,6 +7,7 @@ import { RouterStore } from 'mobx-react-router';
 import { inject, observer } from 'mobx-react';
 import IronImage from '../../common/IronImage';
 import Review from '../../common/Review';
+import { compose } from 'recompose';
 
 const FeedStyle = style({
   paddingBottom: '100%',
@@ -87,45 +87,51 @@ const nicknameStyle = style({
 
 interface FeedProps {
   feed: ReviewType.Review;
-  routingStore?: RouterStore;
+  routingStore: RouterStore;
 }
 
-@inject('routingStore')
-@observer
-class Feed extends React.Component<FeedProps, {}> {
-  public render(): JSX.Element {
-    const { feed, routingStore } = this.props;
-    const { push } = this.props.routingStore as RouterStore;
-    return (
-      <div className={FeedStyle}>
-        <div className={cardImageStyle}>
-          <IronImage
-            src={feed.imgUrlArray[0]}
-          >
-            <div
-              className={backgroundImageWithoutReviewBoxStyle}
-            >
-              {null}
-            </div>
-            <div
-              className={reviewBoxStyle}
-            >
-              <div className={restaurantAndEvaluateBoxStyle}>
-                <div
-                  className={restaurantStyle}
-                  onClick={() => push(`/reviews/${feed.reviewId}`)}
-                >
-                  {feed.restaurant}
-                </div>
-                <Rating rating={feed.evaluate} className={evaluateStyle}/>
-              </div>
-              <Review writter={feed.writter} reviewText={feed.reviewText}/>
-            </div>
-          </IronImage>
-        </div>
-      </div>      
-    );
+const enhance = compose<FeedProps, {feed: ReviewType.Review}>(
+  inject('routingStore'),
+  observer
+);
+
+const Feed = ({
+  feed,
+  routingStore
+}: FeedProps) => {
+  const { push } = routingStore;
+  if (!feed || !feed.imgUrlArray) {
+    return null
   }
-}
+  return (
+    <div className={FeedStyle}>
+      <div className={cardImageStyle}>
+        <IronImage
+          src={feed.imgUrlArray[0]}
+        >
+          <div
+            className={backgroundImageWithoutReviewBoxStyle}
+          >
+            {null}
+          </div>
+          <div
+            className={reviewBoxStyle}
+          >
+            <div className={restaurantAndEvaluateBoxStyle}>
+              <div
+                className={restaurantStyle}
+                onClick={() => push(`/reviews/${feed.reviewId}`)}
+              >
+                {feed.restaurant}
+              </div>
+              <Rating rating={feed.evaluate} className={evaluateStyle}/>
+            </div>
+            <Review writter={feed.writter} reviewText={feed.reviewText}/>
+          </div>
+        </IronImage>
+      </div>
+    </div>
+  );
+};
 
-export default Feed;
+export default enhance(Feed);
